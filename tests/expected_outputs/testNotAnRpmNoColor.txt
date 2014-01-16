@@ -1,0 +1,4 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+ERROR [sdk-harbour-rpmvalidator/tests/rpms/some-random-file.rpm] is not an rpm file!
+Clean up
