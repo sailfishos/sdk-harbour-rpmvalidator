@@ -1,0 +1,101 @@
+#!/usr/bin/python
+# Mushroom, Mushroom!
+
+import subprocess
+import sys
+import os
+import pprint
+import collections
+
+os.environ['BATCHERBATCHERBATCHER'] = '1'
+
+def read():
+    for filename in sys.argv[1:]:
+        proc = subprocess.Popen(['./rpmvalidation.sh', filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = proc.communicate()
+
+        for line in stdout.splitlines():
+            yield line
+
+data = {}
+filename = None
+section = None
+for line in read():
+    if line.startswith('!BEGIN'):
+        _, _, filename = line.split('!', 2)
+        data[filename] = {}
+        data[filename]['REPORT'] = collections.defaultdict(list)
+        print >>sys.stderr, 'Processing:', filename
+
+    if filename is None:
+        continue
+
+    if line.startswith('='):
+        _, section = line.split('=', 1)
+    elif line.startswith('ERROR') or line.startswith('WARNING') or line.startswith('INFO'):
+        kind, fn, message = line.split('|', 3)
+        data[filename]['REPORT'][kind].append((section, fn, message))
+    elif line.startswith('!END'):
+        _, _, result, fn = line.split('!', 3)
+        assert filename == fn
+        data[filename]['RESULT'] = result
+        filename = None
+
+# Yes, outputting HTML this way is quite ugly. Don't judge me.
+
+print """
+<style type="text/css">
+body, table { font-family: sans-serif; font-size: 10pt; }
+td { padding: 5px; }
+th { text-align: left; background-color: #aaa; }
+td { text-align: left; background-color: #eee; }
+tr.WARNING td { background-color: #ffa; }
+tr.ERROR td { background-color: #faa; }
+tr.INFO td { background-color: #aff; }
+tr.PASS td, h2.PASS { background-color: #afa; }
+tr.FAIL td, h2.FAIL { background-color: #faa; }
+</style>
+"""
+
+def sort_key_for_filename(filename):
+    return (data[filename]['RESULT'], data[filename])
+
+filenames = [filename for filename in data]
+filenames.sort(key=sort_key_for_filename)
+
+print >>sys.stderr, ''
+print >>sys.stderr, '%-70s %5s %5s %5s %5s' % ('Filename', 'WARN', 'ERR', 'INFO', 'RES')
+print '<table border="1"><tr><th>Filename</th><th>Warnings</th><th>Errors</th><th>Info</th><th>Result</th></tr>'
+for filename in filenames:
+    print '<tr class="%s"><td><a href="%s">%s</a></td><td>%d</td><td>%d</td><td>%d</td><td>%s</td></tr>' % (
+            data[filename]['RESULT'],
+            '#' + os.path.basename(filename),
+            os.path.basename(filename),
+            len(data[filename]['REPORT']['WARNING']),
+            len(data[filename]['REPORT']['ERROR']),
+            len(data[filename]['REPORT']['INFO']),
+            data[filename]['RESULT'],
+    )
+    print >>sys.stderr, '%-70s %5d %5d %5d %5s' % (
+        os.path.basename(filename),
+        len(data[filename]['REPORT']['WARNING']),
+        len(data[filename]['REPORT']['ERROR']),
+        len(data[filename]['REPORT']['INFO']),
+        data[filename]['RESULT'],
+    )
+print '</table>'
+
+for filename in filenames:
+    print >>sys.stderr, ''
+    print >>sys.stderr, '==', filename, '=='
+    print '<hr><h2 class="%s"><a name="%s">%s</h2>' % (data[filename]['RESULT'], os.path.basename(filename), os.path.basename(filename))
+
+    print '<table border="1"><tr><th>Section</th><th>Filename</th><th>Message</th></tr>'
+    for key in data[filename]['REPORT']:
+        print >>sys.stderr, '!!', key , '!!'
+        print '<tr><th colspan="3">%s</th></tr>' % (key,)
+        for section, fn, message in data[filename]['REPORT'][key]:
+            print >>sys.stderr, '%s: %s: %s' % (section, fn, message)
+            print '<tr class="%s"><td>%s</td><td>%s</td><td>%s</td></tr>' % (key, section, fn, message)
+    print '</table>'
+

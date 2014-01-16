@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qrc-files/Page_001_qrc.qml</file>
+        <file>qrc-files/RectangleQrc.qml</file>
+        <file>qrc-files/qmldir</file>
+    </qresource>
+</RCC>

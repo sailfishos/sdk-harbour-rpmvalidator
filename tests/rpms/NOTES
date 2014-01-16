@@ -1,0 +1,6 @@
+this should turn into a script...
+
+cp build-harbour-good-MerSDK_SailfishOS_armv7hl-Release/RPMS/harbour-good-0.3-1.armv7hl.rpm ./rpms/
+cp build-harbour-good-MerSDK_SailfishOS_i486_x86-Debug/RPMS/harbour-good-0.3-1.i586.rpm ./rpms/
+cp harbour-good-0.3-1.armv7hl.rpm good.armv7hl.rpm
+
