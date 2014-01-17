@@ -400,28 +400,28 @@ validatedesktopfile() {
       validation_error $DESKTOP_NAME "Missing valid Name declaration, must not be empty"
   fi
 
-  $GREP "^Icon=$NAME\s*$" $DESKTOP_NAME >/dev/null 2>&1
+  $GREP "^Icon=$NAME[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Icon declaration, must be Icon=$NAME"
   fi
 
-  $GREP -E "^Exec(=|=sailfish-qml\s+)$NAME" $DESKTOP_NAME >/dev/null 2>&1
+  $GREP -E "^Exec(=|=sailfish-qml[[:space:]]+)$NAME" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Exec declaration, must be Exec=$NAME"
   fi
 
-  $GREP -E "^Exec=sailfish-qml\s+$NAME" $DESKTOP_NAME  >/dev/null 2>&1
+  $GREP -E "^Exec=sailfish-qml[[:space:]]+$NAME" $DESKTOP_NAME  >/dev/null 2>&1
   if [[ $? -eq 0 ]] ; then
       validation_info $DESKTOP_NAME "Application is a QML-only app (sailfish-qml launcher)"
       USES_SAILFISH_QML_LAUNCHER=1
   fi
 
-  $GREP "^Type=Application\s*$" $DESKTOP_NAME  >/dev/null 2>&1
+  $GREP "^Type=Application[[:space:]]*$" $DESKTOP_NAME  >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Type declaration"
   fi
 
-  $GREP "^X-Nemo-Application-Type=silica-qt5\s*$" $DESKTOP_NAME >/dev/null 2>&1
+  $GREP "^X-Nemo-Application-Type=silica-qt5[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
     if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 1 ]; then
       validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML"
@@ -431,7 +431,7 @@ validatedesktopfile() {
       # Silica components, and they have to use the silica-qt5 booster to start it up
       validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for sailfish-qml apps"
     else
-      $EGREP "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)\s*$" $DESKTOP_NAME >/dev/null 2>&1
+      $EGREP "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
       if [[ $? -ne 0 ]] ; then
           validation_error $DESKTOP_NAME "X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)"
       else
@@ -661,7 +661,7 @@ validateqmlfiles() {
       if [[ $RC -gt 0 ]] ; then
         validation_error $QML_FILE "Import '$QML_IMPORT' is not allowed"
       fi
-    done < <($GREP '^\s*import\s' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
+    done < <($GREP -e '^[[:space:]]*import[[:space:]]' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
   done < <($FIND $SHARE_NAME -name \*.qml 2> /dev/null)
 }
 
