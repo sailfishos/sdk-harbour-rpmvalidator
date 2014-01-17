@@ -1,6 +1,6 @@
 Name:       sdk-harbour-rpmvalidator
 Summary:    Jolla Harbour RPM validation tools
-Version:    1.0
+Version:    1.2
 Release:    1
 Group:      System/Base
 License:    GPLv2
