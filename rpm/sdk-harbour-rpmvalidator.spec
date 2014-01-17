@@ -11,6 +11,8 @@ Source0:    %{name}-%{version}.tar.bz2
 %description
 RPM validation tools for Jolla Harbour.
 
+%define debug_package %{nil}
+
 %prep
 %setup -q
 
