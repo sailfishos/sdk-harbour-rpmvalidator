@@ -640,14 +640,7 @@ validateqmlfiles() {
           QML_IMPORT_MODUL_NAME=$(echo $QML_IMPORT| $SED -e 's/\s\+/ /g' | $CUT -f1 -d ' ')
           NAME_IN_QML_FORM=$(echo $NAME| $SED -e 's/-/\./g')
           if [[ "${QML_IMPORT_MODUL_NAME##$NAME_IN_QML_FORM}" != "$QML_IMPORT_MODUL_NAME" ]] ; then
-            shopt -s globstar
-            if [ -e ${SHARE_NAME}/**/${QML_IMPORT_MODUL_NAME}/qmldir ] ; then
-              # Modulename/qmldir path exists under SHARE_NAME
-              shopt -u globstar
-              continue
-            fi
-            shopt -u globstar
-            # still OK QML module name has the app name as prefix
+            # OK QML module name has the app name as prefix
             continue
           fi
         fi
