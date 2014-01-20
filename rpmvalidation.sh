@@ -249,6 +249,9 @@ rpmprepare () {
     return $RC
   fi
 
+  # set cleanup handler for TMP_DIR
+  trap "{ if [[ $DEBUG -lt 3 ]]; then rpmcleanup; else echo Skip clean up; fi }" EXIT
+
   log_debug "Created temporary directory $TMP_DIR"
  
   log_debug "Reading config scripts from $SCRIPT_DIR"
@@ -996,10 +999,6 @@ if [[ $RC -eq 0 ]] ; then
   rpmvalidation
 fi
 
-if [[ $DEBUG -lt 3 ]] ; then
-  rpmcleanup
-else
-  echo "Skip clean up"
-fi
+# cleaning up is done by the EXIT trap
 
 exit $RC
