@@ -250,7 +250,7 @@ rpmprepare () {
   fi
 
   # set cleanup handler for TMP_DIR
-  trap "{ if [[ $DEBUG -lt 3 ]]; then rpmcleanup; else echo Skip clean up; fi }" EXIT
+  trap "{ trap - EXIT; if [[ $DEBUG -lt 3 ]]; then rpmcleanup; else echo Skip clean up; fi }" EXIT
 
   log_debug "Created temporary directory $TMP_DIR"
  
