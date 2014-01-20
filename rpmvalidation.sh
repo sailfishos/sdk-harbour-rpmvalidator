@@ -909,10 +909,10 @@ suggest_xdg_basedir() {
 validatesandboxing() {
     while read filename; do
         filename=${filename#./}
-        while read match; do
+	strings "$filename" | grep "/home/nemo/" |  while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
-        done < <(strings "$filename" | grep "/home/nemo/")
+	done
     done < <(find . ! -type d)
 }
 
