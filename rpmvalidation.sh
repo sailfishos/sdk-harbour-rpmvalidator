@@ -908,6 +908,9 @@ suggest_xdg_basedir() {
 
 validatesandboxing() {
     while read filename; do
+        # TODO: fix prober, but this seems to work around the out of file
+        # descriptor issue
+        (true)
         filename=${filename#./}
         while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
