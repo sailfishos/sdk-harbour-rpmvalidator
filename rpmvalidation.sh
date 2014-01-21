@@ -632,7 +632,7 @@ validateqmlfiles() {
             else
               validation_error $QML_FILE "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
             fi
-          elif [[ ${QML_IMPORT:1:7} == qrc:/// ]] ; then
+          elif [[ ${QML_IMPORT:1:5} == qrc:/ ]] ; then
             # built in resources are ok
             continue
           else
@@ -908,11 +908,14 @@ suggest_xdg_basedir() {
 
 validatesandboxing() {
     while read filename; do
+        # TODO: fix prober, but this seems to work around the out of file
+        # descriptor issue
+        (true)
         filename=${filename#./}
-	strings "$filename" | grep "/home/nemo/" |  while read match; do
+        while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
-	done
+        done < <(strings "$filename" | grep "/home/nemo/")
     done < <(find . ! -type d)
 }
 
