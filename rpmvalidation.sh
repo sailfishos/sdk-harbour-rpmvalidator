@@ -155,8 +155,11 @@ run_validator() {
     $@
 
     if [ -z $BATCHERBATCHERBATCHER ]; then
-        if [ $FAILED -eq 0 -a $WARNED -eq 0 -a $INFOED -eq 0 ]; then
-            echo -e "$(incolor 32 OK)"
+        if [ $FAILED -eq 0 ]; then
+	    # if WARNED or INFOED, the test still passed
+            echo -e "$(incolor 32 PASSED)"
+	else
+	    echo -e "$(incolor 31 FAILED)"
         fi
 
         echo
