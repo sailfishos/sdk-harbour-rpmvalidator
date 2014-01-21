@@ -632,7 +632,7 @@ validateqmlfiles() {
             else
               validation_error $QML_FILE "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
             fi
-          elif [[ ${QML_IMPORT:1:7} == qrc:/// ]] ; then
+          elif [[ ${QML_IMPORT:1:5} == qrc:/ ]] ; then
             # built in resources are ok
             continue
           else
