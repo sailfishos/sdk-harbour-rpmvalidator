@@ -290,6 +290,12 @@ rpmprepare () {
   else
     $RPM2CPIO $RPM_NAME | $CPIO -idmv
   fi
+
+  while read FILE
+  do
+    ruby ${SCRIPT_DIR}/qrc-extractor.rb $FILE >> ${TMP_DIR}/qrc-files
+  done < <(find ${TMP_DIR} -type f)
+
   if [[ $? -gt 0 ]] ; then
     RC=1
     popd >/dev/null 2>&1
@@ -600,8 +606,10 @@ validateqmlfiles() {
   # TODO: what if the developer does call his qml files .foo ?
   while read QML_FILE
   do
+    echo "QML_FILE: $QML_FILE"
     while read QML_IMPORT
     do
+      echo "QML_IMPORT: $QML_IMPORT"
       SAILFISH_SILICA_IMPORT="Sailfish.Silica 1.0"
       if [ "$QML_IMPORT" = "$SAILFISH_SILICA_IMPORT" ]; then
           if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 0 ]; then
@@ -661,7 +669,7 @@ validateqmlfiles() {
         validation_error $QML_FILE "Import '$QML_IMPORT' is not allowed"
       fi
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
-  done < <($FIND $SHARE_NAME -name \*.qml 2> /dev/null)
+  done < <($FIND $SHARE_NAME -name \*.qml 2> /dev/null; echo "${TMP_DIR}/qrc-files")
 }
 
 #
