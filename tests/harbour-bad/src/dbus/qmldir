@@ -1,0 +1,2 @@
+module harbour.good.dbus
+plugin helloSailorDbus ../../../
