@@ -32,7 +32,7 @@ Page {
                 x: Theme.paddingLarge
                 width: parent.width
                 wrapMode: TextEdit.WordWrap
-                text: "Hello Sailor, the red rectangle is a qrc import..."
+                text: "Hello Sailor, the red rectangle is a qrc:/// import..."
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }

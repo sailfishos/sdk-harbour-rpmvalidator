@@ -5,11 +5,10 @@ import        harbour.good.dbus       1.0
         import        harbour.good.dbus       1.0
 
 // add some tabs here, be careful QtCreator does not convert to spaces...
-import QtQuick.LocalStorage    2.0
-import QtQuick.Particles 2.0
-import QtQuick.Window 2.0
-
-import Sailfish.Silica 1.0
+	  	import QtQuick.LocalStorage        2.0
+		   		import  	 QtQuick.Particles  		 2.0
+	import		QtQuick.Window	 2.0
+import   	 	Sailfish.Silica		   	 1.0
 
 Page {
     id: page

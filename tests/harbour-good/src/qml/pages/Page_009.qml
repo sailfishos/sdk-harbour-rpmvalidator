@@ -1,6 +1,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "qrc:/qrc-files/"
+import  "qrc:/qrc-files/"  // some comment
+import     "qrc:/qrc-files/"   /* some comment */
+import  "qrc:/qrc-files/" as     Foo
+import    "qrc:/qrc-files/" as  FooBar // some comment
+import "qrc:/qrc-files/"  as   Bar   /* some comment */
+
 Page {
     id: page
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -18,16 +25,21 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: "009"
+                title: "007"
             }
             Label {
+                id: sailorLabel
                 x: Theme.paddingLarge
                 width: parent.width
                 wrapMode: TextEdit.WordWrap
-                text: "Hello Sailor"
+                text: "Hello Sailor, the red rectangle is a qrc:/ import..."
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+            RectangleQrc {}
+            Foo.RectangleQrc {}
+            FooBar.RectangleQrc {}
+            Bar.RectangleQrc {}
         }
     }
 }
