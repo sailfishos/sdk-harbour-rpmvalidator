@@ -180,6 +180,7 @@ Options:
    -d <level>               set debug level (0, 1, 2, 3)
    -c | --no-color          no color in log output
    -g | --config-dir <dir>  read config files from this dir
+   -s | --sort              sort the output of find commands
    -v | --version           display script version
    -h | --help              this help
 
@@ -220,9 +221,16 @@ rpmprepare () {
 	  -g | --config-dir) shift
 	      OPT_CONF_DIR=$1; shift
 	      [[ -z $OPT_CONF_DIR ]] && usage quit
-	      [[ ! -d $OPT_CONF_DIR ]] && { echo "ERROR: config directory [$OPT_CONF_DIR] not found"; exit 1; }
+	      OPT_CONF_DIR=$(readlink -f $OPT_CONF_DIR)
+	      [[ ! -d $OPT_CONF_DIR ]] && { echo "ERROR: given directory [$OPT_CONF_DIR] does not exist"; exit 1; }
+	      ;;
+	  -s | --sort) shift
+	      # eval can be used to pipe command lines to sort
+	      OPT_SORT="| sort"
 	      ;;
 	  -v | --version) shift
+	      # do not print out version here because SCRIPT_DIR might
+	      # have changed if the config dir option is given
 	      OPT_VERSION=1
 	      ;;
 	  -*)
@@ -393,7 +401,7 @@ validatepaths () {
 
   # Find all non-directories and empty directories, including hidden files/dirs
   # (to avoid reporting parent directories of files)
-  RPM_FILES=$($FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) \
+  RPM_FILES=$(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
       | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAME)$")
   for rpm_file in $RPM_FILES; do
       rpm_file=${rpm_file#.}
@@ -408,7 +416,7 @@ validatepaths () {
   while read filename; do
       filename=${filename#.}
       validation_error "$filename" "Source control directories must not be included"
-  done < <(find . \( -name .git -o -name .svn -o -name .hg \))
+  done < <(eval "$FIND . \( -name .git -o -name .svn -o -name .hg \) $OPT_SORT")
 }
 
 #
@@ -469,7 +477,7 @@ validatedesktopfile() {
 isLibraryAllowed() {
   if ! check_contained_in "$1" $ALLOWED_LIBRARIES; then
     # $LIB could be in /usr/share/app-name ?
-    FOUND_LIB=$($FIND $SHARE_NAME -name "$1*" 2> /dev/null)
+    FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1*" 2> /dev/null $OPT_SORT)
     if [[ -n $FOUND_LIB ]] ; then
       # OK it's an own lib
       continue
@@ -515,7 +523,7 @@ validateicon() {
 #
 validatelibraries() {
   # Go through all files to also find stray libs and executables
-  for binary in $(find . -type f -o -type l); do
+  for binary in $(eval $FIND . -type f -o -type l $OPT_SORT); do
       binary=${binary#./}
       filetype=$(file -b $binary)
       # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
@@ -680,7 +688,7 @@ validateqmlfiles() {
         validation_error $QML_FILE "Import '$QML_IMPORT' is not allowed"
       fi
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
-  done < <($FIND $SHARE_NAME -name \*.qml 2> /dev/null)
+  done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
 }
 
 #
@@ -938,7 +946,7 @@ validatesandboxing() {
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
         done < <(strings "$filename" | grep "/home/nemo/")
-    done < <(find . ! -type d)
+    done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
 #
