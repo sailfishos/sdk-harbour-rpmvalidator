@@ -15,3 +15,5 @@ OTHER_FILES += qml/*.qml \
 
 RESOURCES += \
     qrc-qml-files.qrc
+
+QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
