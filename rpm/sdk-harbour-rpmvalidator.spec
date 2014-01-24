@@ -12,7 +12,6 @@ Requires:   findutils
 Requires:   sed
 Requires:   cpio
 Requires:   file
-Requires:   gawk
 Requires:   grep
 Source0:    %{name}-%{version}.tar.bz2
 

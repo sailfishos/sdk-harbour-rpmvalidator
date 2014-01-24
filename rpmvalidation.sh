@@ -833,7 +833,7 @@ validatepermissions() {
 # Pre and post installation script validation
 #
 validatescripts() {
-  SCRIPTINFO=$($RPM -qp --scripts $RPM_NAME | grep -o '^.*scriptlet.*:$' | awk '{ print $1 }')
+  SCRIPTINFO=$($RPM -qp --scripts $RPM_NAME | grep -o '^.*scriptlet.*:$' | cut -f 1 -d ' ')
   for script in $SCRIPTINFO; do
       validation_error "$script" "RPM '$script' script not allowed"
   done
