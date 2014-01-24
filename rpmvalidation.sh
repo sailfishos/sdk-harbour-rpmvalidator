@@ -177,12 +177,17 @@ Usage:
    $0 [OPTION] <rpm-file>
 
 Options:
-   -d <level>       set debug level (0, 1, 2, 3)
-   -c | --no-color  no color in log output
-   -v | --version   display script version
-   -h | --help      this help
+   -d <level>               set debug level (0, 1, 2, 3)
+   -c | --no-color          no color in log output
+   -g | --config-dir <dir>  read config files from this dir
+   -s | --sort              sort the output of find commands
+   -v | --version           display script version
+   -h | --help              this help
 
 EOF
+
+    # exit if any argument is given
+    [[ -n "$1" ]] && exit 1
 }
 
 #
@@ -194,17 +199,7 @@ rpmprepare () {
   while [[ ${1:-} ]]; do
       case "$1" in
 	  -h | --help) shift
-	      usage
-	      exit 1
-	      ;;
-	  -v | --version) shift
-	      if [[ -f "$SCRIPT_DIR/version" ]]; then
-		  cat $SCRIPT_DIR/version
-		  exit 1
-	      else
-		  echo "unknown"
-		  exit 1
-	      fi
+	      usage quit
 	      ;;
 	  -c | --no-color) shift
 	      OPT_NOCOLOR=1
@@ -214,19 +209,32 @@ rpmprepare () {
 	      if [ ${#1} -gt 2 ]; then
 		  DEBUG=${1:2}; shift
 	      else
-		  [ -z "$2" ] && { usage; exit 1; }
+		  [ -z "$2" ] && usage quit
 		  DEBUG="$2"; shift 2;
 	      fi
 
               # only valid debug levels accepted
 	      if [[ $DEBUG != [0123] ]]; then
-		  usage
-		  exit 1
+		  usage quit
 	      fi
 	      ;;
+	  -g | --config-dir) shift
+	      OPT_CONF_DIR=$1; shift
+	      [[ -z $OPT_CONF_DIR ]] && usage quit
+	      OPT_CONF_DIR=$(readlink -f $OPT_CONF_DIR)
+	      [[ ! -d $OPT_CONF_DIR ]] && { echo "ERROR: given directory [$OPT_CONF_DIR] does not exist"; exit 1; }
+	      ;;
+	  -s | --sort) shift
+	      # eval can be used to pipe command lines to sort
+	      OPT_SORT="| sort"
+	      ;;
+	  -v | --version) shift
+	      # do not print out version here because SCRIPT_DIR might
+	      # have changed if the config dir option is given
+	      OPT_VERSION=1
+	      ;;
 	  -*)
-	      usage
-	      exit 1
+	      usage quit
 	      ;;
 	  *)
               # this is the file we are validating
@@ -236,8 +244,27 @@ rpmprepare () {
       esac
   done
 
+  # first thing, figure out where all the config files are
+  if [[ -n $OPT_CONF_DIR ]]; then
+      SCRIPT_DIR=$OPT_CONF_DIR
+  elif [ -d $PACKAGING_SCRIPT_DIR ]; then
+      SCRIPT_DIR=$PACKAGING_SCRIPT_DIR
+  else
+      SCRIPT_DIR=$(dirname $(readlink -f $0))
+  fi
+
+  if [[ $OPT_VERSION -eq 1 ]]; then
+      if [[ -f "$SCRIPT_DIR/version" ]]; then
+	  cat $SCRIPT_DIR/version
+	  exit 0
+      else
+	  echo "unknown"
+	  exit 0
+      fi
+  fi
+
   # this is a required parameter
-  [[ -z $RPM_NAME ]] && { usage; exit 1; }
+  [[ -z $RPM_NAME ]] && usage quit
 
   [[ ! -f $RPM_NAME ]] && { validation_error $RPM_NAME "File not found!"; exit 1; }
 
@@ -374,7 +401,7 @@ validatepaths () {
 
   # Find all non-directories and empty directories, including hidden files/dirs
   # (to avoid reporting parent directories of files)
-  RPM_FILES=$($FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) \
+  RPM_FILES=$(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
       | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAME)$")
   for rpm_file in $RPM_FILES; do
       rpm_file=${rpm_file#.}
@@ -389,7 +416,7 @@ validatepaths () {
   while read filename; do
       filename=${filename#.}
       validation_error "$filename" "Source control directories must not be included"
-  done < <(find . \( -name .git -o -name .svn -o -name .hg \))
+  done < <(eval "$FIND . \( -name .git -o -name .svn -o -name .hg \) $OPT_SORT")
 }
 
 #
@@ -450,7 +477,7 @@ validatedesktopfile() {
 isLibraryAllowed() {
   if ! check_contained_in "$1" $ALLOWED_LIBRARIES; then
     # $LIB could be in /usr/share/app-name ?
-    FOUND_LIB=$($FIND $SHARE_NAME -name "$1*" 2> /dev/null)
+    FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1*" 2> /dev/null $OPT_SORT)
     if [[ -n $FOUND_LIB ]] ; then
       # OK it's an own lib
       continue
@@ -481,7 +508,7 @@ validateicon() {
           # OK, that's the image type we expect
           ;;
       PNG*)
-          validation_warning $ICON_NAME "Wrong size, must be 86x86"
+          validation_error $ICON_NAME "Wrong size, must be 86x86"
           validation_info $ICON_NAME "Detected as '$filetype'"
           ;;
       *)
@@ -496,7 +523,7 @@ validateicon() {
 #
 validatelibraries() {
   # Go through all files to also find stray libs and executables
-  for binary in $(find . -type f -o -type l); do
+  for binary in $(eval $FIND . -type f -o -type l $OPT_SORT); do
       binary=${binary#./}
       filetype=$(file -b $binary)
       # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
@@ -661,7 +688,7 @@ validateqmlfiles() {
         validation_error $QML_FILE "Import '$QML_IMPORT' is not allowed"
       fi
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
-  done < <($FIND $SHARE_NAME -name \*.qml 2> /dev/null)
+  done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
 }
 
 #
@@ -919,7 +946,7 @@ validatesandboxing() {
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
         done < <(strings "$filename" | grep "/home/nemo/")
-    done < <(find . ! -type d)
+    done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
 #
@@ -991,13 +1018,6 @@ rpmcleanup () {
 ###########################
 # Main
 ###########################
-
-# first thing, figure out where all the config files are
-if [ -d $PACKAGING_SCRIPT_DIR ]; then
-    SCRIPT_DIR=$PACKAGING_SCRIPT_DIR
-else
-    SCRIPT_DIR=$(dirname $(readlink -f $0))
-fi
 
 rpmprepare $@
 
