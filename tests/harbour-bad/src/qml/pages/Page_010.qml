@@ -1,14 +1,5 @@
-// imports with to many white spaces
-import       QtQuick        2.0
-        import                 QtQuick            2.0
-import        harbour.good.dbus       1.0
-        import        harbour.good.dbus       1.0
-
-// add some tabs here, be careful QtCreator does not convert to spaces...
-	  	import QtQuick.LocalStorage        2.0
-		   		import  	 QtQuick.Particles  		 2.0
-	import		QtQuick.Window	 2.0
-import   	 	Sailfish.Silica		   	 1.0
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
 Page {
     id: page
@@ -27,13 +18,13 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: "001"
+                title: "010"
             }
             Label {
                 x: Theme.paddingLarge
                 width: parent.width
                 wrapMode: TextEdit.WordWrap
-                text: "Hello Sailor, this page has many extra white spaces in the imports..."
+                text: "Hello Sailor"
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }

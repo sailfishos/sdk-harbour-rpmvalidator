@@ -1,12 +1,9 @@
 TEMPLATE = app
-TARGET = harbour-good
+TARGET = harbour-bad
 CONFIG += sailfishapp
+PKGCONFIG += ncurses
 
-SOURCES += harbour-good.cpp
-
-CONFIG(release, debug|release) {
-    DEFINES += QT_NO_DEBUG_OUTPUT
-}
+SOURCES += harbour-bad.cpp
 
 OTHER_FILES += qml/*.qml \
                qml/cover/*.qml \
@@ -16,4 +13,3 @@ OTHER_FILES += qml/*.qml \
 RESOURCES += \
     qrc-qml-files.qrc
 
-QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9

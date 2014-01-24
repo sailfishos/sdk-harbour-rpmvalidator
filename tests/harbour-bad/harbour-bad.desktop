@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=harbour-bad
+Icon=/usr/share/icons/hicolor/86x86/apps/harbour-bad.png
+Exec=/usr/bin/harbour-bad

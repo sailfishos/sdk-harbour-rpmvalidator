@@ -1,0 +1,4 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+[31mERROR[0m [[34msdk-harbour-rpmvalidator/tests/rpms/some-random-file.rpm[0m] is not an rpm file!
+Clean up

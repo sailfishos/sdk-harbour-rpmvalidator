@@ -1,14 +1,24 @@
-// imports with to many white spaces
-import       QtQuick        2.0
-        import                 QtQuick            2.0
-import        harbour.good.dbus       1.0
-        import        harbour.good.dbus       1.0
+// import 'as'
+import QtQuick 2.0 as Foo
+import harbour.good.dbus 1.0 as Bar
 
-// add some tabs here, be careful QtCreator does not convert to spaces...
-	  	import QtQuick.LocalStorage        2.0
-		   		import  	 QtQuick.Particles  		 2.0
-	import		QtQuick.Window	 2.0
-import   	 	Sailfish.Silica		   	 1.0
+import     QtQuick      2.0    as     FooBar
+import     harbour.good.dbus    1.0  as     BarFoo
+
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+import    org.nemomobile.social 1.0     as    SoC
+
+// with tabs be careful when saved with Qt Creator
+    import 	QtQuick 2.0		 as	 Foo
+import 			harbour.good.dbus		 1.0 	  as  	 	Bar
+
+import		QtQuick  	 	 	  2.0 			   as 			    FooBar
+  import  	   harbour.good.dbus	1.0	as     BarFoo
+
+		import QtQuick 2.0
+  import Sailfish.Silica		 1.0				// some comment
 
 Page {
     id: page
@@ -27,13 +37,13 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: "001"
+                title: "002"
             }
             Label {
                 x: Theme.paddingLarge
                 width: parent.width
                 wrapMode: TextEdit.WordWrap
-                text: "Hello Sailor, this page has many extra white spaces in the imports..."
+                text: "Hello Sailor, this has some 'as Foo' imports"
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }

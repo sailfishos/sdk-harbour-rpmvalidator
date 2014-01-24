@@ -1,0 +1,175 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.armv7hl.rpm
+./etc/harbour-bad/harbour-bad.conf
+./home/nemo/.conf/harbour-bad/harbour-bad.conf
+./usr/bin
+./usr/bin/harbour-bad
+./usr/bin/harbour-bad-bin
+./usr/bin/harbour-bad-suid
+./usr/share/applications/harbour-bad.desktop
+./usr/share/harbour-bad/lib
+./usr/share/harbour-bad/lib/harbour
+./usr/share/harbour-bad/lib/harbour/good
+./usr/share/harbour-bad/lib/harbour/good/dbus
+./usr/share/harbour-bad/lib/harbour/good/dbus/qmldir
+./usr/share/harbour-bad/lib/libhelloSailorDbus.so
+./usr/share/harbour-bad/qml
+./usr/share/harbour-bad/qml/cover
+./usr/share/harbour-bad/qml/cover/CoverPage.qml
+./usr/share/harbour-bad/qml/harbour-bad.qml
+./usr/share/harbour-bad/qml/pages
+./usr/share/harbour-bad/qml/pages/FirstPage.qml
+./usr/share/harbour-bad/qml/pages/Page_001.qml
+./usr/share/harbour-bad/qml/pages/Page_002.qml
+./usr/share/harbour-bad/qml/pages/Page_003.qml
+./usr/share/harbour-bad/qml/pages/Page_004.qml
+./usr/share/harbour-bad/qml/pages/Page_005.qml
+./usr/share/harbour-bad/qml/pages/Page_006.qml
+./usr/share/harbour-bad/qml/pages/Page_007.qml
+./usr/share/harbour-bad/qml/pages/Page_008.qml
+./usr/share/harbour-bad/qml/pages/Page_009.qml
+./usr/share/harbour-bad/qml/pages/Page_010.qml
+./usr/share/harbour-bad/qml/pages/Page_Template.qml
+./usr/share/harbour-bad/qml/pages/qmlmodules
+./usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
+276 blocks
+
+
+Package name
+============
+PASSED
+
+RPM file name
+=============
+PASSED
+
+QML files
+=========
+INFO [/usr/share/harbour-bad/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
+ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+FAILED
+
+Desktop file
+============
+ERROR [/usr/share/applications/harbour-bad.desktop] Missing valid Icon declaration, must be Icon=harbour-bad
+ERROR [/usr/share/applications/harbour-bad.desktop] Missing valid Exec declaration, must be Exec=harbour-bad
+ERROR [/usr/share/applications/harbour-bad.desktop] X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML
+ERROR [/usr/share/applications/harbour-bad.desktop] X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)
+FAILED
+
+Paths
+=====
+ERROR [/etc/harbour-bad/harbour-bad.conf] Installation not allowed in this location
+ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Installation not allowed in this location
+ERROR [/usr/bin/harbour-bad-bin] Installation not allowed in this location
+ERROR [/usr/bin/harbour-bad-suid] Installation not allowed in this location
+FAILED
+
+Libraries
+=========
+ERROR [/usr/bin/harbour-bad] Cannot link to shared library: libncurses.so.5
+ERROR [/usr/bin/harbour-bad] Cannot link to shared library: libtinfo.so.5
+INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Private shared library shipped
+ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libncurses.so.5
+ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libtinfo.so.5
+FAILED
+
+Icon
+====
+ERROR [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Wrong size, must be 86x86
+INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Detected as 'PNG image data, 92 x 92, 8-bit/color RGBA, non-interlaced'
+FAILED
+
+Symbols
+=======
+PASSED
+
+Permissions
+===========
+ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Owner is 'nemo', should be 'root'
+ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Group is 'nemo', should be 'root'
+WARNING [/usr/bin/harbour-bad-bin] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad-suid] setuid, setgid or sticky bit set
+WARNING [/usr/bin/harbour-bad-suid] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/lib/harbour/good/dbus/qmldir] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/cover/CoverPage.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/harbour-bad.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/FirstPage.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_001.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_002.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_003.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_004.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_005.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_006.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_007.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_008.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_009.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_010.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/Page_Template.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml] File must not be executable (current permissions: 755)
+WARNING [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] File must not be executable (current permissions: 755)
+FAILED
+
+Scripts
+=======
+ERROR [preinstall] RPM 'preinstall' script not allowed
+ERROR [postinstall] RPM 'postinstall' script not allowed
+ERROR [preuninstall] RPM 'preuninstall' script not allowed
+ERROR [postuninstall] RPM 'postuninstall' script not allowed
+ERROR [verify] RPM 'verify' script not allowed
+FAILED
+
+Provides
+========
+ERROR [libhelloSailorDbus.so] 'Provides: libhelloSailorDbus.so' not allowed in RPM
+INFO [libhelloSailorDbus.so] See https://harbour.jolla.com/faq how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that!
+FAILED
+
+Obsoletes
+=========
+ERROR [harbour-good] 'Obsoletes: harbour-good' not allowed in RPM
+FAILED
+
+Requires
+========
+ERROR [/bin/sh] Dependency not allowed
+ERROR [/bin/sh] Dependency not allowed
+ERROR [/bin/sh] Dependency not allowed
+ERROR [/bin/sh] Dependency not allowed
+ERROR [/bin/sh] Dependency not allowed
+ERROR [libncurses.so.5] Cannot require shared library: 'libncurses.so.5'
+ERROR [libtinfo.so.5] Cannot require shared library: 'libtinfo.so.5'
+ERROR [nemo-qml-plugin-social-qt5] Dependency not allowed
+ERROR [qt5-qtdeclarative-systeminfo] Dependency not allowed
+FAILED
+
+Sandboxing
+==========
+ERROR [/usr/bin/harbour-bad] Hardcoded path: print some not wanted string: /home/nemo/
+INFO [/usr/bin/harbour-bad] Use XDG basedir (JB#13951) instead of /home/nemo/
+FAILED
+
+
+
+Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.armv7hl.rpm
+Clean up

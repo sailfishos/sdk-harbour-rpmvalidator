@@ -14,7 +14,7 @@ Name:       harbour-good
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A RPM to test the rpmvalidation.sh script
-Version:    0.3
+Version:    0.5
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -55,6 +55,12 @@ rm -rf %{buildroot}
 # << install pre
 %qmake5_install
 
+%ifarch i586
+mkdir %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/
+for AMOUNT in $(seq 1 2000); do cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_Template.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
+for AMOUNT in $(seq 2001 4000); do touch %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
+%endif
+
 # >> install post
 # << install post
 
@@ -63,10 +69,10 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/
-%{_bindir}
+%attr(0755,-,-) %{_bindir}/%{name}
 # >> files
 # << files

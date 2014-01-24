@@ -8,6 +8,17 @@ import     harbour.good.dbus    1.0  as     BarFoo
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+
+// with tabs be careful when saved with Qt Creator
+    import 	QtQuick 2.0		 as	 Foo
+import 			harbour.good.dbus		 1.0 	  as  	 	Bar
+
+import		QtQuick  	 	 	  2.0 			   as 			    FooBar
+  import  	   harbour.good.dbus	1.0	as     BarFoo
+
+		import QtQuick 2.0
+  import Sailfish.Silica		 1.0				// some comment
+
 Page {
     id: page
     // To enable PullDownMenu, place our content in a SilicaFlickable

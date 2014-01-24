@@ -1,0 +1,97 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.5-1.armv7hl.rpm
+./usr/bin/harbour-good
+./usr/share/applications/harbour-good.desktop
+./usr/share/harbour-good
+./usr/share/harbour-good/lib
+./usr/share/harbour-good/lib/harbour
+./usr/share/harbour-good/lib/harbour/good
+./usr/share/harbour-good/lib/harbour/good/dbus
+./usr/share/harbour-good/lib/harbour/good/dbus/qmldir
+./usr/share/harbour-good/lib/libhelloSailorDbus.so
+./usr/share/harbour-good/qml
+./usr/share/harbour-good/qml/cover
+./usr/share/harbour-good/qml/cover/CoverPage.qml
+./usr/share/harbour-good/qml/harbour-good.qml
+./usr/share/harbour-good/qml/pages
+./usr/share/harbour-good/qml/pages/FirstPage.qml
+./usr/share/harbour-good/qml/pages/Page_001.qml
+./usr/share/harbour-good/qml/pages/Page_002.qml
+./usr/share/harbour-good/qml/pages/Page_003.qml
+./usr/share/harbour-good/qml/pages/Page_004.qml
+./usr/share/harbour-good/qml/pages/Page_005.qml
+./usr/share/harbour-good/qml/pages/Page_006.qml
+./usr/share/harbour-good/qml/pages/Page_007.qml
+./usr/share/harbour-good/qml/pages/Page_008.qml
+./usr/share/harbour-good/qml/pages/Page_009.qml
+./usr/share/harbour-good/qml/pages/Page_010.qml
+./usr/share/harbour-good/qml/pages/Page_Template.qml
+./usr/share/harbour-good/qml/pages/qmlmodules
+./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/icons/hicolor/86x86/apps/harbour-good.png
+265 blocks
+
+
+Package name
+============
+PASSED
+
+RPM file name
+=============
+PASSED
+
+QML files
+=========
+INFO [/usr/share/harbour-good/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
+PASSED
+
+Desktop file
+============
+PASSED
+
+Paths
+=====
+PASSED
+
+Libraries
+=========
+INFO [/usr/share/harbour-good/lib/libhelloSailorDbus.so] Private shared library shipped
+PASSED
+
+Icon
+====
+PASSED
+
+Symbols
+=======
+PASSED
+
+Permissions
+===========
+PASSED
+
+Scripts
+=======
+PASSED
+
+Provides
+========
+PASSED
+
+Obsoletes
+=========
+PASSED
+
+Requires
+========
+PASSED
+
+Sandboxing
+==========
+PASSED
+
+
+
+Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.5-1.armv7hl.rpm
+Clean up
