@@ -776,13 +776,8 @@ esac
 #
 validatepermissions() {
   # Validate directory
-  while read PATH_PERM
+  while IFS=$'\a' read FULL_PERM OWNER_USER OWNER_GROUP PATH_NAME
   do
-    PATH_NAME=$(echo $PATH_PERM| $SED -e 's/;-;-;-;/\x0/g' | $CUT -d $'\0' -f1)
-    FULL_PERM=$(echo $PATH_PERM| $SED -e 's/;-;-;-;/\x0/g' | $CUT -d $'\0' -f2)
-    OWNER_USER=$(echo $PATH_PERM| $SED -e 's/;-;-;-;/\x0/g' | $CUT -d $'\0' -f3)
-    OWNER_GROUP=$(echo $PATH_PERM| $SED -e 's/;-;-;-;/\x0/g' | $CUT -d $'\0' -f4)
-
     FILE_TYPE=${FULL_PERM: -6:2}
     OWNER_PERM=${FULL_PERM: -3:1}
     GROUP_PERM=${FULL_PERM: -2:1}
@@ -826,7 +821,7 @@ validatepermissions() {
       validation_error $PATH_NAME "Group is '$OWNER_GROUP', should be 'root'"
     fi
 
-  done < <($RPM -q --queryformat "[%{FILENAMES};-;-;-;%{FILEMODES:octal};-;-;-;%{FILEUSERNAME};-;-;-;%{FILEGROUPNAME}\n]" -p $RPM_NAME)
+  done < <($RPM -q --queryformat "[%{FILEMODES:octal}\a%{FILEUSERNAME}\a%{FILEGROUPNAME}\a%{FILENAMES}\n]" -p $RPM_NAME)
 }
 
 #
