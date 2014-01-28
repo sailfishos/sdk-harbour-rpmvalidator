@@ -13,7 +13,7 @@ Name:       harbour-bad
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A RPM to test the rpmvalidation.sh script which does not follow the rules
-Version:    0.1
+Version:    0.2
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -68,6 +68,17 @@ touch %{buildroot}/home/nemo/.conf/%{name}/%{name}.conf
 touch %{buildroot}/%{_bindir}/%{name}-suid
 touch %{buildroot}/%{_bindir}/%{name}-bin
 
+touch %{buildroot}/%{_datadir}/%{name}/.DS_Store
+touch %{buildroot}/%{_datadir}/%{name}/.some-tmp-vim-file.txt.swp
+touch %{buildroot}/%{_datadir}/%{name}/some-backup-file.txt~
+touch %{buildroot}/%{_datadir}/%{name}/.some-dot-backup-file.txt~
+
+mkdir -p %{buildroot}/%{_datadir}/%{name}/.git
+mkdir -p %{buildroot}/%{_datadir}/%{name}/.svn
+mkdir -p %{buildroot}/%{_datadir}/%{name}/.hg
+mkdir -p %{buildroot}/%{_datadir}/%{name}/.bzr
+mkdir -p %{buildroot}/%{_datadir}/%{name}/.cvs
+
 # >> install post
 # << install post
 
@@ -82,6 +93,15 @@ desktop-file-install --delete-original       \
 %attr(0755,-,-) %{_bindir}/%{name}-bin
 %{_datadir}/%{name}/qml
 %{_datadir}/%{name}/lib
+%{_datadir}/%{name}/.DS_Store
+%{_datadir}/%{name}/.some-tmp-vim-file.txt.swp
+%{_datadir}/%{name}/some-backup-file.txt~
+%{_datadir}/%{name}/.some-dot-backup-file.txt~
+%{_datadir}/%{name}/.git
+%{_datadir}/%{name}/.svn
+%{_datadir}/%{name}/.hg
+%{_datadir}/%{name}/.bzr
+%{_datadir}/%{name}/.cvs
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %attr(0644,nemo,nemo) /home/nemo/.conf/harbour-bad/%{name}.conf
