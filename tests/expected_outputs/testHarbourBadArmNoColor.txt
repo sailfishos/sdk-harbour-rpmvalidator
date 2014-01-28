@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.armv7hl.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
@@ -8,6 +8,14 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/bin/harbour-bad-bin
 ./usr/bin/harbour-bad-suid
 ./usr/share/applications/harbour-bad.desktop
+./usr/share/harbour-bad/.DS_Store
+./usr/share/harbour-bad/.bzr
+./usr/share/harbour-bad/.cvs
+./usr/share/harbour-bad/.git
+./usr/share/harbour-bad/.hg
+./usr/share/harbour-bad/.some-dot-backup-file.txt~
+./usr/share/harbour-bad/.some-tmp-vim-file.txt.swp
+./usr/share/harbour-bad/.svn
 ./usr/share/harbour-bad/lib
 ./usr/share/harbour-bad/lib/harbour
 ./usr/share/harbour-bad/lib/harbour/good
@@ -33,8 +41,9 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/Page_Template.qml
 ./usr/share/harbour-bad/qml/pages/qmlmodules
 ./usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-276 blocks
+279 blocks
 
 
 Package name
@@ -83,6 +92,15 @@ ERROR [/etc/harbour-bad/harbour-bad.conf] Installation not allowed in this locat
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/usr/bin/harbour-bad-bin] Installation not allowed in this location
 ERROR [/usr/bin/harbour-bad-suid] Installation not allowed in this location
+ERROR [/usr/share/harbour-bad/.bzr] Source control directories must not be included
+ERROR [/usr/share/harbour-bad/.cvs] Source control directories must not be included
+ERROR [/usr/share/harbour-bad/.DS_Store] This kind of file must not be included
+ERROR [/usr/share/harbour-bad/.git] Source control directories must not be included
+ERROR [/usr/share/harbour-bad/.hg] Source control directories must not be included
+ERROR [/usr/share/harbour-bad/some-backup-file.txt~] This kind of file must not be included
+ERROR [/usr/share/harbour-bad/.some-dot-backup-file.txt~] This kind of file must not be included
+ERROR [/usr/share/harbour-bad/.some-tmp-vim-file.txt.swp] This kind of file must not be included
+ERROR [/usr/share/harbour-bad/.svn] Source control directories must not be included
 FAILED
 
 Libraries
@@ -171,5 +189,5 @@ FAILED
 
 
 
-Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.armv7hl.rpm
+Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.armv7hl.rpm
 Clean up
