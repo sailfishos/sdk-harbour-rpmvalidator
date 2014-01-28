@@ -45,3 +45,6 @@ ${RPMVALITATOR} ${RPMS_DIR}/bad-file-name.rpm 2>&1  | ${SED_FILTER} > ${EXPECTED
 ${RPMVALITATOR} ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${EXPECTED_DIR}/testNotAnRpm.txt 
 ${RPMVALITATOR} --no-color ${RPMS_DIR}/bad-file-name.rpm 2>&1  | ${SED_FILTER} > ${EXPECTED_DIR}/testBadFileNameNoColor.txt 
 ${RPMVALITATOR} --no-color ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${EXPECTED_DIR}/testNotAnRpmNoColor.txt 
+
+${RPMVALITATOR} ${RPMS_DIR}/harbor-bad-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${EXPECTED_DIR}/testHarborBadArm.txt
+

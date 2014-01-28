@@ -93,6 +93,12 @@ function testNotAnRpmNoColor() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarborBadArm() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbor-bad-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${SHUNIT_TMPDIR}/testHarborBadArm.txt 
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarborBadArm.txt ${SHUNIT_TMPDIR}/testHarborBadArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 SCRIPT_DIR=$(dirname $(readlink -f $0))
 . "${SCRIPT_DIR}/shunit2/shunit2"

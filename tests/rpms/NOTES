@@ -6,6 +6,9 @@ harbour-bad-X.Y-Z.i586.rpm
 harbour-good-X.Y-Z.armv7hl.rpm
 harbour-good-X.Y-Z.i586.rpm
 
+# from harbor-bad project
+harbor-bad-X.Y-Z.armv7hl.rpm
+
 # old version of harbour-good-X.Y-Z.armv7hl.rpm
 bad-file-name.rpm
 
