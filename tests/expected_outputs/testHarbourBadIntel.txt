@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.i586.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.i586.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
@@ -8,6 +8,14 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/bin/harbour-bad-bin
 ./usr/bin/harbour-bad-suid
 ./usr/share/applications/harbour-bad.desktop
+./usr/share/harbour-bad/.DS_Store
+./usr/share/harbour-bad/.bzr
+./usr/share/harbour-bad/.cvs
+./usr/share/harbour-bad/.git
+./usr/share/harbour-bad/.hg
+./usr/share/harbour-bad/.some-dot-backup-file.txt~
+./usr/share/harbour-bad/.some-tmp-vim-file.txt.swp
+./usr/share/harbour-bad/.svn
 ./usr/share/harbour-bad/lib
 ./usr/share/harbour-bad/lib/harbour
 ./usr/share/harbour-bad/lib/harbour/good
@@ -33,8 +41,9 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/Page_Template.qml
 ./usr/share/harbour-bad/qml/pages/qmlmodules
 ./usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-311 blocks
+313 blocks
 
 
 Package name
@@ -83,6 +92,15 @@ Paths
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad-bin[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/share/harbour-bad/.bzr[0m] Source control directories must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.cvs[0m] Source control directories must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.DS_Store[0m] This kind of file must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.git[0m] Source control directories must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.hg[0m] Source control directories must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/some-backup-file.txt~[0m] This kind of file must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.some-dot-backup-file.txt~[0m] This kind of file must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.some-tmp-vim-file.txt.swp[0m] This kind of file must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/.svn[0m] Source control directories must not be included
 [31mFAILED[0m
 
 Libraries
@@ -176,5 +194,5 @@ Sandboxing
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.1-1.i586.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.i586.rpm[0m
 Clean up

@@ -415,8 +415,15 @@ validatepaths () {
   # Accidentally added SCM files
   while read filename; do
       filename=${filename#.}
-      validation_error "$filename" "Source control directories must not be included"
-  done < <(eval "$FIND . \( -name .git -o -name .svn -o -name .hg \) $OPT_SORT")
+      case "$filename" in
+          *.git|*.svn|*.hg|*.bzr|*.cvs)
+              validation_error "$filename" "Source control directories must not be included"
+              ;;
+          *)
+              validation_error "$filename" "This kind of file must not be included"
+      esac
+  done < <(eval "$FIND . \( -name .git -o -name .svn -o -name .hg -o -name .bzr \
+          -o -name .cvs -o -name .DS_Store -o -name *~ -o -name .*.swp \) $OPT_SORT")
 }
 
 #
