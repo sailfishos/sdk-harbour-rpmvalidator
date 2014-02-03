@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.5-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.6-1.armv7hl.rpm
 ./usr/bin/harbour-good
 ./usr/share/applications/harbour-good.desktop
 ./usr/share/harbour-good
@@ -9,13 +9,20 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/lib/harbour/good
 ./usr/share/harbour-good/lib/harbour/good/dbus
 ./usr/share/harbour-good/lib/harbour/good/dbus/qmldir
+./usr/share/harbour-good/lib/lib hello Sailor Dbus.so
 ./usr/share/harbour-good/lib/libhelloSailorDbus.so
+./usr/share/harbour-good/lib/嗨.so
 ./usr/share/harbour-good/qml
 ./usr/share/harbour-good/qml/cover
 ./usr/share/harbour-good/qml/cover/CoverPage.qml
 ./usr/share/harbour-good/qml/harbour-good.qml
 ./usr/share/harbour-good/qml/pages
 ./usr/share/harbour-good/qml/pages/FirstPage.qml
+./usr/share/harbour-good/qml/pages/Page 002.qml
+./usr/share/harbour-good/qml/pages/Page 003.qml
+./usr/share/harbour-good/qml/pages/Page 004.qml
+./usr/share/harbour-good/qml/pages/Page 005.qml
+./usr/share/harbour-good/qml/pages/Page 006.qml
 ./usr/share/harbour-good/qml/pages/Page_001.qml
 ./usr/share/harbour-good/qml/pages/Page_002.qml
 ./usr/share/harbour-good/qml/pages/Page_003.qml
@@ -29,8 +36,9 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/Page_Template.qml
 ./usr/share/harbour-good/qml/pages/qmlmodules
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-265 blocks
+3017 blocks
 
 
 Package name
@@ -56,7 +64,10 @@ PASSED
 
 Libraries
 =========
+WARNING [/usr/share/harbour-good/lib/lib hello Sailor Dbus.so] file is not stripped!
+INFO [/usr/share/harbour-good/lib/lib hello Sailor Dbus.so] Private shared library shipped
 INFO [/usr/share/harbour-good/lib/libhelloSailorDbus.so] Private shared library shipped
+INFO [/usr/share/harbour-good/lib/嗨.so] Private shared library shipped
 PASSED
 
 Icon
@@ -93,5 +104,5 @@ PASSED
 
 
 
-Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.5-1.armv7hl.rpm
+Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.6-1.armv7hl.rpm
 Clean up

@@ -401,18 +401,17 @@ validatepaths () {
 
   # Find all non-directories and empty directories, including hidden files/dirs
   # (to avoid reporting parent directories of files)
-  RPM_FILES=$(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
-      | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAME)$")
-  for rpm_file in $RPM_FILES; do
+  while read rpm_file ; do
       rpm_file=${rpm_file#.}
       if [ "$rpm_file" = "/$SHARE_NAME" ]; then
           validation_warning "$rpm_file" "Empty directory"
       else
           validation_error "$rpm_file" "Installation not allowed in this location"
       fi
-  done
+  done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
+           | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAME)$")
 
-  # Accidentally added SCM files
+  # Accidentally added files
   while read filename; do
       filename=${filename#.}
       case "$filename" in
@@ -489,7 +488,7 @@ isLibraryAllowed() {
       # OK it's an own lib
       continue
     else
-        validation_error $2 "Cannot link to shared library: $1"
+        validation_error "$2" "Cannot link to shared library: $1"
     fi
   fi
 }
@@ -498,11 +497,11 @@ isLibraryAllowed() {
 # Get list of linked libraries for a given binary / shared library
 #
 get_linked_libs() {
-  $OBJDUMP -x $1 2> /dev/null | $GREP 'NEEDED' | $SED -e 's/\s\+/ /g' | $CUT -f 3 -d ' '
+  $OBJDUMP -x "$1" 2> /dev/null | $GREP 'NEEDED' | $SED -e 's/\s\+/ /g' | $CUT -f 3 -d ' '
 }
 
 check_linked_libs() {
-  for LIB in $(get_linked_libs $1); do
+  for LIB in $(get_linked_libs "$1"); do
     isLibraryAllowed "$LIB" "$1"
   done
 }
@@ -530,9 +529,9 @@ validateicon() {
 #
 validatelibraries() {
   # Go through all files to also find stray libs and executables
-  for binary in $(eval $FIND . -type f -o -type l $OPT_SORT); do
+  while read binary ; do
       binary=${binary#./}
-      filetype=$(file -b $binary)
+      filetype=$(file -b "$binary")
       # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
 
       case "$filetype" in
@@ -569,8 +568,8 @@ validatelibraries() {
               ;;
       esac
 
-      check_linked_libs $binary
-  done
+      check_linked_libs "$binary"
+  done < <(eval $FIND . -type f -o -type l $OPT_SORT)
 }
 
 list_functions_in_elf() {
@@ -656,24 +655,24 @@ validateqmlfiles() {
           if [[ ${QML_IMPORT:1:1} == / ]] ; then
             # absolute path imports are forbidden
             # this allows us to evt. relocate the rpm install
-            validation_error $QML_FILE  "Import '$QML_IMPORT' is not valid - absolute path imports are forbidden, please use relative paths"
+            validation_error "$QML_FILE"  "Import '$QML_IMPORT' is not valid - absolute path imports are forbidden, please use relative paths"
             continue
-          elif [[ -e $(dirname $QML_FILE)/$QML_IMPORT_PATH ]] ; then
+          elif [[ -e $(dirname "$QML_FILE")/$QML_IMPORT_PATH ]] ; then
             # relative paths are allowed
             # but we have to ensure it stays in the app folder
-            REAL_QML_IMPORT_PATH=$(readlink -f $(dirname $QML_FILE)/$QML_IMPORT_PATH)
+            REAL_QML_IMPORT_PATH=$(readlink -f $(dirname "$QML_FILE")/$QML_IMPORT_PATH)
             REAL_SHARE_NAME_PATH=$(readlink -f $SHARE_NAME)
             if [[ "${REAL_QML_IMPORT_PATH##$REAL_SHARE_NAME_PATH}" != "$REAL_QML_IMPORT_PATH" ]] ; then
               # ok all fine the path points to a path under /usr/share/app-name/
               continue
             else
-              validation_error $QML_FILE "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
+              validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
             fi
           elif [[ ${QML_IMPORT:1:5} == qrc:/ ]] ; then
             # built in resources are ok
             continue
           else
-            validation_error $QML_FILE "Import '$QML_IMPORT' is not valid - the path points to an unsupported external path"
+            validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the path points to an unsupported external path"
           fi
         else
           # it could be an own provided QML module then there has to be a Modulename/qmldir file under SHARE_NAME
@@ -692,9 +691,9 @@ validateqmlfiles() {
       fi
 
       if [[ $RC -gt 0 ]] ; then
-        validation_error $QML_FILE "Import '$QML_IMPORT' is not allowed"
+        validation_error "$QML_FILE" "Import '$QML_IMPORT' is not allowed"
       fi
-    done < <($GREP -e '^[[:space:]]*import[[:space:]]' $QML_FILE | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
+    done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
   done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
 }
 
@@ -794,16 +793,16 @@ validatepermissions() {
     # FILE_TYPE 04 = dir
     if [[ $FILE_TYPE -eq "04" ]] ; then
       if isWritable $GROUP_PERM ; then
-        validation_error $PATH_NAME "Group-writable directory"
+        validation_error "$PATH_NAME" "Group-writable directory"
       fi
       if isWritable $OTHERS_PERM ; then
-        validation_error $PATH_NAME "World-writable directory"
+        validation_error "$PATH_NAME" "World-writable directory"
       fi
     fi
     # FILE_TYPE 10 = file
     if [[ $FILE_TYPE == "10" ]] ; then
       if [[ $SU_PERM -gt 0 ]] ; then
-        validation_error $PATH_NAME "setuid, setgid or sticky bit set"
+        validation_error "$PATH_NAME" "setuid, setgid or sticky bit set"
       fi
 
       filename=${PATH_NAME#/}
@@ -821,11 +820,11 @@ validatepermissions() {
     fi
 
     if [[ $OWNER_USER != "root" ]] ; then
-      validation_error $PATH_NAME "Owner is '$OWNER_USER', should be 'root'"
+      validation_error "$PATH_NAME" "Owner is '$OWNER_USER', should be 'root'"
     fi
 
     if [[ $OWNER_GROUP != "root" ]] ; then
-      validation_error $PATH_NAME "Group is '$OWNER_GROUP', should be 'root'"
+      validation_error "$PATH_NAME" "Group is '$OWNER_GROUP', should be 'root'"
     fi
 
   done < <($RPM -q --queryformat "[%{FILEMODES:octal}\a%{FILEUSERNAME}\a%{FILEGROUPNAME}\a%{FILENAMES}\n]" -p $RPM_NAME)
