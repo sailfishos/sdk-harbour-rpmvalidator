@@ -14,7 +14,7 @@ Name:       harbour-good
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A RPM to test the rpmvalidation.sh script
-Version:    0.5
+Version:    0.6
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -60,6 +60,19 @@ mkdir %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/
 for AMOUNT in $(seq 1 2000); do cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_Template.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
 for AMOUNT in $(seq 2001 4000); do touch %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
 %endif
+
+# create files with spaces
+cp %{buildroot}/%{_datadir}/%{name}/lib/libhelloSailorDbus.so "%{buildroot}/%{_datadir}/%{name}/lib/lib hello Sailor Dbus.so"
+
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_002.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 002.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_003.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 003.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_004.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 004.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_005.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 005.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_006.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 006.qml"
+
+# utf-8 chars
+cp %{buildroot}/%{_datadir}/%{name}/lib/libhelloSailorDbus.so %{buildroot}/%{_datadir}/%{name}/lib/嗨.so
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_006.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/嗨.qml
 
 # >> install post
 # << install post

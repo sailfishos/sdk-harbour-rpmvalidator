@@ -63,10 +63,10 @@ function oneTimeSetUp() {
     EXPECTED_DIR="${SCRIPT_DIR}/expected_outputs"
     SED_FILTER="${SCRIPT_DIR}/output_filter.sed"
     DIFF_OPTS="--ignore-space-change --ignore-blank-lines"
-    HB_GOOD_ARM_RPM="harbour-good-0.5-1.armv7hl.rpm"
-    HB_GOOD_x86_RPM="harbour-good-0.5-1.i586.rpm"
-    HB_BAD_ARM_RPM="harbour-bad-0.2-1.armv7hl.rpm"
-    HB_BAD_x86_RPM="harbour-bad-0.2-1.i586.rpm"
+    HB_GOOD_ARM_RPM="harbour-good-0.6-1.armv7hl.rpm"
+    HB_GOOD_x86_RPM="harbour-good-0.6-1.i586.rpm"
+    HB_BAD_ARM_RPM="harbour-bad-0.3-1.armv7hl.rpm"
+    HB_BAD_x86_RPM="harbour-bad-0.3-1.i586.rpm"
     if [[ ${OPT_GENERATE} -eq 0 ]] ; then
         # normal case for test runs
         OUTPUT_DIR=${SHUNIT_TMPDIR}

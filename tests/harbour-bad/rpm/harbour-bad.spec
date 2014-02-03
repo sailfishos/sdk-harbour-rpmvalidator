@@ -13,7 +13,7 @@ Name:       harbour-bad
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A RPM to test the rpmvalidation.sh script which does not follow the rules
-Version:    0.2
+Version:    0.3
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -79,6 +79,25 @@ mkdir -p %{buildroot}/%{_datadir}/%{name}/.hg
 mkdir -p %{buildroot}/%{_datadir}/%{name}/.bzr
 mkdir -p %{buildroot}/%{_datadir}/%{name}/.cvs
 
+# create files with spaces
+cp %{buildroot}/%{_datadir}/%{name}/lib/libhelloSailorDbus.so "%{buildroot}/%{_datadir}/%{name}/lib/lib hello Sailor Dbus.so"
+
+cp %{buildroot}/%{_bindir}/%{name}-suid "%{buildroot}/%{_bindir}/%{name} suid"
+
+cp %{buildroot}/%{_bindir}/%{name} "%{buildroot}/%{_bindir}/bin with spaces"
+
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_002.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 002.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_003.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 003.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_004.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 004.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_005.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 005.qml"
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_006.qml "%{buildroot}/%{_datadir}/%{name}/qml/pages/Page 006.qml"
+
+# utf-8 chars
+cp %{buildroot}/%{_datadir}/%{name}/lib/libhelloSailorDbus.so %{buildroot}/%{_datadir}/%{name}/lib/嗨.so
+cp %{buildroot}/%{_bindir}/%{name}-suid %{buildroot}/%{_bindir}/嗨-suid
+cp %{buildroot}/%{_bindir}/%{name} %{buildroot}/%{_bindir}/嗨-bin
+cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_006.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/嗨.qml
+
 # >> install post
 # << install post
 
@@ -88,9 +107,13 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}
 %attr(4755,-,-) %{_bindir}/%{name}-suid
+%attr(4755,-,-) "%{_bindir}/%{name} suid"
+%attr(4755,-,-) %{_bindir}/嗨-suid
 %attr(0755,-,-) %{_bindir}/%{name}-bin
+%attr(0755,-,-) %{_bindir}/嗨-bin
+%attr(0755,-,-) "%{_bindir}/bin with spaces"
+%{_bindir}
 %{_datadir}/%{name}/qml
 %{_datadir}/%{name}/lib
 %{_datadir}/%{name}/.DS_Store
