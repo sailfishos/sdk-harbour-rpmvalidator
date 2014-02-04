@@ -1,12 +1,16 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.i586.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.i586.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
+./usr/bin/bin with spaces
 ./usr/bin/harbour-bad
+./usr/bin/harbour-bad suid
 ./usr/bin/harbour-bad-bin
 ./usr/bin/harbour-bad-suid
+./usr/bin/嗨-bin
+./usr/bin/嗨-suid
 ./usr/share/applications/harbour-bad.desktop
 ./usr/share/harbour-bad/.DS_Store
 ./usr/share/harbour-bad/.bzr
@@ -21,13 +25,20 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/lib/harbour/good
 ./usr/share/harbour-bad/lib/harbour/good/dbus
 ./usr/share/harbour-bad/lib/harbour/good/dbus/qmldir
+./usr/share/harbour-bad/lib/lib hello Sailor Dbus.so
 ./usr/share/harbour-bad/lib/libhelloSailorDbus.so
+./usr/share/harbour-bad/lib/嗨.so
 ./usr/share/harbour-bad/qml
 ./usr/share/harbour-bad/qml/cover
 ./usr/share/harbour-bad/qml/cover/CoverPage.qml
 ./usr/share/harbour-bad/qml/harbour-bad.qml
 ./usr/share/harbour-bad/qml/pages
 ./usr/share/harbour-bad/qml/pages/FirstPage.qml
+./usr/share/harbour-bad/qml/pages/Page 002.qml
+./usr/share/harbour-bad/qml/pages/Page 003.qml
+./usr/share/harbour-bad/qml/pages/Page 004.qml
+./usr/share/harbour-bad/qml/pages/Page 005.qml
+./usr/share/harbour-bad/qml/pages/Page 006.qml
 ./usr/share/harbour-bad/qml/pages/Page_001.qml
 ./usr/share/harbour-bad/qml/pages/Page_002.qml
 ./usr/share/harbour-bad/qml/pages/Page_003.qml
@@ -41,9 +52,10 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/Page_Template.qml
 ./usr/share/harbour-bad/qml/pages/qmlmodules
 ./usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml
+./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-313 blocks
+4207 blocks
 
 
 Package name
@@ -61,16 +73,31 @@ QML files
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
@@ -90,8 +117,12 @@ Paths
 =====
 [31mERROR[0m [[34m/etc/harbour-bad/harbour-bad.conf[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad-bin[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/bin/harbour-bad suid[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/bin/嗨-suid[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/share/harbour-bad/.bzr[0m] Source control directories must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.cvs[0m] Source control directories must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.DS_Store[0m] This kind of file must not be included
@@ -105,12 +136,24 @@ Paths
 
 Libraries
 =========
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libncurses.so.5
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libtinfo.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libtinfo.so.5
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libncurses.so.5
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libtinfo.so.5
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libncurses.so.5
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libtinfo.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libtinfo.so.5
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libncurses.so.5
+[31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libtinfo.so.5
 [31mFAILED[0m
 
 Icon
@@ -128,13 +171,24 @@ Permissions
 ===========
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Owner is 'nemo', should be 'root'
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Group is 'nemo', should be 'root'
+[33mWARNING[0m [[34m/usr/bin/bin with spaces[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/harbour-bad suid[0m] setuid, setgid or sticky bit set
+[33mWARNING[0m [[34m/usr/bin/harbour-bad suid[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/bin/harbour-bad-bin[0m] File must not be executable (current permissions: 755)
 [31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] setuid, setgid or sticky bit set
 [33mWARNING[0m [[34m/usr/bin/harbour-bad-suid[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/bin/嗨-bin[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/嗨-suid[0m] setuid, setgid or sticky bit set
+[33mWARNING[0m [[34m/usr/bin/嗨-suid[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/lib/harbour/good/dbus/qmldir[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/cover/CoverPage.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/harbour-bad.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 005.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 006.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] File must not be executable (current permissions: 755)
@@ -147,6 +201,7 @@ Permissions
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_010.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_Template.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml[0m] File must not be executable (current permissions: 755)
+[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/嗨.qml[0m] File must not be executable (current permissions: 755)
 [33mWARNING[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] File must not be executable (current permissions: 755)
 [31mFAILED[0m
 
@@ -161,8 +216,13 @@ Scripts
 
 Provides
 ========
+[31mERROR[0m [[34mDbus.so[0m] 'Provides: Dbus.so' not allowed in RPM
+[31mERROR[0m [[34mSailor[0m] 'Provides: Sailor' not allowed in RPM
+[31mERROR[0m [[34mhello[0m] 'Provides: hello' not allowed in RPM
+[31mERROR[0m [[34mlib[0m] 'Provides: lib' not allowed in RPM
 [31mERROR[0m [[34mlibhelloSailorDbus.so[0m] 'Provides: libhelloSailorDbus.so' not allowed in RPM
 [36mINFO[0m [[34mlibhelloSailorDbus.so[0m] See https://harbour.jolla.com/faq how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that!
+[31mERROR[0m [[34m嗨.so[0m] 'Provides: 嗨.so' not allowed in RPM
 [31mFAILED[0m
 
 Obsoletes
@@ -188,11 +248,13 @@ Requires
 
 Sandboxing
 ==========
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Hardcoded path: print some not wanted string: /home/nemo/
+[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Use XDG basedir (JB#13951) instead of /home/nemo/
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Hardcoded path: print some not wanted string: /home/nemo/
-[36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Use XDG basedir (JB#13951) instead of /home/nemo/
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mFAILED[0m
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.2-1.i586.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.i586.rpm[0m
 Clean up
