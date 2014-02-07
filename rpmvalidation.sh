@@ -725,6 +725,10 @@ validaterpmfilename(){
   EXPECTED_RPM_FILE_NAME="${NAME}-${RPM_VERSION}-${RPM_RELEASE}.${RPM_ARCH}.rpm"
   CURRENT_RPM_FILE_NAME=$(basename $RPM_NAME)
 
+  if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" ]; then
+      validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl or noarch"
+  fi
+
   if [[ $NAME_CHECK_PASSED == 1 ]]; then
     # the EXPECTED_RPM_FILE_NAME can be trusted, it is correct!
     if [[ ${EXPECTED_RPM_FILE_NAME} != ${CURRENT_RPM_FILE_NAME} ]]; then
