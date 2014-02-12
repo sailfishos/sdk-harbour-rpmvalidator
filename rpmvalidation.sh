@@ -936,7 +936,7 @@ validaterpmrequires() {
 
 suggest_xdg_basedir() {
     if [ $SUGGESTED_XDG_BASEDIR -eq 0 ]; then
-        validation_info "$1" "Use XDG basedir (JB#13951) instead of /home/nemo/"
+        validation_info "$1" "Use XDG basedir instead of /home/nemo/"
         SUGGESTED_XDG_BASEDIR=1
     fi
 }

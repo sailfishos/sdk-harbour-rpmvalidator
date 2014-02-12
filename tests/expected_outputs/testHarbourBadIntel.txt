@@ -250,7 +250,7 @@ Requires
 Sandboxing
 ==========
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Hardcoded path: print some not wanted string: /home/nemo/
-[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Use XDG basedir (JB#13951) instead of /home/nemo/
+[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Use XDG basedir instead of /home/nemo/
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mFAILED[0m
