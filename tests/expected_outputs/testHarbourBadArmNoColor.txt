@@ -246,7 +246,7 @@ FAILED
 Sandboxing
 ==========
 ERROR [/usr/bin/bin with spaces] Hardcoded path: print some not wanted string: /home/nemo/
-INFO [/usr/bin/bin with spaces] Use XDG basedir (JB#13951) instead of /home/nemo/
+INFO [/usr/bin/bin with spaces] Use XDG basedir instead of /home/nemo/
 ERROR [/usr/bin/harbour-bad] Hardcoded path: print some not wanted string: /home/nemo/
 ERROR [/usr/bin/嗨-bin] Hardcoded path: print some not wanted string: /home/nemo/
 FAILED
