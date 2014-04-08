@@ -40,6 +40,7 @@ Package name
 RPM file name
 =============
 [31mERROR[0m [[34mbad-file-name.rpm[0m] rpm file name is not valid, expected to be: 'harbour-good-0.3-1.armv7hl.rpm'
+[36mINFO[0m [[34mharbour-good[0m] Please see our faq here: https://harbour.jolla.com/faq#Naming
 [31mFAILED[0m
 
 QML files
