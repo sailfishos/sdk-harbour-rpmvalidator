@@ -67,8 +67,9 @@ SUGGESTED_XDG_BASEDIR=0
 # Flag if $NAME check was ok
 NAME_CHECK_PASSED=0
 
-# Auxiliary variable
-CHTEMP=0
+# Auxiliary variable to check if INFO message has been already printed out 
+# for particular type of error
+INFO_MSG_PRINTED=0
 
 RPM_NAME=''
 NAME=''
@@ -500,7 +501,7 @@ isLibraryAllowed() {
       continue
     else
         validation_error "$2" "Cannot link to shared library: $1"
-	CHTEMP=1
+	INFO_MSG_PRINTED=1
     fi
    fi
 }
@@ -516,9 +517,9 @@ check_linked_libs() {
   for LIB in $(get_linked_libs "$1"); do
      isLibraryAllowed "$LIB" "$1"
   done
-  if [ $CHTEMP -eq 1 ]; then
+  if [ $INFO_MSG_PRINTED -eq 1 ]; then
 	validation_info $1 "Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries"
-	CHTEMP=0
+	INFO_MSG_PRINTED=0
   fi
 }
 
@@ -710,13 +711,13 @@ validateqmlfiles() {
 
       if [[ $RC -gt 0 ]] ; then
         validation_error "$QML_FILE" "Import '$QML_IMPORT' is not allowed"
-	CHTEMP=1
+	INFO_MSG_PRINTED=1
       fi
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
   done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
-  if [ $CHTEMP -eq 1 ]; then
+  if [ $INFO_MSG_PRINTED -eq 1 ]; then
  	validation_info $filename "Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries"
-	CHTEMP=0
+	INFO_MSG_PRINTED=0
   fi
 }
 
@@ -870,11 +871,9 @@ validatescripts() {
 }
 
 suggest_autoreqprov() {
-    if [ $CHTEMP -eq 1 ]; then
-#        validation_info "$1" "See https://harbour.jolla.com/faq how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that!"
+    if [ $INFO_MSG_PRINTED -eq 1 ]; then
 	validation_info $NAME "Please see our faq here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that"
-#        SUGGESTED_AUTOREQPROV=1
-	CHTEMP=0
+	INFO_MSG_PRINTED=0
     fi
 }
 
@@ -939,13 +938,12 @@ validaterpmrequires() {
             lib*.so.*|lib*.so)
                 # Additional shared library dependencies
                 validation_error "$require" "Cannot require shared library: '$require'"
-#                suggest_autoreqprov "$require"
-		CHTEMP=1
+		INFO_MSG_PRINTED=1
                 ;;
             *)
                 # Some other unknown dependency that we don't know about
                 validation_error "$require" "Dependency not allowed"
-		CHTEMP=1
+		INFO_MSG_PRINTED=1
                 ;;
         esac
     done
@@ -966,7 +964,6 @@ validaterpmrequires() {
 
 suggest_xdg_basedir() {
     if [ $SUGGESTED_XDG_BASEDIR -eq 0 ]; then
-#        validation_info "$1" "Use XDG basedir instead of /home/nemo/"
 	 validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use $HOME instead of /home/nemo."
 	 validation_info "$1" "http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html"
         SUGGESTED_XDG_BASEDIR=1
