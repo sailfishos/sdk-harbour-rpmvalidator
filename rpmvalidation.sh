@@ -964,8 +964,8 @@ validaterpmrequires() {
 
 suggest_xdg_basedir() {
     if [ $SUGGESTED_XDG_BASEDIR -eq 0 ]; then
-	 validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use $HOME instead of /home/nemo."
-	 validation_info "$1" "http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html"
+	 validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use \$HOME instead of /home/nemo."
+	 validation_info "$1" "Please see our faq here: https://harbour.jolla.com/faq#2.13.0"
         SUGGESTED_XDG_BASEDIR=1
     fi
 }
