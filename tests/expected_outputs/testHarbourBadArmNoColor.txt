@@ -103,19 +103,16 @@ ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-INFO [Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries]
+INFO [Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries]
 FAILED
 
 Desktop file
 ============
 ERROR [/usr/share/applications/harbour-bad.desktop] Missing valid Icon declaration, must be Icon=harbour-bad
-INFO [/usr/share/applications/harbour-bad.desktop] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 ERROR [/usr/share/applications/harbour-bad.desktop] Missing valid Exec declaration, must be Exec=harbour-bad
-INFO [/usr/share/applications/harbour-bad.desktop] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 ERROR [/usr/share/applications/harbour-bad.desktop] X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML
-INFO [/usr/share/applications/harbour-bad.desktop] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 ERROR [/usr/share/applications/harbour-bad.desktop] X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)
-INFO [/usr/share/applications/harbour-bad.desktop] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
+INFO [/usr/share/applications/harbour-bad.desktop] Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files
 FAILED
 
 Paths
@@ -145,34 +142,34 @@ WARNING [/usr/bin/bin with spaces] file is not stripped!
 ERROR [/usr/bin/bin with spaces] ELF binary in wrong location (must be /usr/bin/harbour-bad)
 ERROR [/usr/bin/bin with spaces] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/bin/bin with spaces] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/bin/bin] with spaces Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/bin/bin] with spaces Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 ERROR [/usr/bin/harbour-bad] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/bin/harbour-bad] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/bin/harbour-bad] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/bin/harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 ERROR [/usr/bin/嗨-bin] ELF binary in wrong location (must be /usr/bin/harbour-bad)
 ERROR [/usr/bin/嗨-bin] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/bin/嗨-bin] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/bin/嗨-bin] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/bin/嗨-bin] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 WARNING [/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so] file is not stripped!
 INFO [/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so] Private shared library shipped
 ERROR [/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/share/harbour-bad/lib/lib] hello Sailor Dbus.so Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/share/harbour-bad/lib/lib] hello Sailor Dbus.so Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Private shared library shipped
 ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 INFO [/usr/share/harbour-bad/lib/嗨.so] Private shared library shipped
 ERROR [/usr/share/harbour-bad/lib/嗨.so] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/share/harbour-bad/lib/嗨.so] Cannot link to shared library: libtinfo.so.5
-INFO [/usr/share/harbour-bad/lib/嗨.so] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/share/harbour-bad/lib/嗨.so] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 FAILED
 
 Icon
 ====
 ERROR [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Wrong size, must be 86x86
 INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Detected as 'PNG image data, 92 x 92, 8-bit/color RGBA, non-interlaced'
-INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Please see our faq here: https://harbour.jolla.com/faq#Icons
+INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Please see our FAQ here: https://harbour.jolla.com/faq#Icons
 FAILED
 
 Symbols
@@ -252,14 +249,14 @@ ERROR [libncurses.so.5] Cannot require shared library: 'libncurses.so.5'
 ERROR [libtinfo.so.5] Cannot require shared library: 'libtinfo.so.5'
 ERROR [nemo-qml-plugin-social-qt5] Dependency not allowed
 ERROR [qt5-qtdeclarative-systeminfo] Dependency not allowed
-INFO [harbour-bad] Please see our faq here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
+INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
 FAILED
 
 Sandboxing
 ==========
 ERROR [/usr/bin/bin with spaces] Hardcoded path: print some not wanted string: /home/nemo/
-INFO [/usr/bin/bin with spaces] Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use /home/blazemic instead of /home/nemo.
-INFO [/usr/bin/bin with spaces] http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+INFO [/usr/bin/bin with spaces] Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use $HOME instead of /home/nemo.
+INFO [/usr/bin/bin with spaces] Please see our FAQ here: https://harbour.jolla.com/faq#2.13.0
 ERROR [/usr/bin/harbour-bad] Hardcoded path: print some not wanted string: /home/nemo/
 ERROR [/usr/bin/嗨-bin] Hardcoded path: print some not wanted string: /home/nemo/
 FAILED

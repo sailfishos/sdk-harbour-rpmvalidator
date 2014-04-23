@@ -441,19 +441,19 @@ validatedesktopfile() {
   VALID_NAME=`$GREP "^Name=" $DESKTOP_NAME | $GREP -Ev "^Name=$"`
   if [[ -z $VALID_NAME ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Name declaration, must not be empty"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      INFO_MSG_PRINTED=1
   fi
 
   $GREP "^Icon=$NAME[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Icon declaration, must be Icon=$NAME"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      INFO_MSG_PRINTED=1
   fi
 
   $GREP -E "^Exec(=|=sailfish-qml[[:space:]]+)$NAME" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Exec declaration, must be Exec=$NAME"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      INFO_MSG_PRINTED=1
   fi
 
   $GREP -E "^Exec=sailfish-qml[[:space:]]+$NAME" $DESKTOP_NAME  >/dev/null 2>&1
@@ -465,31 +465,37 @@ validatedesktopfile() {
   $GREP "^Type=Application[[:space:]]*$" $DESKTOP_NAME  >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
       validation_error $DESKTOP_NAME "Missing valid Type declaration"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      INFO_MSG_PRINTED=1
   fi
 
   $GREP "^X-Nemo-Application-Type=silica-qt5[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
   if [[ $? -ne 0 ]] ; then
     if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 1 ]; then
       validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      INFO_MSG_PRINTED=1
     fi
     if [ $USES_SAILFISH_QML_LAUNCHER -eq 1 ]; then
       # Assume that developers who write QML-only applications with the launcher also use
       # Silica components, and they have to use the silica-qt5 booster to start it up
       validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for sailfish-qml apps"
-      validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+      validation_info $DESKTOP_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files"
     else
       $EGREP "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
       if [[ $? -ne 0 ]] ; then
           validation_error $DESKTOP_NAME "X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)"
-	  validation_info $DESKTOP_NAME "Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files"
+          INFO_MSG_PRINTED=1
 
       else
           validation_warning $DESKTOP_NAME "X-Nemo-Application-Type should be silica-qt5 (not a Silica app?)"
       fi
     fi
   fi
+
+  if [ $INFO_MSG_PRINTED -eq 1 ]; then
+	validation_info $DESKTOP_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files"
+	INFO_MSG_PRINTED=0
+  fi
+  
 }
 
 isLibraryAllowed() {
@@ -518,7 +524,7 @@ check_linked_libs() {
      isLibraryAllowed "$LIB" "$1"
   done
   if [ $INFO_MSG_PRINTED -eq 1 ]; then
-	validation_info $1 "Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries"
+	validation_info $1 "Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries"
 	INFO_MSG_PRINTED=0
   fi
 }
@@ -533,12 +539,12 @@ validateicon() {
       PNG*)
           validation_error $ICON_NAME "Wrong size, must be 86x86"
           validation_info $ICON_NAME "Detected as '$filetype'"
-	  validation_info $ICON_NAME "Please see our faq here: https://harbour.jolla.com/faq#Icons"
+	  validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
           ;;
       *)
           validation_error $ICON_NAME "Must be a 86x86 PNG image"
           validation_info $ICON_NAME "Detected as '$filetype'"
-	  validation_info $ICON_NAME "Please see our faq here: https://harbour.jolla.com/faq#Icons"
+	  validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
           ;;
   esac
 }
@@ -716,7 +722,7 @@ validateqmlfiles() {
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
   done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
   if [ $INFO_MSG_PRINTED -eq 1 ]; then
- 	validation_info $filename "Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries"
+ 	validation_info $filename "Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries"
 	INFO_MSG_PRINTED=0
   fi
 }
@@ -731,7 +737,7 @@ validatenames() {
   echo $NAME | $EGREP --silent $NAME_REGEX
   if [[ $? -ne 0 ]] ; then
     validation_error $NAME "Name is not valid. Must start with 'harbour-', matching '$NAME_REGEX'."
-    validation_info $NAME "Please see our faq here: https://harbour.jolla.com/faq#Naming"
+    validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Naming"
   else
     NAME_CHECK_PASSED=1
   fi
@@ -758,7 +764,7 @@ validaterpmfilename(){
     # the EXPECTED_RPM_FILE_NAME can be trusted, it is correct!
     if [[ ${EXPECTED_RPM_FILE_NAME} != ${CURRENT_RPM_FILE_NAME} ]]; then
       validation_error $CURRENT_RPM_FILE_NAME "rpm file name is not valid, expected to be: '$EXPECTED_RPM_FILE_NAME'"
-      validation_info $NAME "Please see our faq here: https://harbour.jolla.com/faq#Naming"
+      validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Naming"
     fi
   else
     # the EXPECTED_RPM_FILE_NAME can not be trusted
@@ -872,7 +878,7 @@ validatescripts() {
 
 suggest_autoreqprov() {
     if [ $INFO_MSG_PRINTED -eq 1 ]; then
-	validation_info $NAME "Please see our faq here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that"
+	validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that"
 	INFO_MSG_PRINTED=0
     fi
 }
@@ -965,7 +971,7 @@ validaterpmrequires() {
 suggest_xdg_basedir() {
     if [ $SUGGESTED_XDG_BASEDIR -eq 0 ]; then
 	 validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use \$HOME instead of /home/nemo."
-	 validation_info "$1" "Please see our faq here: https://harbour.jolla.com/faq#2.13.0"
+	 validation_info "$1" "Please see our FAQ here: https://harbour.jolla.com/faq#2.13.0"
         SUGGESTED_XDG_BASEDIR=1
     fi
 }

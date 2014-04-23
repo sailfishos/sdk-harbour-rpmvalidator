@@ -40,7 +40,7 @@ PASSED
 RPM file name
 =============
 ERROR [bad-file-name.rpm] rpm file name is not valid, expected to be: 'harbour-good-0.3-1.armv7hl.rpm'
-INFO [harbour-good] Please see our faq here: https://harbour.jolla.com/faq#Naming
+INFO [harbour-good] Please see our FAQ here: https://harbour.jolla.com/faq#Naming
 FAILED
 
 QML files

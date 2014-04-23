@@ -104,19 +104,16 @@ QML files
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[36mINFO[0m [[34mPlease see our faq here: https://harbour.jolla.com/faq#Shared_Libraries[0m]
+[36mINFO[0m [[34mPlease see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries[0m]
 [31mFAILED[0m
 
 Desktop file
 ============
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Missing valid Icon declaration, must be Icon=harbour-bad
-[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Missing valid Exec declaration, must be Exec=harbour-bad
-[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML
-[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)
-[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our faq here: https://harbour.jolla.com/faq#.desktop-Files
+[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files
 [31mFAILED[0m
 
 Paths
@@ -145,34 +142,34 @@ Libraries
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/bin/bin[0m] with spaces Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/bin/bin[0m] with spaces Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/bin/嗨-bin[0m] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/bin/嗨-bin[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/share/harbour-bad/lib/lib[0m] hello Sailor Dbus.so Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/lib[0m] hello Sailor Dbus.so Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libtinfo.so.5
-[36mINFO[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Please see our faq here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mFAILED[0m
 
 Icon
 ====
 [31mERROR[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] Wrong size, must be 86x86
 [36mINFO[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] Detected as 'PNG image data, 92 x 92, 8-bit/color RGBA, non-interlaced'
-[36mINFO[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] Please see our faq here: https://harbour.jolla.com/faq#Icons
+[36mINFO[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Icons
 [31mFAILED[0m
 
 Symbols
@@ -256,14 +253,14 @@ Requires
 [31mERROR[0m [[34mlibtinfo.so.5[0m] Cannot require shared library: 'libtinfo.so.5'
 [31mERROR[0m [[34mnemo-qml-plugin-social-qt5[0m] Dependency not allowed
 [31mERROR[0m [[34mqt5-qtdeclarative-systeminfo[0m] Dependency not allowed
-[36mINFO[0m [[34mharbour-bad[0m] Please see our faq here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
+[36mINFO[0m [[34mharbour-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
 [31mFAILED[0m
 
 Sandboxing
 ==========
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Hardcoded path: print some not wanted string: /home/nemo/
-[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use /home/blazemic instead of /home/nemo.
-[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use $HOME instead of /home/nemo.
+[36mINFO[0m [[34m/usr/bin/bin with spaces[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.13.0
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mFAILED[0m

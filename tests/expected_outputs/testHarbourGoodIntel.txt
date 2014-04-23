@@ -4102,7 +4102,7 @@ Requires
 [31mERROR[0m [[34mlibc.so.6(GLIBC_2.0)[0m] Cannot require shared library: 'libc.so.6(GLIBC_2.0)'
 [31mERROR[0m [[34mlibc.so.6(GLIBC_2.1.3)[0m] Cannot require shared library: 'libc.so.6(GLIBC_2.1.3)'
 [31mERROR[0m [[34mlibgcc_s.so.1(GCC_3.0)[0m] Cannot require shared library: 'libgcc_s.so.1(GCC_3.0)'
-[36mINFO[0m [[34mharbour-good[0m] Please see our faq here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
+[36mINFO[0m [[34mharbour-good[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
 [31mFAILED[0m
 
 Sandboxing
