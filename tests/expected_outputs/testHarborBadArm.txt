@@ -21,6 +21,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbor-ba
 Package name
 ============
 [31mERROR[0m [[34mharbor-bad[0m] Name is not valid. Must start with 'harbour-', matching '^harbour-[-a-z0-9_\.]+$'.
+[36mINFO[0m [[34mharbor-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Naming
 [31mFAILED[0m
 
 RPM file name
