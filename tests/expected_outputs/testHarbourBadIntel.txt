@@ -31,6 +31,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml
 ./usr/share/harbour-bad/qml/cover
 ./usr/share/harbour-bad/qml/cover/CoverPage.qml
+./usr/share/harbour-bad/qml/harbour-bad-crlf.qml
 ./usr/share/harbour-bad/qml/harbour-bad.qml
 ./usr/share/harbour-bad/qml/pages
 ./usr/share/harbour-bad/qml/pages/FirstPage.qml
@@ -55,7 +56,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-5637 blocks
+5641 blocks
 
 
 Package name
@@ -70,6 +71,8 @@ RPM file name
 QML files
 =========
 [36mINFO[0m [[34m/usr/share/harbour-bad/qml/cover/CoverPage.qml[0m] Uses Sailfish Silica Components (only reported once)
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/harbour-bad-crlf.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/harbour-bad.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
