@@ -658,72 +658,83 @@ validateqmlfiles() {
   # TODO: what if the developer does call his qml files .foo ?
   while read QML_FILE
   do
-    while read QML_IMPORT
+    while read QML_IMPORT_LINE
     do
-      SAILFISH_SILICA_IMPORT="Sailfish.Silica 1.0"
-      if [ "$QML_IMPORT" = "$SAILFISH_SILICA_IMPORT" ]; then
-          if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 0 ]; then
-              validation_info "$QML_FILE" "Uses Sailfish Silica Components (only reported once)"
-              USES_SAILFISH_SILICA_QML_IMPORT=1
-          fi
-      fi
-      XML_LIST_MODEL_IMPORT="QtQuick.XmlListModel"
-      if [[ "$QML_IMPORT" =~ ^${XML_LIST_MODEL_IMPORT}.* ]]; then
-          USES_XML_LIST_MODEL_QML_IMPORT=1
-      fi
+	# break the qml import line down, it can have more than one
+	# import statement separated by semicolons:
+	#
+	# import foo.zoo 1.0 as bar; import abc.def 1.0;
 
-      # easy things first, is it whitelisted ?
-      if ! check_contained_in "$QML_IMPORT" $ALLOWED_QMLIMPORTS; then
-        # is it a file import "foo.js" or similar ?
-        if [[ $QML_IMPORT =~ ^[\"\'](.*)[\"\'] ]] ; then
-          QML_IMPORT_PATH=${BASH_REMATCH[1]}
-          if [[ ${QML_IMPORT:1:1} == / ]] ; then
-            # absolute path imports are forbidden
-            # this allows us to evt. relocate the rpm install
-            validation_error "$QML_FILE"  "Import '$QML_IMPORT' is not valid - absolute path imports are forbidden, please use relative paths"
-            continue
-          elif [[ -e $(dirname "$QML_FILE")/$QML_IMPORT_PATH ]] ; then
-            # relative paths are allowed
-            # but we have to ensure it stays in the app folder
-            REAL_QML_IMPORT_PATH=$(readlink -f $(dirname "$QML_FILE")/$QML_IMPORT_PATH)
-            REAL_SHARE_NAME_PATH=$(readlink -f $SHARE_NAME)
-            if [[ "${REAL_QML_IMPORT_PATH##$REAL_SHARE_NAME_PATH}" != "$REAL_QML_IMPORT_PATH" ]] ; then
-              # ok all fine the path points to a path under /usr/share/app-name/
-              continue
-            else
-              validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
-            fi
-          elif [[ ${QML_IMPORT:1:5} == qrc:/ ]] ; then
-            # built in resources are ok
-            continue
-          else
-            validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the path points to an unsupported external path"
-          fi
-        else
-          # it could be an own provided QML module then there has to be a Modulename/qmldir file under SHARE_NAME
-          QML_IMPORT_MODUL_NAME=$(echo $QML_IMPORT| $SED -e 's/\s\+/ /g' | $CUT -f1 -d ' ')
-          NAME_IN_QML_FORM=$(echo $NAME| $SED -e 's/-/\./g')
-          if [[ "${QML_IMPORT_MODUL_NAME##$NAME_IN_QML_FORM}" != "$QML_IMPORT_MODUL_NAME" ]] ; then
-            # OK QML module name has the app name as prefix
-            continue
-          fi
-        fi
-        # XXX: Where is the corresponding error message for this?
-        RC=1
-      else
-        # import is whitelisted
-        continue
-      fi
+	while IFS=';' read -ra STATEMENT_ARRAY; do
+	    for IMPORT_STATEMENT in "${STATEMENT_ARRAY[@]}"; do
+		QML_IMPORT=$($SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' <<< $IMPORT_STATEMENT | $CUT -f2-3 -d ' ')
 
-      if [[ $RC -gt 0 ]] ; then
-        validation_error "$QML_FILE" "Import '$QML_IMPORT' is not allowed"
-	INFO_MSG_PRINTED=1
-      fi
-    done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/\x0D$//' -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
+		SAILFISH_SILICA_IMPORT="Sailfish.Silica 1.0"
+		if [ "$QML_IMPORT" = "$SAILFISH_SILICA_IMPORT" ]; then
+		    if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 0 ]; then
+			validation_info "$QML_FILE" "Uses Sailfish Silica Components (only reported once)"
+			USES_SAILFISH_SILICA_QML_IMPORT=1
+		    fi
+		fi
+		XML_LIST_MODEL_IMPORT="QtQuick.XmlListModel"
+		if [[ "$QML_IMPORT" =~ ^${XML_LIST_MODEL_IMPORT}.* ]]; then
+		    USES_XML_LIST_MODEL_QML_IMPORT=1
+		fi
+
+		# easy things first, is it whitelisted ?
+		if ! check_contained_in "$QML_IMPORT" $ALLOWED_QMLIMPORTS; then
+		# is it a file import "foo.js" or similar ?
+		    if [[ $QML_IMPORT =~ ^[\"\'](.*)[\"\'] ]] ; then
+			QML_IMPORT_PATH=${BASH_REMATCH[1]}
+			if [[ ${QML_IMPORT:1:1} == / ]] ; then
+			    # absolute path imports are forbidden
+			    # this allows us to evt. relocate the rpm install
+			    validation_error "$QML_FILE"  "Import '$QML_IMPORT' is not valid - absolute path imports are forbidden, please use relative paths"
+			    continue
+			elif [[ -e $(dirname "$QML_FILE")/$QML_IMPORT_PATH ]] ; then
+			    # relative paths are allowed
+			    # but we have to ensure it stays in the app folder
+			    REAL_QML_IMPORT_PATH=$(readlink -f $(dirname "$QML_FILE")/$QML_IMPORT_PATH)
+			    REAL_SHARE_NAME_PATH=$(readlink -f $SHARE_NAME)
+			    if [[ "${REAL_QML_IMPORT_PATH##$REAL_SHARE_NAME_PATH}" != "$REAL_QML_IMPORT_PATH" ]] ; then
+				# ok all fine the path points to a path under /usr/share/app-name/
+				continue
+			    else
+				validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the relative path points outside of '$SHARE_NAME' this is not allowed"
+			    fi
+			elif [[ ${QML_IMPORT:1:5} == qrc:/ ]] ; then
+			    # built in resources are ok
+			    continue
+			else
+			    validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the path points to an unsupported external path"
+			fi
+		    else
+			# it could be an own provided QML module then there has to be a Modulename/qmldir file under SHARE_NAME
+			QML_IMPORT_MODUL_NAME=$(echo $QML_IMPORT| $SED -e 's/\s\+/ /g' | $CUT -f1 -d ' ')
+			NAME_IN_QML_FORM=$(echo $NAME| $SED -e 's/-/\./g')
+			if [[ "${QML_IMPORT_MODUL_NAME##$NAME_IN_QML_FORM}" != "$QML_IMPORT_MODUL_NAME" ]] ; then
+			# OK QML module name has the app name as prefix
+			    continue
+			fi
+		    fi
+		    # XXX: Where is the corresponding error message for this?
+		    RC=1
+		else
+		    # import is whitelisted
+		    continue
+		fi
+
+		if [[ $RC -gt 0 ]] ; then
+		    validation_error "$QML_FILE" "Import '$QML_IMPORT' is not allowed"
+		    INFO_MSG_PRINTED=1
+		fi
+	    done
+	done <<< "$QML_IMPORT_LINE"
+    done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/\x0D$//')
   done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
   if [ $INFO_MSG_PRINTED -eq 1 ]; then
- 	validation_info $filename "Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries"
-	INFO_MSG_PRINTED=0
+      validation_info $filename "Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries"
+      INFO_MSG_PRINTED=0
   fi
 }
 
