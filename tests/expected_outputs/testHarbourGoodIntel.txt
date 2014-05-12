@@ -4039,7 +4039,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-8122 blocks
+9159 blocks
 
 
 Package name

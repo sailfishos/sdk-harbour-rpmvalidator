@@ -55,7 +55,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-4207 blocks
+5637 blocks
 
 
 Package name
@@ -190,29 +190,6 @@ Permissions
 [33mWARNING[0m [[34m/usr/bin/嗨-bin[0m] File must not be executable (current permissions: 755)
 [31mERROR[0m [[34m/usr/bin/嗨-suid[0m] setuid, setgid or sticky bit set
 [33mWARNING[0m [[34m/usr/bin/嗨-suid[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/lib/harbour/good/dbus/qmldir[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/cover/CoverPage.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/harbour-bad.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 005.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page 006.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_005.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_006.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_007.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_008.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_009.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_010.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/Page_Template.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/qmlmodules/RedRectangle.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-bad/qml/pages/嗨.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad.png[0m] File must not be executable (current permissions: 755)
 [31mFAILED[0m
 
 Scripts
