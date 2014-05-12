@@ -1,0 +1,2 @@
+tests/harbour-good/src/qml/harbour-good-crlf.qml eol=crlf
+tests/harbour-bad/src/qml/harbour-bad-crlf.qml eol=crlf

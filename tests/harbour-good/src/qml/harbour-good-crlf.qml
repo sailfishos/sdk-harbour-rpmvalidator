@@ -28,7 +28,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Sailfish.Silica 1.0; import "pages"; import harbour.good.dbus 1.0; import QtQuick 2.0
+import QtQuick 2.0; import Sailfish.Silica 1.0
+import "pages"
+import harbour.good.dbus 1.0;
 
 ApplicationWindow
 {
