@@ -15,6 +15,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml
 ./usr/share/harbour-good/qml/cover
 ./usr/share/harbour-good/qml/cover/CoverPage.qml
+./usr/share/harbour-good/qml/harbour-good-crlf.qml
 ./usr/share/harbour-good/qml/harbour-good.qml
 ./usr/share/harbour-good/qml/pages
 ./usr/share/harbour-good/qml/pages/FirstPage.qml
@@ -38,7 +39,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-3017 blocks
+4051 blocks
 
 
 Package name

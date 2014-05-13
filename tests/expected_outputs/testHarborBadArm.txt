@@ -15,7 +15,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbor-ba
 ./usr/share/harbor-bad/qml/pages/SecondPage.qml
 ./usr/share/icons/hicolor/86x86/apps
 ./usr/share/icons/hicolor/86x86/apps/harbor-bad.png
-37 blocks
+224 blocks
 
 
 Package name
