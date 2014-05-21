@@ -722,7 +722,7 @@ validateqmlfiles() {
     done < <($GREP -e '^[[:space:]]*import[[:space:]]' "$QML_FILE" | $SED -e 's/^\s*import/import/' -e 's/\s\+/ /g' -e 's/ as .*$//' -e 's/;$//' | $CUT -f2-3 -d ' ')
   done < <(eval $FIND $SHARE_NAME -name \*.qml 2> /dev/null $OPT_SORT)
   if [ $INFO_MSG_PRINTED -eq 1 ]; then
- 	validation_info $filename "Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries"
+ 	validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#QML_API"
 	INFO_MSG_PRINTED=0
   fi
 }
