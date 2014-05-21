@@ -106,7 +106,7 @@ ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-INFO [Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries]
+INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#QML_API
 FAILED
 
 Desktop file
