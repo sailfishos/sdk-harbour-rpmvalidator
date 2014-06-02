@@ -13,8 +13,8 @@ Name:       harbour-good
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    A RPM to test the rpmvalidation.sh script
-Version:    0.6
+Summary:    An RPM to test the rpmvalidation.sh script
+Version:    0.7
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -27,6 +27,10 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
+%ifarch %ix86
+# to cause an expected failure in tests
+Requires: libgcc_s.so.1(GCC_x.y)
+%endif
 
 %description
 Short description of my SailfishOS Application
@@ -55,7 +59,7 @@ rm -rf %{buildroot}
 # << install pre
 %qmake5_install
 
-%ifarch i586
+%ifarch %ix86
 mkdir %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/
 for AMOUNT in $(seq 1 2000); do cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_Template.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
 for AMOUNT in $(seq 2001 4000); do touch %{buildroot}/%{_datadir}/%{name}/qml/pages/bulk-qml-files/Page_${AMOUNT}.qml; done
