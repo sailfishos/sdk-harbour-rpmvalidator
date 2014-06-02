@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = harbour-good
 CONFIG += sailfishapp
-
+LIBS += -ldl
 SOURCES += harbour-good.cpp
 
 CONFIG(release, debug|release) {

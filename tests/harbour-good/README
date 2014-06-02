@@ -1,0 +1,11 @@
+Note: the spec file contains a Requires line that is only used to
+trigger an Error from the validator:
+
+%ifarch %ix86
+# to cause an expected failure in tests
+Requires: libgcc_s.so.1(GCC_x.y)
+%endif
+
+This means that the RPM cannot be installed to the Emulator because
+that requirement cannot be fulfilled. The application can still be
+installed by using the copy-as-binaries method.
