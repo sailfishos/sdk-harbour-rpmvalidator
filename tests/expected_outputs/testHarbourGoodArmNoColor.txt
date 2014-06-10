@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.7-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.armv7hl.rpm
 ./usr/bin/harbour-good
 ./usr/share/applications/harbour-good.desktop
 ./usr/share/harbour-good
@@ -39,7 +39,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-3020 blocks
+3021 blocks
 
 
 Package name
@@ -105,5 +105,5 @@ PASSED
 
 
 
-Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.7-1.armv7hl.rpm
+Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.armv7hl.rpm
 Clean up

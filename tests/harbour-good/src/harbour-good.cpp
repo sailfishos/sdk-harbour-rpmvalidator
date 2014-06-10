@@ -29,8 +29,37 @@
 */
 
 #include <QtQuick>
-
+#include <dlfcn.h>
 #include <sailfishapp.h>
+
+/*
+ * dlopen example adapted from:
+ *
+ * http://man7.org/linux/man-pages/man3/dlopen.3.html
+ */
+void example_dlopen()
+{
+    void *handle;
+    double (*cosine)(double);
+    char *error;
+
+    handle = dlopen("libm.so.6", RTLD_LAZY);
+    if (!handle) {
+        qFatal("%s\n", dlerror());
+    }
+
+    dlerror();    /* Clear any existing error */
+
+    cosine = (double (*)(double)) dlsym(handle, "cos");
+
+    error = dlerror();
+    if (error != NULL) {
+        qFatal("%s\n", error);
+    }
+
+    qDebug() << "cos(2.0)=" << (*cosine)(2.0);
+    dlclose(handle);
+}
 
 int main(int argc, char *argv[])
 {
@@ -43,6 +72,8 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    example_dlopen();
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
@@ -54,7 +85,5 @@ int main(int argc, char *argv[])
     view->show();
 
     return app->exec();
-
-//    return SailfishApp::main(argc, argv);
 }
 

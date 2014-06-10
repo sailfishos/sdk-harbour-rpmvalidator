@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.7-1.i486.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.i486.rpm
 ./usr/bin/harbour-good
 ./usr/share/applications/harbour-good.desktop
 ./usr/share/harbour-good
@@ -4040,7 +4040,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-7928 blocks
+7929 blocks
 
 
 Package name
@@ -4049,7 +4049,7 @@ Package name
 
 RPM file name
 =============
-[31mERROR[0m [[34mharbour-good-0.7-1.i486.rpm[0m] Architecture must be armv7hl or noarch
+[31mERROR[0m [[34mharbour-good-0.8-1.i486.rpm[0m] Architecture must be armv7hl or noarch
 [31mFAILED[0m
 
 QML files
@@ -4102,6 +4102,8 @@ Requires
 ========
 [31mERROR[0m [[34mlibc.so.6(GLIBC_2.0)[0m] Cannot require shared library: 'libc.so.6(GLIBC_2.0)'
 [31mERROR[0m [[34mlibc.so.6(GLIBC_2.1.3)[0m] Cannot require shared library: 'libc.so.6(GLIBC_2.1.3)'
+[31mERROR[0m [[34mlibdl.so.2(GLIBC_2.0)[0m] Cannot require shared library: 'libdl.so.2(GLIBC_2.0)'
+[31mERROR[0m [[34mlibdl.so.2(GLIBC_2.1)[0m] Cannot require shared library: 'libdl.so.2(GLIBC_2.1)'
 [31mERROR[0m [[34mlibgcc_s.so.1(GCC_x.y)[0m] Cannot require shared library: 'libgcc_s.so.1(GCC_x.y)'
 [36mINFO[0m [[34mharbour-good[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
 [31mFAILED[0m
@@ -4112,5 +4114,5 @@ Sandboxing
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.7-1.i486.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.i486.rpm[0m
 Clean up
