@@ -7,6 +7,7 @@ Name:       harbour-good
 
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libquazip.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -14,7 +15,7 @@ Name:       harbour-good
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    An RPM to test the rpmvalidation.sh script
-Version:    0.8
+Version:    0.9
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
