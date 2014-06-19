@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.armv7hl.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
@@ -27,6 +27,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/lib/harbour/good/dbus/qmldir
 ./usr/share/harbour-bad/lib/lib hello Sailor Dbus.so
 ./usr/share/harbour-bad/lib/libhelloSailorDbus.so
+./usr/share/harbour-bad/lib/libquazip.so.1.0.0
 ./usr/share/harbour-bad/lib/嗨.so
 ./usr/share/harbour-bad/qml
 ./usr/share/harbour-bad/qml/cover
@@ -56,7 +57,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-5613 blocks
+4528 blocks
 
 
 Package name
@@ -162,6 +163,7 @@ INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Private shared library s
 ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Cannot link to shared library: libtinfo.so.5
 INFO [/usr/share/harbour-bad/lib/libhelloSailorDbus.so] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
+INFO [/usr/share/harbour-bad/lib/libquazip.so.1.0.0] Private shared library shipped
 INFO [/usr/share/harbour-bad/lib/嗨.so] Private shared library shipped
 ERROR [/usr/share/harbour-bad/lib/嗨.so] Cannot link to shared library: libncurses.so.5
 ERROR [/usr/share/harbour-bad/lib/嗨.so] Cannot link to shared library: libtinfo.so.5
@@ -210,6 +212,7 @@ ERROR [Sailor] 'Provides: Sailor' not allowed in RPM
 ERROR [hello] 'Provides: hello' not allowed in RPM
 ERROR [lib] 'Provides: lib' not allowed in RPM
 ERROR [libhelloSailorDbus.so] 'Provides: libhelloSailorDbus.so' not allowed in RPM
+ERROR [libquazip.so.1] 'Provides: libquazip.so.1' not allowed in RPM
 ERROR [嗨.so] 'Provides: 嗨.so' not allowed in RPM
 FAILED
 
@@ -226,6 +229,7 @@ ERROR [/bin/sh] Dependency not allowed
 ERROR [/bin/sh] Dependency not allowed
 ERROR [/bin/sh] Dependency not allowed
 ERROR [libncurses.so.5] Cannot require shared library: 'libncurses.so.5'
+ERROR [libquazip.so.1] Cannot require shared library: 'libquazip.so.1'
 ERROR [libtinfo.so.5] Cannot require shared library: 'libtinfo.so.5'
 ERROR [nemo-qml-plugin-social-qt5] Dependency not allowed
 ERROR [qt5-qtdeclarative-systeminfo] Dependency not allowed
@@ -243,5 +247,5 @@ FAILED
 
 
 
-Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.armv7hl.rpm
+Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.armv7hl.rpm
 Clean up

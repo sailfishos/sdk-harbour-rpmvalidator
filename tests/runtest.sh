@@ -65,8 +65,8 @@ function oneTimeSetUp() {
     DIFF_OPTS="--ignore-space-change --ignore-blank-lines"
     HB_GOOD_ARM_RPM="harbour-good-0.9-1.armv7hl.rpm"
     HB_GOOD_x86_RPM="harbour-good-0.9-1.i486.rpm"
-    HB_BAD_ARM_RPM="harbour-bad-0.3-1.armv7hl.rpm"
-    HB_BAD_x86_RPM="harbour-bad-0.3-1.i486.rpm"
+    HB_BAD_ARM_RPM="harbour-bad-0.4-1.armv7hl.rpm"
+    HB_BAD_x86_RPM="harbour-bad-0.4-1.i486.rpm"
     if [[ ${OPT_GENERATE} -eq 0 ]] ; then
         # normal case for test runs
         OUTPUT_DIR=${SHUNIT_TMPDIR}
