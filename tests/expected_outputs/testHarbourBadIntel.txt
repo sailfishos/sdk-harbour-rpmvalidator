@@ -252,6 +252,14 @@ Sandboxing
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mFAILED[0m
 
+RPATH
+=====
+[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] rpath in binary seems to be wrong: [/usr/lib/]
+[36mINFO[0m [[34mYou ship your own libraries, you must set the rpath accordingly see:[0m]
+[36mINFO[0m [[34mhttps://harbour.jolla.com/faq#6.3.0[0m]
+[36mINFO[0m [[34mhttps://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098[0m]
+[31mFAILED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.i486.rpm[0m

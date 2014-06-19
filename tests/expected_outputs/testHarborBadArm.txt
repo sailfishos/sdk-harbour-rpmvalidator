@@ -78,6 +78,11 @@ Sandboxing
 ==========
 [32mPASSED[0m
 
+RPATH
+=====
+[32mOK[0m [[34mrpath in binary seems ok: [/usr/share/harbor-bad/lib][0m]
+[32mPASSED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbor-bad-0.1-1.armv7hl.rpm[0m

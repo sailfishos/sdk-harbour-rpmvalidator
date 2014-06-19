@@ -71,6 +71,10 @@ NAME_CHECK_PASSED=0
 # for particular type of error
 INFO_MSG_PRINTED=0
 
+# Auxiliary variable to check if the rpath check is needed
+RPATH_CHECK_NEEDED=0
+POSSIBLE_RPATH_CHECK_NEEDED=0
+
 RPM_NAME=''
 NAME=''
 BIN_NAME=''
@@ -503,7 +507,8 @@ isLibraryAllowed() {
     # $LIB could be in /usr/share/app-name ?
     FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1" 2> /dev/null $OPT_SORT)
     if [[ -n $FOUND_LIB ]] ; then
-      # OK it's an own lib
+      # OK it's an own lib, check that rpath is set correctly
+      RPATH_CHECK_NEEDED=1
       continue
     else
         validation_error "$2" "Cannot link to shared library: $1"
@@ -570,6 +575,7 @@ validatelibraries() {
                       ;;
                   $SHARE_NAME/lib/*.so.*|$SHARE_NAME/lib/*.so)
                       validation_info "$binary" "Private shared library shipped"
+                      POSSIBLE_RPATH_CHECK_NEEDED=1
                       ;;
                   *.so.*|*.so)
                       if [ -f $(dirname $binary)/qmldir ]; then
@@ -1001,6 +1007,55 @@ validatesandboxing() {
     done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
+validaterpath() {
+    RPATH_OK=0
+    LOCACTIONS_SHOWN=0
+    SHOW_URLS=0
+
+    BIN_RPATH_STR=$(readelf -d ./${BIN_NAME} | $GREP 'Library rpath:' | $SED -e 's/\s\+/ /g' | $CUT -f 6 -d ' ' | $SED -e 's/\[//' -e 's/\]//')
+    if [[ -z ${BIN_RPATH_STR} ]]; then
+        validation_info "${BIN_NAME}" "rpath in binary is empty!"
+    fi
+    BIN_RPATH_ARR=$(echo ${BIN_RPATH_STR} | tr ":" "\n")
+
+    for BIN_RPATH in ${BIN_RPATH_ARR}; do
+        if   [[ ${BIN_RPATH} == \$ORIGIN/../share/${NAME}/lib ]]; then
+            RPATH_OK=1
+        elif [[ ${BIN_RPATH} == \$ORIGIN/../share/${NAME}/lib/ ]]; then
+            RPATH_OK=1
+        elif [[ ${BIN_RPATH} == /usr/share/${NAME}/lib ]]; then
+            RPATH_OK=1
+        elif [[ ${BIN_RPATH} == /usr/share/${NAME}/lib/ ]]; then
+            RPATH_OK=1
+        else
+            validation_warning "${BIN_NAME}" "rpath '${BIN_RPATH}' in binary does not point to an allowed location!"
+            if [[ $LOCACTIONS_SHOWN -eq 0 ]]; then
+                validation_info "allowed location:" "/usr/share/${NAME}/lib"
+                validation_info "allowed location:" "\$ORIGIN/../share/${NAME}/lib"
+                validation_info "allowed:" "Trailing slash in path name is allowed."
+                LOCACTIONS_SHOWN=1
+            fi
+            RPATH_OK=0
+        fi
+    done
+
+    if [[ ${RPATH_OK} -eq 0 && $RPATH_CHECK_NEEDED -eq 1 ]] ; then
+        validation_info "${CURRENT_RPM_FILE_NAME}" "The RPM contains shared libraries, the rpath in the binary must be set accordingly."
+        validation_error "${BIN_NAME}" "The rpath in binary is not allowed: '${BIN_RPATH_STR}'"
+        SHOW_URLS=1
+    elif [[ ${RPATH_OK} -eq 0 && $RPATH_CHECK_NEEDED -eq 0 && $POSSIBLE_RPATH_CHECK_NEEDED -eq 1 ]] ; then
+        validation_warning "${CURRENT_RPM_FILE_NAME}" "The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly."
+        SHOW_URLS=1
+    else
+        validation_success "rpath in binary seems to be ok: '${BIN_RPATH_STR:-empty}'"
+    fi
+
+    if [[ $SHOW_URLS -eq 1 ]]; then
+        validation_info "See also:" "https://harbour.jolla.com/faq#6.3.0"
+        validation_info "See also:" "https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098"
+    fi
+}
+
 #
 # Validations
 #
@@ -1033,6 +1088,9 @@ rpmvalidation () {
   # has to run after validateqmlfiles
   run_validator "Requires" validaterpmrequires
   run_validator "Sandboxing" validatesandboxing
+  # "RPATH" needs to run after 'Libraries' so RPATH_CHECK_NEEDED is set
+  # "RPATH" needs to run after 'RPM file name' so CURRENT_RPM_FILE_NAME is set
+  run_validator "RPATH" validaterpath
 
   if [ -z $BATCHERBATCHERBATCHER ]; then
       echo -e "\n"

@@ -248,6 +248,14 @@ ERROR [/usr/bin/harbour-bad] Hardcoded path: print some not wanted string: /home
 ERROR [/usr/bin/嗨-bin] Hardcoded path: print some not wanted string: /home/nemo/
 FAILED
 
+RPATH
+=====
+ERROR [/usr/bin/harbour-bad] rpath in binary seems to be wrong: [/usr/lib/]
+INFO [You ship your own libraries, you must set the rpath accordingly see:]
+INFO [https://harbour.jolla.com/faq#6.3.0]
+INFO [https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098]
+FAILED
+
 
 
 Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.armv7hl.rpm

@@ -108,6 +108,11 @@ Sandboxing
 ==========
 PASSED
 
+RPATH
+=====
+OK [rpath in binary seems ok: [$ORIGIN/../share/harbour-good/lib:/usr/share/harbour-good/lib]]
+PASSED
+
 
 
 Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.9-1.armv7hl.rpm
