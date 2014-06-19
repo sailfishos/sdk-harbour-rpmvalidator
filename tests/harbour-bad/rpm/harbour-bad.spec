@@ -13,7 +13,7 @@ Name:       harbour-bad
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A RPM to test the rpmvalidation.sh script which does not follow the rules
-Version:    0.3
+Version:    0.4
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -97,6 +97,11 @@ cp %{buildroot}/%{_datadir}/%{name}/lib/libhelloSailorDbus.so %{buildroot}/%{_da
 cp %{buildroot}/%{_bindir}/%{name}-suid %{buildroot}/%{_bindir}/嗨-suid
 cp %{buildroot}/%{_bindir}/%{name} %{buildroot}/%{_bindir}/嗨-bin
 cp %{buildroot}/%{_datadir}/%{name}/qml/pages/Page_006.qml %{buildroot}/%{_datadir}/%{name}/qml/pages/嗨.qml
+
+# remove some of the symlinks
+rm %{buildroot}/%{_datadir}/%{name}/lib/libquazip.so
+rm %{buildroot}/%{_datadir}/%{name}/lib/libquazip.so.1
+rm %{buildroot}/%{_datadir}/%{name}/lib/libquazip.so.1.0
 
 # >> install post
 # << install post
