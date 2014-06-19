@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.i486.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.9-1.i486.rpm
 ./usr/bin/harbour-good
 ./usr/share/applications/harbour-good.desktop
 ./usr/share/harbour-good
@@ -11,6 +11,10 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/lib/harbour/good/dbus/qmldir
 ./usr/share/harbour-good/lib/lib hello Sailor Dbus.so
 ./usr/share/harbour-good/lib/libhelloSailorDbus.so
+./usr/share/harbour-good/lib/libquazip.so
+./usr/share/harbour-good/lib/libquazip.so.1
+./usr/share/harbour-good/lib/libquazip.so.1.0
+./usr/share/harbour-good/lib/libquazip.so.1.0.0
 ./usr/share/harbour-good/lib/嗨.so
 ./usr/share/harbour-good/qml
 ./usr/share/harbour-good/qml/cover
@@ -4040,7 +4044,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-7929 blocks
+8333 blocks
 
 
 Package name
@@ -4049,7 +4053,7 @@ Package name
 
 RPM file name
 =============
-[31mERROR[0m [[34mharbour-good-0.8-1.i486.rpm[0m] Architecture must be armv7hl or noarch
+[31mERROR[0m [[34mharbour-good-0.9-1.i486.rpm[0m] Architecture must be armv7hl or noarch
 [31mFAILED[0m
 
 QML files
@@ -4070,6 +4074,7 @@ Libraries
 [31mERROR[0m [[34m/usr/bin/harbour-good[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-good/lib/lib hello Sailor Dbus.so[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-good/lib/libhelloSailorDbus.so[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/share/harbour-good/lib/libquazip.so.1.0.0[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/share/harbour-good/lib/嗨.so[0m] ELF file with wrong arch: 
 [31mFAILED[0m
 
@@ -4105,6 +4110,7 @@ Requires
 [31mERROR[0m [[34mlibdl.so.2(GLIBC_2.0)[0m] Cannot require shared library: 'libdl.so.2(GLIBC_2.0)'
 [31mERROR[0m [[34mlibdl.so.2(GLIBC_2.1)[0m] Cannot require shared library: 'libdl.so.2(GLIBC_2.1)'
 [31mERROR[0m [[34mlibgcc_s.so.1(GCC_x.y)[0m] Cannot require shared library: 'libgcc_s.so.1(GCC_x.y)'
+[31mERROR[0m [[34mlibgcc_s.so.1(GLIBC_2.0)[0m] Cannot require shared library: 'libgcc_s.so.1(GLIBC_2.0)'
 [36mINFO[0m [[34mharbour-good[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
 [31mFAILED[0m
 
@@ -4114,5 +4120,5 @@ Sandboxing
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.8-1.i486.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.9-1.i486.rpm[0m
 Clean up
