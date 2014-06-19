@@ -501,7 +501,7 @@ validatedesktopfile() {
 isLibraryAllowed() {
    if ! check_contained_in "$1" $ALLOWED_LIBRARIES; then
     # $LIB could be in /usr/share/app-name ?
-    FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1*" 2> /dev/null $OPT_SORT)
+    FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1" 2> /dev/null $OPT_SORT)
     if [[ -n $FOUND_LIB ]] ; then
       # OK it's an own lib
       continue

@@ -144,14 +144,17 @@ Paths
 Libraries
 =========
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/bin[0m] with spaces Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/嗨-bin[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
