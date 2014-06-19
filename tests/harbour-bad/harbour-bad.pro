@@ -12,4 +12,13 @@ OTHER_FILES += rpm/harbour-bad.spec \
                harbour-bad.desktop
 
 TEMPLATE = subdirs
-SUBDIRS = src/dbus src
+
+quazip_lib.file = harbour-bad-quazip/harbour-bad-quazip.pro
+quazip_lib.target = quazip-lib
+
+app_src.subdir = src
+app_src.target = app-src
+app_src.depends = quazip-lib
+
+
+SUBDIRS = quazip_lib app_src src/dbus
