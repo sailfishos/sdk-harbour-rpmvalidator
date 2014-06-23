@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.armv7hl.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
@@ -27,6 +27,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/lib/harbour/good/dbus/qmldir
 ./usr/share/harbour-bad/lib/lib hello Sailor Dbus.so
 ./usr/share/harbour-bad/lib/libhelloSailorDbus.so
+./usr/share/harbour-bad/lib/libquazip.so.1.0.0
 ./usr/share/harbour-bad/lib/嗨.so
 ./usr/share/harbour-bad/qml
 ./usr/share/harbour-bad/qml/cover
@@ -56,7 +57,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-5613 blocks
+4528 blocks
 
 
 Package name
@@ -143,13 +144,16 @@ Libraries
 =========
 [33mWARNING[0m [[34m/usr/bin/bin with spaces[0m] file is not stripped!
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF binary in wrong location (must be /usr/bin/harbour-bad)
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/bin[0m] with spaces Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
+[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF binary in wrong location (must be /usr/bin/harbour-bad)
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/嗨-bin[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
@@ -162,6 +166,7 @@ Libraries
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/libquazip.so.1.0.0[0m] Private shared library shipped
 [36mINFO[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Private shared library shipped
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libtinfo.so.5
@@ -210,6 +215,7 @@ Provides
 [31mERROR[0m [[34mhello[0m] 'Provides: hello' not allowed in RPM
 [31mERROR[0m [[34mlib[0m] 'Provides: lib' not allowed in RPM
 [31mERROR[0m [[34mlibhelloSailorDbus.so[0m] 'Provides: libhelloSailorDbus.so' not allowed in RPM
+[31mERROR[0m [[34mlibquazip.so.1[0m] 'Provides: libquazip.so.1' not allowed in RPM
 [31mERROR[0m [[34m嗨.so[0m] 'Provides: 嗨.so' not allowed in RPM
 [31mFAILED[0m
 
@@ -226,6 +232,7 @@ Requires
 [31mERROR[0m [[34m/bin/sh[0m] Dependency not allowed
 [31mERROR[0m [[34m/bin/sh[0m] Dependency not allowed
 [31mERROR[0m [[34mlibncurses.so.5[0m] Cannot require shared library: 'libncurses.so.5'
+[31mERROR[0m [[34mlibquazip.so.1[0m] Cannot require shared library: 'libquazip.so.1'
 [31mERROR[0m [[34mlibtinfo.so.5[0m] Cannot require shared library: 'libtinfo.so.5'
 [31mERROR[0m [[34mnemo-qml-plugin-social-qt5[0m] Dependency not allowed
 [31mERROR[0m [[34mqt5-qtdeclarative-systeminfo[0m] Dependency not allowed
@@ -241,7 +248,19 @@ Sandboxing
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Hardcoded path: print some not wanted string: /home/nemo/
 [31mFAILED[0m
 
+RPATH
+=====
+[33mWARNING[0m [[34m/usr/bin/harbour-bad[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
+[36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad/lib
+[36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad/lib
+[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad/usr/share/harbour-bad/lib
+[36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
+[33mWARNING[0m [[34mharbour-bad-0.5-1.armv7hl.rpm[0m] The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly.
+[36mINFO[0m [[34mSee also:[0m] https://harbour.jolla.com/faq#6.3.0
+[36mINFO[0m [[34mSee also:[0m] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
+[32mPASSED[0m
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.3-1.armv7hl.rpm[0m
+
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.armv7hl.rpm[0m
 Clean up

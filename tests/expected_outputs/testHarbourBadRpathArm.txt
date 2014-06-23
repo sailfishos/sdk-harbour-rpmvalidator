@@ -1,0 +1,101 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-rpath-0.1-1.armv7hl.rpm
+./usr/bin
+./usr/bin/harbour-bad-rpath
+./usr/share/applications/harbour-bad-rpath.desktop
+./usr/share/harbour-bad-rpath
+./usr/share/harbour-bad-rpath/lib
+./usr/share/harbour-bad-rpath/lib/libquazip.so
+./usr/share/harbour-bad-rpath/lib/libquazip.so.1
+./usr/share/harbour-bad-rpath/lib/libquazip.so.1.0
+./usr/share/harbour-bad-rpath/lib/libquazip.so.1.0.0
+./usr/share/harbour-bad-rpath/qml
+./usr/share/harbour-bad-rpath/qml/cover
+./usr/share/harbour-bad-rpath/qml/cover/CoverPage.qml
+./usr/share/harbour-bad-rpath/qml/harbour-bad-rpath.qml
+./usr/share/harbour-bad-rpath/qml/pages
+./usr/share/harbour-bad-rpath/qml/pages/FirstPage.qml
+./usr/share/harbour-bad-rpath/qml/pages/SecondPage.qml
+./usr/share/icons/hicolor/86x86/apps/harbour-bad-rpath.png
+376 blocks
+
+
+Package name
+============
+[32mPASSED[0m
+
+RPM file name
+=============
+[32mPASSED[0m
+
+QML files
+=========
+[36mINFO[0m [[34m/usr/share/harbour-bad-rpath/qml/cover/CoverPage.qml[0m] Uses Sailfish Silica Components (only reported once)
+[32mPASSED[0m
+
+Desktop file
+============
+[32mPASSED[0m
+
+Paths
+=====
+[32mPASSED[0m
+
+Libraries
+=========
+[36mINFO[0m [[34m/usr/share/harbour-bad-rpath/lib/libquazip.so.1.0.0[0m] Private shared library shipped
+[32mPASSED[0m
+
+Icon
+====
+[32mPASSED[0m
+
+Symbols
+=======
+[32mPASSED[0m
+
+Permissions
+===========
+[32mPASSED[0m
+
+Scripts
+=======
+[32mPASSED[0m
+
+Provides
+========
+[31mERROR[0m [[34mlibquazip.so.1[0m] 'Provides: libquazip.so.1' not allowed in RPM
+[31mFAILED[0m
+
+Obsoletes
+=========
+[32mPASSED[0m
+
+Requires
+========
+[31mERROR[0m [[34mlibquazip.so.1[0m] Cannot require shared library: 'libquazip.so.1'
+[36mINFO[0m [[34mharbour-bad-rpath[0m] Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that
+[31mFAILED[0m
+
+Sandboxing
+==========
+[32mPASSED[0m
+
+RPATH
+=====
+[33mWARNING[0m [[34m/usr/bin/harbour-bad-rpath[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
+[36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad-rpath/lib
+[36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad-rpath/lib
+[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad-rpath/usr/share/harbour-bad-rpath/lib
+[36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
+[36mINFO[0m [[34mharbour-bad-rpath-0.1-1.armv7hl.rpm[0m] The RPM contains shared libraries, the rpath in the binary must be set accordingly.
+[31mERROR[0m [[34m/usr/bin/harbour-bad-rpath[0m] The rpath in binary is not allowed: '/usr/lib/'
+[36mINFO[0m [[34mSee also:[0m] https://harbour.jolla.com/faq#6.3.0
+[36mINFO[0m [[34mSee also:[0m] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
+[31mFAILED[0m
+
+
+
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-rpath-0.1-1.armv7hl.rpm[0m
+Clean up

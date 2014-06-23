@@ -63,10 +63,10 @@ function oneTimeSetUp() {
     EXPECTED_DIR="${SCRIPT_DIR}/expected_outputs"
     SED_FILTER="${SCRIPT_DIR}/output_filter.sed"
     DIFF_OPTS="--ignore-space-change --ignore-blank-lines"
-    HB_GOOD_ARM_RPM="harbour-good-0.8-1.armv7hl.rpm"
-    HB_GOOD_x86_RPM="harbour-good-0.8-1.i486.rpm"
-    HB_BAD_ARM_RPM="harbour-bad-0.3-1.armv7hl.rpm"
-    HB_BAD_x86_RPM="harbour-bad-0.3-1.i486.rpm"
+    HB_GOOD_ARM_RPM="harbour-good-0.10-1.armv7hl.rpm"
+    HB_GOOD_x86_RPM="harbour-good-0.10-1.i486.rpm"
+    HB_BAD_ARM_RPM="harbour-bad-0.5-1.armv7hl.rpm"
+    HB_BAD_x86_RPM="harbour-bad-0.5-1.i486.rpm"
     if [[ ${OPT_GENERATE} -eq 0 ]] ; then
         # normal case for test runs
         OUTPUT_DIR=${SHUNIT_TMPDIR}
@@ -141,6 +141,12 @@ function testNotAnRpmNoColor() {
 function testHarborBadArm() {
     ${RPMVALITATOR} ${RPMS_DIR}/harbor-bad-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarborBadArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarborBadArm.txt ${OUTPUT_DIR}/testHarborBadArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
+function testHarbourBadRpathArm() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbour-bad-rpath-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadRpathArm.txt ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
     assertTrue 'Expected output differs.' $?
 }
 

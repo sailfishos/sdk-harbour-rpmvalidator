@@ -1,8 +1,10 @@
 TEMPLATE = app
 TARGET = harbour-good
 CONFIG += sailfishapp
-LIBS += -ldl
+LIBS += -ldl -lquazip -L../harbour-good-quazip/
 SOURCES += harbour-good.cpp
+
+QMAKE_LFLAGS += -Wl,-rpath,\\$${LITERAL_DOLLAR}$${LITERAL_DOLLAR}ORIGIN/../share/harbour-good/lib
 
 CONFIG(release, debug|release) {
     DEFINES += QT_NO_DEBUG_OUTPUT

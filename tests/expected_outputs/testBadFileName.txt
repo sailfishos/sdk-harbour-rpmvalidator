@@ -109,6 +109,14 @@ Sandboxing
 ==========
 [32mPASSED[0m
 
+RPATH
+=====
+[36mINFO[0m [[34m/usr/bin/harbour-good[0m] rpath in binary is empty!
+[33mWARNING[0m [[34mbad-file-name.rpm[0m] The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly.
+[36mINFO[0m [[34mSee also:[0m] https://harbour.jolla.com/faq#6.3.0
+[36mINFO[0m [[34mSee also:[0m] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
+[32mPASSED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/bad-file-name.rpm[0m
