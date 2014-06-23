@@ -14,3 +14,6 @@ bad-file-name.rpm
 
 # generated with dd if=/dev/random of=some-random-file.rpm
 some-random-file.rpm
+
+# generated from harbour-bad-rpath project
+harbour-bad-rpath-X.Y-Z.armv7hl.rpm

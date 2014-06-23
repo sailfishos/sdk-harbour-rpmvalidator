@@ -144,6 +144,12 @@ function testHarborBadArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourBadRpathArm() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbour-bad-rpath-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadRpathArm.txt ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))
