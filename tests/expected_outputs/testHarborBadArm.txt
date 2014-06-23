@@ -80,7 +80,7 @@ Sandboxing
 
 RPATH
 =====
-[32mOK[0m [[34mrpath in binary seems ok: [/usr/share/harbor-bad/lib][0m]
+[32mOK[0m [[34mrpath in binary seems to be ok: '/usr/share/harbor-bad/lib'[0m]
 [32mPASSED[0m
 
 

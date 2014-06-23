@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.i486.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.i486.rpm
 ./etc/harbour-bad/harbour-bad.conf
 ./home/nemo/.conf/harbour-bad/harbour-bad.conf
 ./usr/bin
@@ -66,7 +66,7 @@ Package name
 
 RPM file name
 =============
-[31mERROR[0m [[34mharbour-bad-0.4-1.i486.rpm[0m] Architecture must be armv7hl or noarch
+[31mERROR[0m [[34mharbour-bad-0.5-1.i486.rpm[0m] Architecture must be armv7hl or noarch
 [31mFAILED[0m
 
 QML files
@@ -254,13 +254,15 @@ Sandboxing
 
 RPATH
 =====
-[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] rpath in binary seems to be wrong: [/usr/lib/]
-[36mINFO[0m [[34mYou ship your own libraries, you must set the rpath accordingly see:[0m]
-[36mINFO[0m [[34mhttps://harbour.jolla.com/faq#6.3.0[0m]
-[36mINFO[0m [[34mhttps://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098[0m]
-[31mFAILED[0m
+[33mWARNING[0m [[34m/usr/bin/harbour-bad[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
+[36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad/lib
+[36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad/lib
+[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad/usr/share/harbour-bad/lib
+[36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
+[32mOK[0m [[34mrpath in binary seems to be ok: '/usr/lib/'[0m]
+[32mPASSED[0m
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.4-1.i486.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.i486.rpm[0m
 Clean up

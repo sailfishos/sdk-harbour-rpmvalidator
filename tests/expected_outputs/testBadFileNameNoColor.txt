@@ -111,11 +111,11 @@ PASSED
 
 RPATH
 =====
-ERROR [/usr/bin/harbour-good] rpath in binary is empty!
-INFO [You ship your own libraries, you must set the rpath accordingly see:]
-INFO [https://harbour.jolla.com/faq#6.3.0]
-INFO [https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098]
-FAILED
+INFO [/usr/bin/harbour-good] rpath in binary is empty!
+WARNING [bad-file-name.rpm] The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly.
+INFO [See also:] https://harbour.jolla.com/faq#6.3.0
+INFO [See also:] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
+PASSED
 
 
 
