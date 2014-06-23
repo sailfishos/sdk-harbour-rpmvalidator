@@ -87,7 +87,6 @@ RPATH
 [33mWARNING[0m [[34m/usr/bin/harbour-bad-rpath[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
 [36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad-rpath/lib
 [36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad-rpath/lib
-[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad-rpath/usr/share/harbour-bad-rpath/lib
 [36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
 [36mINFO[0m [[34mharbour-bad-rpath-0.1-1.armv7hl.rpm[0m] The RPM contains shared libraries, the rpath in the binary must be set accordingly.
 [31mERROR[0m [[34m/usr/bin/harbour-bad-rpath[0m] The rpath in binary is not allowed: '/usr/lib/'
