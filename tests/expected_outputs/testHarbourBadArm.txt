@@ -253,7 +253,6 @@ RPATH
 [33mWARNING[0m [[34m/usr/bin/harbour-bad[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
 [36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad/lib
 [36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad/lib
-[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad/usr/share/harbour-bad/lib
 [36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
 [33mWARNING[0m [[34mharbour-bad-0.5-1.armv7hl.rpm[0m] The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly.
 [36mINFO[0m [[34mSee also:[0m] https://harbour.jolla.com/faq#6.3.0

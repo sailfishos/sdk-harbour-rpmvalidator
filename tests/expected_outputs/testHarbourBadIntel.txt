@@ -257,7 +257,6 @@ RPATH
 [33mWARNING[0m [[34m/usr/bin/harbour-bad[0m] rpath '/usr/lib/' in binary does not point to an allowed location!
 [36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad/lib
 [36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad/lib
-[36mINFO[0m [[34mallowed location:[0m] /opt/sdk/harbour-bad/usr/share/harbour-bad/lib
 [36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
 [32mOK[0m [[34mrpath in binary seems to be ok: '/usr/lib/'[0m]
 [32mPASSED[0m
