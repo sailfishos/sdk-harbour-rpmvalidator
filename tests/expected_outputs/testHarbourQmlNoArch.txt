@@ -72,6 +72,10 @@ Sandboxing
 ==========
 [32mPASSED[0m
 
+Architecture
+============
+[32mPASSED[0m
+
 
 
 Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm[0m

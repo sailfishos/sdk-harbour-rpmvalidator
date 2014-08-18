@@ -113,6 +113,10 @@ RPATH
 [32mOK[0m [[34mrpath in binary seems to be ok: '$ORIGIN/../share/harbour-good/lib:/usr/share/harbour-good/lib'[0m]
 [32mPASSED[0m
 
+Architecture
+============
+[32mPASSED[0m
+
 
 
 Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.10-1.armv7hl.rpm[0m

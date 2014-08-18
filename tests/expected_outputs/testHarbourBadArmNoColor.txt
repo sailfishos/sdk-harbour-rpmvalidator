@@ -259,6 +259,10 @@ INFO [See also:] https://harbour.jolla.com/faq#6.3.0
 INFO [See also:] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
 PASSED
 
+Architecture
+============
+PASSED
+
 
 
 Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.armv7hl.rpm
