@@ -1083,7 +1083,10 @@ rpmvalidation () {
     run_validator "Sandboxing" validatesandboxing
     # "RPATH" needs to run after 'Libraries' so RPATH_CHECK_NEEDED is set
     # "RPATH" needs to run after 'RPM file name' so CURRENT_RPM_FILE_NAME is set
-    run_validator "RPATH" validaterpath
+    # "RPATH" needs to run after 'Desktop file' so USES_SAILFISH_QML_LAUNCHER is set correctly
+    if [[ $USES_SAILFISH_QML_LAUNCHER -eq 0 ]] ; then
+        run_validator "RPATH" validaterpath
+    fi
 
     if [ -z $BATCHERBATCHERBATCHER ]; then
         echo -e "\n"
