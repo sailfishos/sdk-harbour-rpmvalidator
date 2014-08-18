@@ -18,5 +18,7 @@ some-random-file.rpm
 # generated from harbour-bad-rpath project
 harbour-bad-rpath-X.Y-Z.armv7hl.rpm
 
-# generated from harbour-qml project
+# generated from harbour-qml project arm build
 harbour-qml-X.Y-Z.armv7hl.rpm
+# generated from harbour-qml project i486 build -> noarch
+harbour-qml-X.Y-Z.noarch.rpm

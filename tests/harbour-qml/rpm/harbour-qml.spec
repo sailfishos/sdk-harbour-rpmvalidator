@@ -13,6 +13,10 @@ Source0:    %{name}-%{version}.tar.bz
 Requires: libsailfishapp-launcher
 BuildRequires:  desktop-file-utils
 
+%ifarch i486
+BuildArch:  noarch
+%endif
+
 %description
 Short description of my SailfishOS Application
 

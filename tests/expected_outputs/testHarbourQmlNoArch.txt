@@ -1,0 +1,78 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm
+./usr/share/applications/harbour-qml.desktop
+./usr/share/harbour-qml
+./usr/share/harbour-qml/qml
+./usr/share/harbour-qml/qml/cover
+./usr/share/harbour-qml/qml/cover/CoverPage.qml
+./usr/share/harbour-qml/qml/harbour-qml.qml
+./usr/share/harbour-qml/qml/pages
+./usr/share/harbour-qml/qml/pages/FirstPage.qml
+./usr/share/harbour-qml/qml/pages/SecondPage.qml
+./usr/share/icons/hicolor/86x86/apps/harbour-qml.png
+28 blocks
+
+
+Package name
+============
+[32mPASSED[0m
+
+RPM file name
+=============
+[32mPASSED[0m
+
+QML files
+=========
+[36mINFO[0m [[34m/usr/share/harbour-qml/qml/cover/CoverPage.qml[0m] Uses Sailfish Silica Components (only reported once)
+[32mPASSED[0m
+
+Desktop file
+============
+[36mINFO[0m [[34m/usr/share/applications/harbour-qml.desktop[0m] Application is a QML-only app (sailfish-qml launcher)
+[32mPASSED[0m
+
+Paths
+=====
+[32mPASSED[0m
+
+Libraries
+=========
+[32mPASSED[0m
+
+Icon
+====
+[32mPASSED[0m
+
+Symbols
+=======
+[32mPASSED[0m
+
+Permissions
+===========
+[32mPASSED[0m
+
+Scripts
+=======
+[32mPASSED[0m
+
+Provides
+========
+[32mPASSED[0m
+
+Obsoletes
+=========
+[32mPASSED[0m
+
+Requires
+========
+[32mPASSED[0m
+
+Sandboxing
+==========
+[32mPASSED[0m
+
+
+
+Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm[0m
+Clean up
