@@ -150,6 +150,12 @@ function testHarbourBadRpathArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourQmlArm() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbour-qml-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourQmlArm.txt ${OUTPUT_DIR}/testHarbourQmlArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))

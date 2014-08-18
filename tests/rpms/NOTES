@@ -17,3 +17,6 @@ some-random-file.rpm
 
 # generated from harbour-bad-rpath project
 harbour-bad-rpath-X.Y-Z.armv7hl.rpm
+
+# generated from harbour-qml project
+harbour-qml-X.Y-Z.armv7hl.rpm
