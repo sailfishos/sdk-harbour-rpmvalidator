@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.armv7hl.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm
 ./usr/share/applications/harbour-qml.desktop
 ./usr/share/harbour-qml
 ./usr/share/harbour-qml/qml
@@ -74,10 +74,9 @@ Sandboxing
 
 Architecture
 ============
-[33mWARNING[0m [[34mharbour-qml-0.1-1.armv7hl.rpm[0m] QML-only RPMs should be 'noarch', but it is 'armv7hl'
 [32mPASSED[0m
 
 
 
-Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.armv7hl.rpm[0m
+Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm[0m
 Clean up

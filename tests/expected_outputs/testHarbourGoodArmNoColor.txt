@@ -113,6 +113,10 @@ RPATH
 OK [rpath in binary seems to be ok: '$ORIGIN/../share/harbour-good/lib:/usr/share/harbour-good/lib']
 PASSED
 
+Architecture
+============
+PASSED
+
 
 
 Validation succeeded: sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.10-1.armv7hl.rpm

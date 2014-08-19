@@ -156,6 +156,12 @@ function testHarbourQmlArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourQmlNoArch() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbour-qml-0.1-1.noarch.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlNoArch.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourQmlNoArch.txt ${OUTPUT_DIR}/testHarbourQmlNoArch.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))

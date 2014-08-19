@@ -261,6 +261,10 @@ RPATH
 [32mOK[0m [[34mrpath in binary seems to be ok: '/usr/lib/'[0m]
 [32mPASSED[0m
 
+Architecture
+============
+[32mPASSED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.i486.rpm[0m

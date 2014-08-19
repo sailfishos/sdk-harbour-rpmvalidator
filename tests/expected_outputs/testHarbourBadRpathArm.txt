@@ -94,6 +94,10 @@ RPATH
 [36mINFO[0m [[34mSee also:[0m] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
 [31mFAILED[0m
 
+Architecture
+============
+[32mPASSED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-rpath-0.1-1.armv7hl.rpm[0m

@@ -75,6 +75,9 @@ INFO_MSG_PRINTED=0
 RPATH_CHECK_NEEDED=0
 POSSIBLE_RPATH_CHECK_NEEDED=0
 
+# Auxiliary variable to track arch
+ARCH_DEPENDANT=0
+
 RPM_NAME=''
 NAME=''
 BIN_NAME=''
@@ -564,6 +567,7 @@ validatelibraries() {
                 if [[ $filetype == *not?stripped ]] ; then
                     validation_warning "$binary" "file is not stripped!"
                 fi
+                ARCH_DEPENDANT=1
 
                 case "$binary" in
                     $BIN_NAME)
@@ -1049,6 +1053,12 @@ validaterpath() {
     fi
 }
 
+validatearch(){
+    if [[ $RPM_ARCH != "noarch" && $USES_SAILFISH_QML_LAUNCHER -eq 1 && $ARCH_DEPENDANT -eq 0 ]]; then
+        validation_warning $CURRENT_RPM_FILE_NAME "QML-only RPMs should be 'noarch', but it is '$RPM_ARCH'"
+    fi
+}
+
 #
 # Validations
 #
@@ -1067,6 +1077,7 @@ rpmvalidation () {
 
     # These checks set the USES_* variables, so we need to run them in this order
     # to make sure the variables are already set when needed (QML, Desktop, ...)
+    # "Desktop file" must run after "RPM file name" so $RPM_ARCH is set
     run_validator "QML files" validateqmlfiles
     run_validator "Desktop file" validatedesktopfile
 
@@ -1081,12 +1092,13 @@ rpmvalidation () {
     # has to run after validateqmlfiles
     run_validator "Requires" validaterpmrequires
     run_validator "Sandboxing" validatesandboxing
-    # "RPATH" needs to run after 'Libraries' so RPATH_CHECK_NEEDED is set
-    # "RPATH" needs to run after 'RPM file name' so CURRENT_RPM_FILE_NAME is set
-    # "RPATH" needs to run after 'Desktop file' so USES_SAILFISH_QML_LAUNCHER is set correctly
+    # "RPATH" and "Architecture" need to run after 'Libraries' so RPATH_CHECK_NEEDED and ARCH_DEPENDANT are set
+    # "RPATH" and "Architecture" need to run after 'RPM file name' so CURRENT_RPM_FILE_NAME and RPM_ARCH are set
+    # "RPATH" and "Architecture" need to run after 'Desktop file' so USES_SAILFISH_QML_LAUNCHER is set correctly
     if [[ $USES_SAILFISH_QML_LAUNCHER -eq 0 ]] ; then
         run_validator "RPATH" validaterpath
     fi
+    run_validator "Architecture" validatearch
 
     if [ -z $BATCHERBATCHERBATCHER ]; then
         echo -e "\n"
