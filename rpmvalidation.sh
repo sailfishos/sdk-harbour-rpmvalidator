@@ -773,6 +773,14 @@ validaterpmfilename(){
     EXPECTED_RPM_FILE_NAME="${NAME}-${RPM_VERSION}-${RPM_RELEASE}.${RPM_ARCH}.rpm"
     CURRENT_RPM_FILE_NAME=$(basename $RPM_NAME)
 
+    if [[ ! $RPM_VERSION =~ ^[0-9.]+$ ]]; then
+        validation_error $RPM_VERSION "rpm version must contain only digits (0-9) and periods (.)"
+    fi
+
+    if [[ ! $RPM_RELEASE =~ ^[0-9._]+$ ]]; then
+        validation_error $RPM_RELEASE "rpm release must contain only digits (0-9), underscores (_) and periods (.)"
+    fi
+
     if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" ]; then
         validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl or noarch"
     fi
