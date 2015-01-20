@@ -162,6 +162,12 @@ function testHarbourQmlNoArch() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourBadRpmversionArm() {
+    ${RPMVALITATOR} ${RPMS_DIR}/harbour-bad-rpmversion-0.1a-1.jolla.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpmversionArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadRpmversionArm.txt ${OUTPUT_DIR}/testHarbourBadRpmversionArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))
