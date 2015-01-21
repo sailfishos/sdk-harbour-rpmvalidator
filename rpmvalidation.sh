@@ -979,7 +979,7 @@ validaterpmrequires() {
     # qt5-qtdeclarative-import-xmllistmodel is not by default on device, but gets installed
     # with fingerterm, so it works fine for QA testers
     if [ $USES_XML_LIST_MODEL_QML_IMPORT -eq 1 -a $FOUND_IMPORT_XMLLISTMODEL -eq 0 ]; then
-        validation_error "$IMPORT_XMLLISTMODEL_PACKAGE" "Use of 'XmlListModel' detected, but rpm does not require it! Add 'Requries: $IMPORT_XMLLISTMODEL_PACKAGE' to the .spec file"
+        validation_error "$IMPORT_XMLLISTMODEL_PACKAGE" "Use of 'XmlListModel' detected, but rpm does not require it! Add 'Requires: $IMPORT_XMLLISTMODEL_PACKAGE' to the .spec file"
     fi
 }
 
