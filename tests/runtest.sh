@@ -58,7 +58,7 @@ function parseCommandLineOptions () {
 }
 
 function oneTimeSetUp() {
-    RPMVALITATOR="${SCRIPT_DIR}/../rpmvalidation.sh --sort --config-dir ${SCRIPT_DIR}/.."
+    RPMVALIDATOR="${SCRIPT_DIR}/../rpmvalidation.sh --sort --config-dir ${SCRIPT_DIR}/.."
     RPMS_DIR="${SCRIPT_DIR}/rpms"
     EXPECTED_DIR="${SCRIPT_DIR}/expected_outputs"
     SED_FILTER="${SCRIPT_DIR}/output_filter.sed"
@@ -79,86 +79,92 @@ function oneTimeSetUp() {
 } 
 
 function testHarbourGoodArm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/${HB_GOOD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodArm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/${HB_GOOD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourGoodArm.txt ${OUTPUT_DIR}/testHarbourGoodArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourGoodArmNoColor() {
-    ${RPMVALITATOR} --no-color ${RPMS_DIR}/${HB_GOOD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodArmNoColor.txt
+    ${RPMVALIDATOR} --no-color ${RPMS_DIR}/${HB_GOOD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodArmNoColor.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourGoodArmNoColor.txt ${OUTPUT_DIR}/testHarbourGoodArmNoColor.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourBadArm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/${HB_BAD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadArm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/${HB_BAD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadArm.txt ${OUTPUT_DIR}/testHarbourBadArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourBadArmNoColor() {
-    ${RPMVALITATOR} --no-color ${RPMS_DIR}/${HB_BAD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadArmNoColor.txt
+    ${RPMVALIDATOR} --no-color ${RPMS_DIR}/${HB_BAD_ARM_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadArmNoColor.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadArmNoColor.txt ${OUTPUT_DIR}/testHarbourBadArmNoColor.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourGoodIntel() {
-    ${RPMVALITATOR} ${RPMS_DIR}/${HB_GOOD_x86_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodIntel.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/${HB_GOOD_x86_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourGoodIntel.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourGoodIntel.txt ${OUTPUT_DIR}/testHarbourGoodIntel.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourBadIntel() {
-    ${RPMVALITATOR} ${RPMS_DIR}/${HB_BAD_x86_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadIntel.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/${HB_BAD_x86_RPM} 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadIntel.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadIntel.txt ${OUTPUT_DIR}/testHarbourBadIntel.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testBadFileName() {
-    ${RPMVALITATOR} ${RPMS_DIR}/bad-file-name.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testBadFileName.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/bad-file-name.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testBadFileName.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testBadFileName.txt ${OUTPUT_DIR}/testBadFileName.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testNotAnRpm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testNotAnRpm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testNotAnRpm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testNotAnRpm.txt ${OUTPUT_DIR}/testNotAnRpm.txt
     assertTrue 'Expected output differs.' $?
 }
  
 function testBadFileNameNoColor() {
-    ${RPMVALITATOR} --no-color ${RPMS_DIR}/bad-file-name.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testBadFileNameNoColor.txt
+    ${RPMVALIDATOR} --no-color ${RPMS_DIR}/bad-file-name.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testBadFileNameNoColor.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testBadFileNameNoColor.txt ${OUTPUT_DIR}/testBadFileNameNoColor.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testNotAnRpmNoColor() {
-    ${RPMVALITATOR} --no-color ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testNotAnRpmNoColor.txt
+    ${RPMVALIDATOR} --no-color ${RPMS_DIR}/some-random-file.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testNotAnRpmNoColor.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testNotAnRpmNoColor.txt ${OUTPUT_DIR}/testNotAnRpmNoColor.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarborBadArm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/harbor-bad-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarborBadArm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbor-bad-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarborBadArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarborBadArm.txt ${OUTPUT_DIR}/testHarborBadArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourBadRpathArm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/harbour-bad-rpath-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-rpath-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadRpathArm.txt ${OUTPUT_DIR}/testHarbourBadRpathArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourQmlArm() {
-    ${RPMVALITATOR} ${RPMS_DIR}/harbour-qml-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlArm.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-qml-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourQmlArm.txt ${OUTPUT_DIR}/testHarbourQmlArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
 function testHarbourQmlNoArch() {
-    ${RPMVALITATOR} ${RPMS_DIR}/harbour-qml-0.1-1.noarch.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlNoArch.txt
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-qml-0.1-1.noarch.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourQmlNoArch.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourQmlNoArch.txt ${OUTPUT_DIR}/testHarbourQmlNoArch.txt
+    assertTrue 'Expected output differs.' $?
+}
+
+function testHarbourBadRpmversionArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-rpmversion-0.1a-1.jolla.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadRpmversionArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadRpmversionArm.txt ${OUTPUT_DIR}/testHarbourBadRpmversionArm.txt
     assertTrue 'Expected output differs.' $?
 }
 
