@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-bad-vendor-none
+Exec=harbour-bad-vendor-none
+Name=harbour-bad-vendor-none
+# translation example:
+# your app name in German locale (de)
+Name[de]=harbour-bad-vendor-none
+
