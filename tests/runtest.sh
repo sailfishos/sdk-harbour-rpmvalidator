@@ -180,6 +180,12 @@ function testHarbourVendorMeegoArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourBadVendorNoneArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-vendor-none-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadVendorNoneArm.txt ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))
