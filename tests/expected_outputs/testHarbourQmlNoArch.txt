@@ -76,6 +76,11 @@ Architecture
 ============
 [32mPASSED[0m
 
+Vendor check
+============
+[32mOK[0m [[34mNo vendor set![0m]
+[32mPASSED[0m
+
 
 
 Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.noarch.rpm[0m

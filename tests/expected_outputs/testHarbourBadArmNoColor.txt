@@ -263,6 +263,11 @@ Architecture
 ============
 PASSED
 
+Vendor check
+============
+OK [No vendor set!]
+PASSED
+
 
 
 Validation failed: sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.armv7hl.rpm
