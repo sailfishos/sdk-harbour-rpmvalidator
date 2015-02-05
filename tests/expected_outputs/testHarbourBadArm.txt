@@ -263,6 +263,11 @@ Architecture
 ============
 [32mPASSED[0m
 
+Vendor check
+============
+[32mOK[0m [[34mNo vendor set![0m]
+[32mPASSED[0m
+
 
 
 Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-0.5-1.armv7hl.rpm[0m

@@ -77,6 +77,11 @@ Architecture
 [33mWARNING[0m [[34mharbour-qml-0.1-1.armv7hl.rpm[0m] QML-only RPMs should be 'noarch', but it is 'armv7hl'
 [32mPASSED[0m
 
+Vendor check
+============
+[32mOK[0m [[34mNo vendor set![0m]
+[32mPASSED[0m
+
 
 
 Validation succeeded: [32msdk-harbour-rpmvalidator/tests/rpms/harbour-qml-0.1-1.armv7hl.rpm[0m

@@ -1067,6 +1067,23 @@ validatearch(){
     fi
 }
 
+validatevendor(){
+    RPM_VENDOR=$($RPM -q --queryformat='%{VENDOR}' -p $RPM_NAME)
+    RPM_VENDOR_SIZE=$($RPM -q --queryformat='%{VENDOR:arraysize}' -p $RPM_NAME)
+
+    if [[ $RPM_VENDOR_SIZE == "(none)" && $RPM_VENDOR == "(none)" ]]; then
+        validation_success "No vendor set!"
+        return
+    fi
+
+    if [[ $RPM_VENDOR_SIZE -eq 1 && $RPM_VENDOR == "meego" ]]; then
+        validation_warning $CURRENT_RPM_FILE_NAME "Vendor is set to 'meego'! This is not recommended, unless your previous submissions to Harbour have the vendor set to 'meego' also. Do this only if you know what you are doing!"
+        return
+    fi
+
+    validation_error $CURRENT_RPM_FILE_NAME "Vendor in RPM package is set to '$RPM_VENDOR'. Setting a vendor in RPM package is not allowed!"
+}
+
 #
 # Validations
 #
@@ -1107,6 +1124,7 @@ rpmvalidation () {
         run_validator "RPATH" validaterpath
     fi
     run_validator "Architecture" validatearch
+    run_validator "Vendor check" validatevendor
 
     if [ -z $BATCHERBATCHERBATCHER ]; then
         echo -e "\n"

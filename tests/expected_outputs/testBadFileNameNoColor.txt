@@ -121,6 +121,11 @@ Architecture
 ============
 PASSED
 
+Vendor check
+============
+OK [No vendor set!]
+PASSED
+
 
 
 Validation failed: sdk-harbour-rpmvalidator/tests/rpms/bad-file-name.rpm

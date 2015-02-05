@@ -168,6 +168,24 @@ function testHarbourBadRpmversionArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourBadVendorArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-vendor-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadVendorArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadVendorArm.txt ${OUTPUT_DIR}/testHarbourBadVendorArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
+function testHarbourVendorMeegoArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-vendor-meego-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourVendorMeegoArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourVendorMeegoArm.txt ${OUTPUT_DIR}/testHarbourVendorMeegoArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
+function testHarbourBadVendorNoneArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-vendor-none-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadVendorNoneArm.txt ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))
