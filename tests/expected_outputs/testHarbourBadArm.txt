@@ -114,7 +114,9 @@ Desktop file
 ============
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Missing valid Icon declaration, must be Icon=harbour-bad
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Missing valid Exec declaration, must be Exec=harbour-bad
-[31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML
+[33mWARNING[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] X-Nemo-Application-Type should be silica-qt5 for apps importing Sailfish.Silica in QML
+[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Set X-Nemo-Application-Type to silica-qt5 unless mapplauncherd can't start the application.
+[36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] See also: https://github.com/nemomobile/mapplauncherd/blob/master/README
 [31mERROR[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)
 [36mINFO[0m [[34m/usr/share/applications/harbour-bad.desktop[0m] Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files
 [31mFAILED[0m

@@ -475,7 +475,9 @@ validatedesktopfile() {
     $GREP "^X-Nemo-Application-Type=silica-qt5[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
     if [[ $? -ne 0 ]] ; then
         if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 1 ]; then
-            validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for apps importing Sailfish.Silica in QML"
+            validation_warning $DESKTOP_NAME "X-Nemo-Application-Type should be silica-qt5 for apps importing Sailfish.Silica in QML"
+            validation_info $DESKTOP_NAME "Set X-Nemo-Application-Type to silica-qt5 unless mapplauncherd can't start the application."
+            validation_info $DESKTOP_NAME "See also: https://github.com/nemomobile/mapplauncherd/blob/master/README"
             INFO_MSG_PRINTED=1
         fi
         if [ $USES_SAILFISH_QML_LAUNCHER -eq 1 ]; then
