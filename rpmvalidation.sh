@@ -482,7 +482,7 @@ validatedesktopfile() {
             # Assume that developers who write QML-only applications with the launcher also use
             # Silica components, and they have to use the silica-qt5 booster to start it up
             validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for sailfish-qml apps"
-            validation_info $DESKTOP_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files"
+            INFO_MSG_PRINTED=1
         else
             $EGREP "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
             if [[ $? -ne 0 ]] ; then
