@@ -144,31 +144,32 @@ Paths
 
 Libraries
 =========
-[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF file with wrong arch: 
+[33mWARNING[0m [[34m/usr/bin/bin with spaces[0m] file is not stripped!
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] ELF binary in wrong location (must be /usr/bin/harbour-bad)
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/bin[0m] with spaces Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
-[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] ELF file with wrong arch: 
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/harbour-bad[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
-[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF file with wrong arch: 
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] ELF binary in wrong location (must be /usr/bin/harbour-bad)
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libquazip.so.1
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/bin/嗨-bin[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
-[31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] ELF file with wrong arch: 
+[33mWARNING[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] file is not stripped!
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Private shared library shipped
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/lib hello Sailor Dbus.so[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/share/harbour-bad/lib/lib[0m] hello Sailor Dbus.so Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
-[31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] ELF file with wrong arch: 
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Private shared library shipped
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/share/harbour-bad/lib/libhelloSailorDbus.so[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
-[31mERROR[0m [[34m/usr/share/harbour-bad/lib/libquazip.so.1.0.0[0m] ELF file with wrong arch: 
-[31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] ELF file with wrong arch: 
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/libquazip.so.1.0.0[0m] Private shared library shipped
+[36mINFO[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Private shared library shipped
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libncurses.so.5
 [31mERROR[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Cannot link to shared library: libtinfo.so.5
 [36mINFO[0m [[34m/usr/share/harbour-bad/lib/嗨.so[0m] Please see our FAQ here: https://harbour.jolla.com/faq#Shared_Libraries
@@ -259,7 +260,9 @@ RPATH
 [36mINFO[0m [[34mallowed location:[0m] /usr/share/harbour-bad/lib
 [36mINFO[0m [[34mallowed location:[0m] $ORIGIN/../share/harbour-bad/lib
 [36mINFO[0m [[34mallowed:[0m] Trailing slash in path name is allowed.
-[32mOK[0m [[34mrpath in binary seems to be ok: '/usr/lib/'[0m]
+[33mWARNING[0m [[34mharbour-bad-0.5-1.i486.rpm[0m] The RPM contains shared libraries, but it can't be determined for sure if they are needed by the binary, if so then the rpath must be set accordingly.
+[36mINFO[0m [[34mSee also:[0m] https://harbour.jolla.com/faq#6.3.0
+[36mINFO[0m [[34mSee also:[0m] https://together.jolla.com/question/10713/create-the-example-of-including-your-own-library-and-standard-qt-module-in-a-harbour-compatible-way/#14098
 [32mPASSED[0m
 
 Architecture
