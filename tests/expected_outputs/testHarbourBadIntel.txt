@@ -66,8 +66,7 @@ Package name
 
 RPM file name
 =============
-[31mERROR[0m [[34mharbour-bad-0.5-1.i486.rpm[0m] Architecture must be armv7hl or noarch
-[31mFAILED[0m
+[32mPASSED[0m
 
 QML files
 =========
