@@ -182,8 +182,7 @@ Icon
 
 Symbols
 =======
-[31mERROR[0m [[34m/usr/bin/harbour-bad[0m] Binary does not link to __libc_start_main@GLIBC_2.4.
-[31mFAILED[0m
+[32mPASSED[0m
 
 Permissions
 ===========
