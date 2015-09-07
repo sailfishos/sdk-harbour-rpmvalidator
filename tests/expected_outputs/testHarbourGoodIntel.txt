@@ -4070,12 +4070,12 @@ Paths
 
 Libraries
 =========
-[31mERROR[0m [[34m/usr/bin/harbour-good[0m] ELF file with wrong arch: 
-[31mERROR[0m [[34m/usr/share/harbour-good/lib/lib hello Sailor Dbus.so[0m] ELF file with wrong arch: 
-[31mERROR[0m [[34m/usr/share/harbour-good/lib/libhelloSailorDbus.so[0m] ELF file with wrong arch: 
-[31mERROR[0m [[34m/usr/share/harbour-good/lib/libquazip.so.1.0.0[0m] ELF file with wrong arch: 
-[31mERROR[0m [[34m/usr/share/harbour-good/lib/嗨.so[0m] ELF file with wrong arch: 
-[31mFAILED[0m
+[33mWARNING[0m [[34m/usr/share/harbour-good/lib/lib hello Sailor Dbus.so[0m] file is not stripped!
+[36mINFO[0m [[34m/usr/share/harbour-good/lib/lib hello Sailor Dbus.so[0m] Private shared library shipped
+[36mINFO[0m [[34m/usr/share/harbour-good/lib/libhelloSailorDbus.so[0m] Private shared library shipped
+[36mINFO[0m [[34m/usr/share/harbour-good/lib/libquazip.so.1.0.0[0m] Private shared library shipped
+[36mINFO[0m [[34m/usr/share/harbour-good/lib/嗨.so[0m] Private shared library shipped
+[32mPASSED[0m
 
 Icon
 ====
