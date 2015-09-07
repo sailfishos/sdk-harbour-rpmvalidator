@@ -563,7 +563,7 @@ validatelibraries() {
         # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
 
         case "$filetype" in
-            ELF*32-bit*LSB*ARM*)
+            ELF*32-bit*LSB*ARM* | ELF*32-bit*LSB*Intel*)
                 if [[ $filetype == *not?stripped ]] ; then
                     validation_warning "$binary" "file is not stripped!"
                 fi
