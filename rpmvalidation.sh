@@ -783,8 +783,8 @@ validaterpmfilename(){
         validation_error $RPM_RELEASE "rpm release must contain only digits (0-9), underscores (_) and periods (.)"
     fi
 
-    if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" ]; then
-        validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl or noarch"
+    if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" -a "$RPM_ARCH" != "i486" ]; then
+        validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl, i486 or noarch"
     fi
 
     if [[ $NAME_CHECK_PASSED == 1 ]]; then
