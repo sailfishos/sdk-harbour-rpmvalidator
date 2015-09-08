@@ -565,7 +565,7 @@ validatelibraries() {
         # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
 
         case "$filetype" in
-            ELF*32-bit*LSB*ARM*)
+            ELF*32-bit*LSB*ARM* | ELF*32-bit*LSB*Intel*)
                 if [[ $filetype == *not?stripped ]] ; then
                     validation_warning "$binary" "file is not stripped!"
                 fi
@@ -639,7 +639,12 @@ list_undefined_functions_in_elf() {
 validatesymbols() {
     if [ -x $BIN_NAME ]; then
         # Check if the library has a proper main function defined
-        MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION"
+        MAIN_SYMBOL=""
+        if [ "$RPM_ARCH" == "armv7hl" ]; then
+            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_ARM"
+        elif [ "$RPM_ARCH" == "i486" ]; then
+            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_I486"
+        fi
 
         if ! list_undefined_functions_in_elf $BIN_NAME | $GREP -q "^${MAIN_SYMBOL}.*"; then
             validation_error $BIN_NAME "Binary does not link to $MAIN_SYMBOL."
@@ -783,8 +788,8 @@ validaterpmfilename(){
         validation_error $RPM_RELEASE "rpm release must contain only digits (0-9), underscores (_) and periods (.)"
     fi
 
-    if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" ]; then
-        validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl or noarch"
+    if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" -a "$RPM_ARCH" != "i486" ]; then
+        validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl, i486 or noarch"
     fi
 
     if [[ $NAME_CHECK_PASSED == 1 ]]; then
@@ -1111,6 +1116,7 @@ rpmvalidation () {
     run_validator "Paths" validatepaths
     run_validator "Libraries" validatelibraries
     run_validator "Icon" validateicon
+    # needs to run after validaterpmfilename, needs $RPM_ARCH
     run_validator "Symbols" validatesymbols
     run_validator "Permissions" validatepermissions
     run_validator "Scripts" validatescripts
