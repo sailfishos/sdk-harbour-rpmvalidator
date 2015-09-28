@@ -65,8 +65,8 @@ function oneTimeSetUp() {
     EXPECTED_DIR="${SCRIPT_DIR}/expected_outputs"
     SED_FILTER="${SCRIPT_DIR}/output_filter.sed"
     DIFF_OPTS="--ignore-space-change --ignore-blank-lines"
-    HB_GOOD_ARM_RPM="harbour-good-0.10-1.armv7hl.rpm"
-    HB_GOOD_x86_RPM="harbour-good-0.10-1.i486.rpm"
+    HB_GOOD_ARM_RPM="harbour-good-0.11-1.armv7hl.rpm"
+    HB_GOOD_x86_RPM="harbour-good-0.11-1.i486.rpm"
     HB_BAD_ARM_RPM="harbour-bad-0.5-1.armv7hl.rpm"
     HB_BAD_x86_RPM="harbour-bad-0.5-1.i486.rpm"
     if [[ ${OPT_GENERATE} -eq 0 ]] ; then
