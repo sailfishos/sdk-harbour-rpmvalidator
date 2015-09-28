@@ -34,3 +34,6 @@ harbour-vendor-meego-0.1-1.armv7hl.rpm
 
 # generated from harbour-bad-vendor-none project arm build
 harbour-bad-vendor-none-0.1-1.armv7hl.rpm
+
+# generated from harbour-bad-noicon project arm build
+harbour-bad-noicon-X.Y-Z.armv7hl.rpm
