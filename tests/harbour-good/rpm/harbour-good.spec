@@ -15,7 +15,7 @@ Name:       harbour-good
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    An RPM to test the rpmvalidation.sh script
-Version:    0.10
+Version:    0.11
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -88,6 +88,9 @@ desktop-file-install --delete-original       \
 %files
 %defattr(0644,root,root,0755)
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%{_datadir}/icons/hicolor/108x108/apps/%{name}.png
+%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/
 %attr(0755,-,-) %{_bindir}/%{name}
