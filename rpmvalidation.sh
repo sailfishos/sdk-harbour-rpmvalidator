@@ -349,7 +349,9 @@ check_file_exists() {
     shift
     if [ ! -f $FILENAME ]; then
         validation_warning $FILENAME "File not found" $*
+        return 1
     fi
+    return 0
 }
 
 require_file_exists() {
@@ -384,6 +386,32 @@ fail_if_directory_exists() {
     fi
 }
 
+check_for_icons() {
+    FOUND_ICON=0
+    MISS_ICON=0
+    for SIZE in $ICON_SIZES; do
+        ICON_NAME=$(echo $ICON_NAME_PATH | sed "s/@@SIZE@@/$SIZE/")
+        if check_file_exists $ICON_NAME; then
+            FOUND_ICON=1
+        else
+            MISS_ICON=1
+        fi
+    done
+
+    # this case should not happen!
+    # $FOUND_ICON -eq 0 && $MISS_ICON -eq 0
+    if [[ $FOUND_ICON -eq 1 && $MISS_ICON -eq 0 ]]; then
+        # all fine, we found an icon, non missing
+        validation_info "$ICON_NAMES_REGEX" "All needed icons found!"
+    elif [[ $FOUND_ICON -eq 0 && $MISS_ICON -eq 1 ]]; then
+        # all icons are missing
+        validation_error "$ICON_NAMES_REGEX" "No icons found! RPM must contain at least one icon, see: https://harbour.jolla.com/faq#Icons"
+    elif [[ $FOUND_ICON -eq 1 && $MISS_ICON -eq 1 ]]; then
+        # Some icons are missing
+        validation_warning "$ICON_NAME_PATH" "Not all icons found! It is recommended that the rpm contains icons with the following sizes: $ICON_SIZES. See: https://harbour.jolla.com/faq#Icons"
+    fi
+}
+
 #
 # Path validations
 #
@@ -401,7 +429,7 @@ validatepaths () {
 
     # Mandatory files
     require_file_exists $DESKTOP_NAME
-    require_file_exists $ICON_NAME
+    check_for_icons
 
     # Files and directories that must not exist
     fail_if_directory_exists $LIB_DEBUG_NAME "(Debug symbols must not be included)"
@@ -417,7 +445,7 @@ validatepaths () {
             validation_error "$rpm_file" "Installation not allowed in this location"
         fi
     done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
-        | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAME)$")
+        | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX)$")
 
     # Accidentally added files
     while read filename; do
@@ -536,22 +564,34 @@ check_linked_libs() {
 
 validateicon() {
     # Example output: "PNG image data, 86 x 86, 8-bit/color RGBA, non-interlaced"
-    filetype=$(file -b $ICON_NAME)
-    case "$filetype" in
-        "PNG image data, 86 x 86,"*)
+    for SIZE in $ICON_SIZES; do
+        ICON_NAME=$(echo $ICON_NAME_PATH | sed "s/@@SIZE@@/$SIZE/")
+        SIZE_FILETYPE=$(echo $SIZE | sed 's/x/ x /')
+        filetype=""
+
+        if [[ -r $ICON_NAME && -s $ICON_NAME ]]; then
+            filetype=$(file -b $ICON_NAME)
+        else
+            validation_warning "$ICON_NAME" "Icon not found!"
+            continue
+        fi
+
+        case "$filetype" in
+            "PNG image data, $SIZE_FILETYPE,"*)
             # OK, that's the image type we expect
             ;;
-        PNG*)
-            validation_error $ICON_NAME "Wrong size, must be 86x86"
-            validation_info $ICON_NAME "Detected as '$filetype'"
-            validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
-            ;;
-        *)
-            validation_error $ICON_NAME "Must be a 86x86 PNG image"
-            validation_info $ICON_NAME "Detected as '$filetype'"
-            validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
-            ;;
-    esac
+            PNG*)
+                validation_error $ICON_NAME "Wrong size, must be $SIZE"
+                validation_info $ICON_NAME "Detected as '$filetype'"
+                validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
+                ;;
+            *)
+                validation_error $ICON_NAME "Must be a PNG image"
+                validation_info $ICON_NAME "Detected as '$filetype'"
+                validation_info $ICON_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Icons"
+                ;;
+        esac
+    done
 }
 
 #
