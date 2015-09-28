@@ -75,33 +75,33 @@ QML files
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/harbour-bad.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/FirstPage.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
+[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_001.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'org.nemomobile.social 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_002.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_003.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
-[31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page 004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
 [31mERROR[0m [[34m/usr/share/harbour-bad/qml/pages/Page_004.qml[0m] Import 'harbour.good.dbus 1.0' is not allowed
@@ -126,20 +126,20 @@ Paths
 [31mERROR[0m [[34m/etc/harbour-bad/harbour-bad.conf[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/bin with spaces[0m] Installation not allowed in this location
-[31mERROR[0m [[34m/usr/bin/harbour-bad-bin[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad suid[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/bin/harbour-bad-bin[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/嗨-bin[0m] Installation not allowed in this location
 [31mERROR[0m [[34m/usr/bin/嗨-suid[0m] Installation not allowed in this location
+[31mERROR[0m [[34m/usr/share/harbour-bad/.DS_Store[0m] This kind of file must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.bzr[0m] Source control directories must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.cvs[0m] Source control directories must not be included
-[31mERROR[0m [[34m/usr/share/harbour-bad/.DS_Store[0m] This kind of file must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.git[0m] Source control directories must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.hg[0m] Source control directories must not be included
-[31mERROR[0m [[34m/usr/share/harbour-bad/some-backup-file.txt~[0m] This kind of file must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.some-dot-backup-file.txt~[0m] This kind of file must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.some-tmp-vim-file.txt.swp[0m] This kind of file must not be included
 [31mERROR[0m [[34m/usr/share/harbour-bad/.svn[0m] Source control directories must not be included
+[31mERROR[0m [[34m/usr/share/harbour-bad/some-backup-file.txt~[0m] This kind of file must not be included
 [31mFAILED[0m
 
 Libraries
@@ -233,7 +233,6 @@ Requires
 [31mERROR[0m [[34m/bin/sh[0m] Dependency not allowed
 [31mERROR[0m [[34m/bin/sh[0m] Dependency not allowed
 [31mERROR[0m [[34m/bin/sh[0m] Dependency not allowed
-[31mERROR[0m [[34mlibgcc_s.so.1(GLIBC_2.0)[0m] Cannot require shared library: 'libgcc_s.so.1(GLIBC_2.0)'
 [31mERROR[0m [[34mlibncurses.so.5[0m] Cannot require shared library: 'libncurses.so.5'
 [31mERROR[0m [[34mlibquazip.so.1[0m] Cannot require shared library: 'libquazip.so.1'
 [31mERROR[0m [[34mlibtinfo.so.5[0m] Cannot require shared library: 'libtinfo.so.5'
