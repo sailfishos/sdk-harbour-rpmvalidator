@@ -188,6 +188,12 @@ function testHarbourBadVendorNoneArm() {
     assertTrue 'Expected output differs.' $?
 }
 
+function testHarbourBadNoIconArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-noicon-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadNoIconArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadNoIconArm.txt ${OUTPUT_DIR}/testHarbourBadNoIconArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
 ## Call and Run all Tests
 parseCommandLineOptions $@
 SCRIPT_DIR=$(dirname $(readlink -f $0))
