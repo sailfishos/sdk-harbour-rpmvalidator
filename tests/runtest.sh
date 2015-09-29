@@ -21,6 +21,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 
+export LC_ALL=C
+
 usage() {
     cat <<EOF
 Run some basic tests with rpmvalidation.sh

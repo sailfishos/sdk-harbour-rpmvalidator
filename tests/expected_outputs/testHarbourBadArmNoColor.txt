@@ -75,33 +75,33 @@ ERROR [/usr/share/harbour-bad/qml/harbour-bad-crlf.qml] Import 'harbour.good.dbu
 ERROR [/usr/share/harbour-bad/qml/harbour-bad.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
+ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
@@ -126,20 +126,20 @@ Paths
 ERROR [/etc/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/usr/bin/bin with spaces] Installation not allowed in this location
-ERROR [/usr/bin/harbour-bad-bin] Installation not allowed in this location
 ERROR [/usr/bin/harbour-bad suid] Installation not allowed in this location
+ERROR [/usr/bin/harbour-bad-bin] Installation not allowed in this location
 ERROR [/usr/bin/harbour-bad-suid] Installation not allowed in this location
 ERROR [/usr/bin/嗨-bin] Installation not allowed in this location
 ERROR [/usr/bin/嗨-suid] Installation not allowed in this location
+ERROR [/usr/share/harbour-bad/.DS_Store] This kind of file must not be included
 ERROR [/usr/share/harbour-bad/.bzr] Source control directories must not be included
 ERROR [/usr/share/harbour-bad/.cvs] Source control directories must not be included
-ERROR [/usr/share/harbour-bad/.DS_Store] This kind of file must not be included
 ERROR [/usr/share/harbour-bad/.git] Source control directories must not be included
 ERROR [/usr/share/harbour-bad/.hg] Source control directories must not be included
-ERROR [/usr/share/harbour-bad/some-backup-file.txt~] This kind of file must not be included
 ERROR [/usr/share/harbour-bad/.some-dot-backup-file.txt~] This kind of file must not be included
 ERROR [/usr/share/harbour-bad/.some-tmp-vim-file.txt.swp] This kind of file must not be included
 ERROR [/usr/share/harbour-bad/.svn] Source control directories must not be included
+ERROR [/usr/share/harbour-bad/some-backup-file.txt~] This kind of file must not be included
 FAILED
 
 Libraries
