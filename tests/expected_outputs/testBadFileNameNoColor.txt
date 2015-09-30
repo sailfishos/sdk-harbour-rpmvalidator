@@ -54,6 +54,10 @@ PASSED
 
 Paths
 =====
+WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-good.png] File not found
+WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-good.png] File not found
+WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-good.png] File not found
+WARNING [/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-good.png] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128 256x256. See: https://harbour.jolla.com/faq#Icons
 PASSED
 
 Libraries
@@ -63,6 +67,9 @@ PASSED
 
 Icon
 ====
+WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-good.png] Icon not found!
+WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-good.png] Icon not found!
+WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-good.png] Icon not found!
 PASSED
 
 Symbols
