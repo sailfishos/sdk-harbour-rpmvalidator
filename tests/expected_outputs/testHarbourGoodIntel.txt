@@ -1,6 +1,6 @@
 Created temporary directory
 Reading config scripts from sdk-harbour-rpmvalidator
-Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.10-1.i486.rpm
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.11-1.i486.rpm
 ./usr/bin/harbour-good
 ./usr/share/applications/harbour-good.desktop
 ./usr/share/harbour-good
@@ -4043,8 +4043,11 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/qmlmodules
 ./usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml
 ./usr/share/harbour-good/qml/pages/嗨.qml
+./usr/share/icons/hicolor/108x108/apps/harbour-good.png
+./usr/share/icons/hicolor/128x128/apps/harbour-good.png
+./usr/share/icons/hicolor/256x256/apps/harbour-good.png
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-8333 blocks
+9176 blocks
 
 
 Package name
@@ -4066,6 +4069,7 @@ Desktop file
 
 Paths
 =====
+[36mINFO[0m [[34m/usr/share/icons/hicolor/[0-9x]{5,9}/apps/harbour-good.png[0m] All needed icons found!
 [32mPASSED[0m
 
 Libraries
@@ -4128,5 +4132,5 @@ Vendor check
 
 
 
-Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.10-1.i486.rpm[0m
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-good-0.11-1.i486.rpm[0m
 Clean up

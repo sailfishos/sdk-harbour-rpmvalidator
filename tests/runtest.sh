@@ -65,8 +65,8 @@ function oneTimeSetUp() {
     EXPECTED_DIR="${SCRIPT_DIR}/expected_outputs"
     SED_FILTER="${SCRIPT_DIR}/output_filter.sed"
     DIFF_OPTS="--ignore-space-change --ignore-blank-lines"
-    HB_GOOD_ARM_RPM="harbour-good-0.10-1.armv7hl.rpm"
-    HB_GOOD_x86_RPM="harbour-good-0.10-1.i486.rpm"
+    HB_GOOD_ARM_RPM="harbour-good-0.11-1.armv7hl.rpm"
+    HB_GOOD_x86_RPM="harbour-good-0.11-1.i486.rpm"
     HB_BAD_ARM_RPM="harbour-bad-0.5-1.armv7hl.rpm"
     HB_BAD_x86_RPM="harbour-bad-0.5-1.i486.rpm"
     if [[ ${OPT_GENERATE} -eq 0 ]] ; then
@@ -185,6 +185,12 @@ function testHarbourVendorMeegoArm() {
 function testHarbourBadVendorNoneArm() {
     ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-vendor-none-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
     diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadVendorNoneArm.txt ${OUTPUT_DIR}/testHarbourBadVendorNoneArm.txt
+    assertTrue 'Expected output differs.' $?
+}
+
+function testHarbourBadNoIconArm() {
+    ${RPMVALIDATOR} ${RPMS_DIR}/harbour-bad-noicon-0.1-1.armv7hl.rpm 2>&1 | ${SED_FILTER} > ${OUTPUT_DIR}/testHarbourBadNoIconArm.txt
+    diff ${DIFF_OPTS} ${EXPECTED_DIR}/testHarbourBadNoIconArm.txt ${OUTPUT_DIR}/testHarbourBadNoIconArm.txt
     assertTrue 'Expected output differs.' $?
 }
 

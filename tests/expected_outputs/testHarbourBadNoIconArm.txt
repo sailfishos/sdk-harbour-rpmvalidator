@@ -1,0 +1,101 @@
+Created temporary directory
+Reading config scripts from sdk-harbour-rpmvalidator
+Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-bad-noicon-0.1-1.armv7hl.rpm
+./usr/bin
+./usr/bin/harbour-bad-noicon
+./usr/share/applications/harbour-bad-noicon.desktop
+./usr/share/harbour-bad-noicon
+./usr/share/harbour-bad-noicon/qml
+./usr/share/harbour-bad-noicon/qml/cover
+./usr/share/harbour-bad-noicon/qml/cover/CoverPage.qml
+./usr/share/harbour-bad-noicon/qml/harbour-bad-noicon.qml
+./usr/share/harbour-bad-noicon/qml/pages
+./usr/share/harbour-bad-noicon/qml/pages/FirstPage.qml
+./usr/share/harbour-bad-noicon/qml/pages/SecondPage.qml
+31 blocks
+
+
+Package name
+============
+[32mPASSED[0m
+
+RPM file name
+=============
+[32mPASSED[0m
+
+QML files
+=========
+[36mINFO[0m [[34m/usr/share/harbour-bad-noicon/qml/cover/CoverPage.qml[0m] Uses Sailfish Silica Components (only reported once)
+[32mPASSED[0m
+
+Desktop file
+============
+[32mPASSED[0m
+
+Paths
+=====
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad-noicon.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-bad-noicon.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-bad-noicon.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-bad-noicon.png[0m] File not found
+[31mERROR[0m [[34m/usr/share/icons/hicolor/[0-9x]{5,9}/apps/harbour-bad-noicon.png[0m] No icons found! RPM must contain at least one icon, see: https://harbour.jolla.com/faq#Icons
+[31mFAILED[0m
+
+Libraries
+=========
+[32mPASSED[0m
+
+Icon
+====
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-bad-noicon.png[0m] Icon not found!
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-bad-noicon.png[0m] Icon not found!
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-bad-noicon.png[0m] Icon not found!
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-bad-noicon.png[0m] Icon not found!
+[32mPASSED[0m
+
+Symbols
+=======
+[32mPASSED[0m
+
+Permissions
+===========
+[32mPASSED[0m
+
+Scripts
+=======
+[32mPASSED[0m
+
+Provides
+========
+[32mPASSED[0m
+
+Obsoletes
+=========
+[32mPASSED[0m
+
+Requires
+========
+[32mPASSED[0m
+
+Sandboxing
+==========
+[32mPASSED[0m
+
+RPATH
+=====
+[32mOK[0m [[34mrpath in binary seems to be ok: '/usr/share/harbour-bad-noicon/lib'[0m]
+[32mPASSED[0m
+
+Architecture
+============
+[32mPASSED[0m
+
+Vendor check
+============
+[32mOK[0m [[34mNo vendor set![0m]
+[32mPASSED[0m
+
+
+
+Validation failed: [31msdk-harbour-rpmvalidator/tests/rpms/harbour-bad-noicon-0.1-1.armv7hl.rpm[0m
+Clean up

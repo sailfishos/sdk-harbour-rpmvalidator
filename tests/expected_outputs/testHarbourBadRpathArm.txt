@@ -40,6 +40,10 @@ Desktop file
 
 Paths
 =====
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-bad-rpath.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-bad-rpath.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-bad-rpath.png[0m] File not found
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-bad-rpath.png[0m] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128 256x256. See: https://harbour.jolla.com/faq#Icons
 [32mPASSED[0m
 
 Libraries
@@ -49,6 +53,9 @@ Libraries
 
 Icon
 ====
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-bad-rpath.png[0m] Icon not found!
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-bad-rpath.png[0m] Icon not found!
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-bad-rpath.png[0m] Icon not found!
 [32mPASSED[0m
 
 Symbols
