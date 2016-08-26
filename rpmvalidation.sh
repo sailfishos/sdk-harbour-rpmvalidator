@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2014 Jolla Ltd.
+# Copyright (C) 2013 - 2016 Jolla Ltd.
 # Contact: Reto Zingg <reto.zingg@jolla.com>
 #
 # This file is part of the SailfishOS SDK
@@ -445,7 +445,7 @@ validatepaths () {
             validation_error "$rpm_file" "Installation not allowed in this location"
         fi
     done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
-        | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX)$")
+        | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX|$SETTINGS_PLUGIN_JSON|$TRANSLATIONS_REGEX)$")
 
     # Accidentally added files
     while read filename; do
