@@ -761,11 +761,8 @@ validateqmlfiles() {
                                 validation_error "$QML_FILE" "Import '$QML_IMPORT' is not valid - the path points to an unsupported external path"
                             fi
                         else
-                            # it could be an own provided QML module then there has to be a Modulename/qmldir file under SHARE_NAME
-                            QML_IMPORT_MODUL_NAME=$(echo $QML_IMPORT| $SED -e 's/\s\+/ /g' | $CUT -f1 -d ' ')
-                            NAME_IN_QML_FORM=$(echo $NAME| $SED -e 's/-/\./g')
-                            if [[ "${QML_IMPORT_MODUL_NAME##$NAME_IN_QML_FORM}" != "$QML_IMPORT_MODUL_NAME" ]] ; then
-                                # OK QML module name has the app name as prefix
+                            # allow all except explicitly disallowed modules
+                            if ! (echo $QML_IMPORT | grep -f $SCRIPT_DIR/$DISALLOWED_QMLIMPORTS); then
                                 continue
                             fi
                         fi
