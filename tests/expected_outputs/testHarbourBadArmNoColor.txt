@@ -71,11 +71,8 @@ PASSED
 QML files
 =========
 INFO [/usr/share/harbour-bad/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
-org.nemomobile.social 1.0
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
-org.nemomobile.social 1.0
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'org.nemomobile.social 1.0' is not allowed
-org.nemomobile.social 1.0
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#QML_API
 FAILED
