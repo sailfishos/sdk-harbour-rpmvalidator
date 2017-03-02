@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 %ifarch %ix86
 # to cause an expected failure in tests
-Requires: libgcc_s.so.1(GCC_x.y)
+Requires: libc.so.6(GLIBC_PRIVATE)
 %endif
 
 %description
