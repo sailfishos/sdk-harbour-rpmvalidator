@@ -71,42 +71,9 @@ PASSED
 QML files
 =========
 INFO [/usr/share/harbour-bad/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
-ERROR [/usr/share/harbour-bad/qml/harbour-bad-crlf.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/harbour-bad.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'org.nemomobile.social 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page 004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_001.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_003.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
-ERROR [/usr/share/harbour-bad/qml/pages/Page_004.qml] Import 'harbour.good.dbus 1.0' is not allowed
 INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#QML_API
 FAILED
 

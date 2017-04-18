@@ -335,14 +335,19 @@ rpmprepare () {
     popd >/dev/null 2>&1
 }
 
-check_contained_in() {
+check_contained_in() (
     # First argument is the query, following arguments (can be multiple ones)
-    # are the list of files in which to grep for the query, the files can
-    # contain comments (lines starting with #) and empty lines for structuring
+    # are the list of files containing patterns to match the query against.
+    # The files can contain comments (lines starting with #) and empty lines
+    # for structuring.
     QUERY=$1
     shift
-    (cd $SCRIPT_DIR && $GREP -q "^$QUERY$" $*) || return 1
-}
+    cd $SCRIPT_DIR
+    while read pat; do
+        [[ $QUERY == $pat ]] && return 0
+    done < <(cat "$@")
+    return 1
+)
 
 check_file_exists() {
     FILENAME=$1
@@ -762,7 +767,7 @@ validateqmlfiles() {
                             fi
                         else
                             # allow all except explicitly disallowed modules
-                            if ! (echo $QML_IMPORT | grep -f $SCRIPT_DIR/$DISALLOWED_QMLIMPORTS); then
+                            if ! check_contained_in "$QML_IMPORT" $DISALLOWED_QMLIMPORTS; then
                                 continue
                             fi
                         fi
