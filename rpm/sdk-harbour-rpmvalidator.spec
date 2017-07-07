@@ -5,7 +5,7 @@ Release:    1
 Group:      System/Base
 License:    GPLv2
 BuildArch:  noarch
-URL:        https://github.com/sailfish-sdk/sdk-harbour-rpmvalidator
+URL:        https://github.com/sailfishos/sdk-harbour-rpmvalidator
 Requires:   binutils
 Requires:   coreutils
 Requires:   findutils
