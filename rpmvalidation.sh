@@ -922,7 +922,7 @@ validatepermissions() {
                     ;;
                 *)
                     if isExecutable $OWNER_PERM || isExecutable $GROUP_PERM || isExecutable $OTHERS_PERM ; then
-                        validation_warning "$PATH_NAME" "File must not be executable (current permissions: ${OWNER_PERM}${GROUP_PERM}${OTHERS_PERM})"
+                        validation_error "$PATH_NAME" "File must not be executable (current permissions: ${OWNER_PERM}${GROUP_PERM}${OTHERS_PERM})"
                     fi
                     ;;
             esac
