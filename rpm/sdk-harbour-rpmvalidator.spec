@@ -17,6 +17,7 @@ Requires:   cpio
 Requires:   file
 Requires:   grep
 Source0:    %{name}-%{version}.tar.bz2
+Source100:  update-tests-requires.sh
 
 %description
 RPM validation tools for Jolla Harbour.
