@@ -10,7 +10,6 @@ SELF=$(basename "$0")
 SPEC=$DIR/sdk-harbour-rpmvalidator.spec
 CHECK=$DIR/../sdk-tests/check-qml-typeinfo.py
 ALLOWED_QMLIMPORTS=$DIR/../allowed_qmlimports.conf
-DEPRECATED_QMLIMPORTS=$DIR/../sdk-tests/deprecated_qmlimports.conf
 MARK_BEGIN_RE='^# --auto-test-requires-BEGIN--$'
 MARK_END_RE='^# --auto-test-requires-END--$'
 
@@ -21,8 +20,7 @@ fatal()
 
 list_requires()
 {
-    "$CHECK" --allowed_qmlimports "$ALLOWED_QMLIMPORTS" \
-             --deprecated_qmlimports "$DEPRECATED_QMLIMPORTS" list-caps \
+    "$CHECK" --allowed_qmlimports "$ALLOWED_QMLIMPORTS" list-caps \
              |sed 's/^/Requires: /'
 }
 

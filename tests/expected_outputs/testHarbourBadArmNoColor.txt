@@ -57,7 +57,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-4528 blocks
+5631 blocks
 
 
 Package name
@@ -72,6 +72,7 @@ QML files
 =========
 INFO [/usr/share/harbour-bad/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
+WARNING [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.dbus 2.0' is deprecated
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#QML_API
@@ -190,6 +191,7 @@ ERROR [hello] 'Provides: hello' not allowed in RPM
 ERROR [lib] 'Provides: lib' not allowed in RPM
 ERROR [libhelloSailorDbus.so] 'Provides: libhelloSailorDbus.so' not allowed in RPM
 ERROR [libquazip.so.1] 'Provides: libquazip.so.1' not allowed in RPM
+ERROR [qml(harbour.good.dbus)] 'Provides: qml(harbour.good.dbus)' not allowed in RPM
 ERROR [嗨.so] 'Provides: 嗨.so' not allowed in RPM
 FAILED
 

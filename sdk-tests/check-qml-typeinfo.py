@@ -14,7 +14,6 @@ from xml.dom import minidom
 from xml.etree import ElementTree as ET
 
 DEFAULT_ALLOWED_QMLIMPORTS_CONF = '/usr/share/sdk-harbour-rpmvalidator/allowed_qmlimports.conf'
-DEFAULT_DEPRECATED_QMLIMPORTS_CONF = '/opt/tests/sdk-harbour-rpmvalidator/deprecated_qmlimports.conf'
 SELF_INSTALL_PATH = '/opt/tests/sdk-harbour-rpmvalidator/check-qml-typeinfo.py'
 SELF_PACKAGE_NAME = 'sdk-harbour-rpmvalidator-sdk-tests'
 HWID_DETECT_COMMAND = 'ssu model -s'
@@ -84,18 +83,6 @@ def read_allowed_qmlimports_conf():
     else:
         with file:
             return parse_allowed_qmlimports_conf(file)
-
-def read_deprecated_qmlimports_conf():
-    global args
-    try:
-        file = open(args.deprecated_qmlimports)
-    except FileNotFoundError as e:
-        raise Error('The file "{}" does not exist.'
-                    .format(args.deprecated_qmlimports)
-            ) from e
-    else:
-        with file:
-            return file.read().splitlines()
 
 def qmlmodules_to_capabilities(qmlmodules):
     """Convert list of QmlModule into strings usable as zypper's capabilities
@@ -211,15 +198,13 @@ def is_preinstalled(qmlmodule):
 
 def main_list():
     qmlmodules = read_allowed_qmlimports_conf()
-    deprecated = read_deprecated_qmlimports_conf()
-    ids = (m.id for m in qmlmodules if m.id not in deprecated)
+    ids = (m.id for m in qmlmodules)
     print('\n'.join(ids))
     return 0
 
 def main_list_caps():
     qmlmodules = read_allowed_qmlimports_conf()
-    deprecated = read_deprecated_qmlimports_conf()
-    qmlmodules = (m for m in qmlmodules if m.id not in deprecated)
+    qmlmodules = (m for m in qmlmodules)
     capabilities = qmlmodules_to_capabilities(qmlmodules)
     print('\n'.join(capabilities))
     return 0
@@ -233,14 +218,9 @@ def main_check():
         qmlmodules = [QmlModule(qmlmodule, []) for qmlmodule in args.qmlmodule]
 
     all_installed = list_installed_modules()
-    deprecated = read_deprecated_qmlimports_conf()
 
     retv = 0
     for qmlmodule in qmlmodules:
-        if qmlmodule.id in deprecated:
-            info('Excluding deprecated module "%s"', qmlmodule.id)
-            continue
-
         info('Checking "%s"', qmlmodule.id)
 
         if qmlmodule.id not in all_installed:
@@ -275,14 +255,8 @@ def main_check_patterns():
     else:
         qmlmodules = [QmlModule(qmlmodule, []) for qmlmodule in args.qmlmodule]
 
-    deprecated = read_deprecated_qmlimports_conf()
-
     retv = 0
     for qmlmodule in qmlmodules:
-        if qmlmodule.id in deprecated:
-            info('Excluding deprecated module "%s"', qmlmodule.id)
-            continue
-
         info('Checking "%s"', qmlmodule.id)
 
         package, preinstalled = is_preinstalled(qmlmodule)
@@ -310,12 +284,7 @@ def main_create_tests_xml():
     set2_desc = ET.SubElement(set2, 'description')
     set2_desc.text = 'Verify that all allowed QML imports are available by default (preinstalled)'
 
-    deprecated = read_deprecated_qmlimports_conf()
-
     for qmlmodule in read_allowed_qmlimports_conf():
-        if qmlmodule.id in deprecated:
-            info('Excluding deprecated module "%s"', qmlmodule.id)
-            continue
         case1 = ET.SubElement(set1, 'case', name='tst_{}'.format(qmlmodule.id))
         step1 = ET.SubElement(case1, 'step')
         step1.text = '{} check "{}"'.format(SELF_INSTALL_PATH, qmlmodule.id)
@@ -334,9 +303,6 @@ def argument_parser():
             help='Enable more detailed progress reporting')
     parser.add_argument('-a', '--allowed_qmlimports', metavar='FILE',
             default=DEFAULT_ALLOWED_QMLIMPORTS_CONF,
-            help='Use the specified FILE instead of the one available from system')
-    parser.add_argument('-d', '--deprecated_qmlimports', metavar='FILE',
-            default=DEFAULT_DEPRECATED_QMLIMPORTS_CONF,
             help='Use the specified FILE instead of the one available from system')
 
     subs = parser.add_subparsers(title='subcommands')
