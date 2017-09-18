@@ -162,15 +162,15 @@ Permissions
 ===========
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Owner is 'nemo', should be 'root'
 [31mERROR[0m [[34m/home/nemo/.conf/harbour-bad/harbour-bad.conf[0m] Group is 'nemo', should be 'root'
-[33mWARNING[0m [[34m/usr/bin/bin with spaces[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/bin with spaces[0m] File must not be executable (current permissions: 755)
 [31mERROR[0m [[34m/usr/bin/harbour-bad suid[0m] setuid, setgid or sticky bit set
-[33mWARNING[0m [[34m/usr/bin/harbour-bad suid[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/bin/harbour-bad-bin[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/harbour-bad suid[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/harbour-bad-bin[0m] File must not be executable (current permissions: 755)
 [31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] setuid, setgid or sticky bit set
-[33mWARNING[0m [[34m/usr/bin/harbour-bad-suid[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/bin/嗨-bin[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/harbour-bad-suid[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/嗨-bin[0m] File must not be executable (current permissions: 755)
 [31mERROR[0m [[34m/usr/bin/嗨-suid[0m] setuid, setgid or sticky bit set
-[33mWARNING[0m [[34m/usr/bin/嗨-suid[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/bin/嗨-suid[0m] File must not be executable (current permissions: 755)
 [31mFAILED[0m
 
 Scripts

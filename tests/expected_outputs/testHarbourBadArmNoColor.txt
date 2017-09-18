@@ -162,15 +162,15 @@ Permissions
 ===========
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Owner is 'nemo', should be 'root'
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Group is 'nemo', should be 'root'
-WARNING [/usr/bin/bin with spaces] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/bin with spaces] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/harbour-bad suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/harbour-bad suid] File must not be executable (current permissions: 755)
-WARNING [/usr/bin/harbour-bad-bin] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad-bin] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/harbour-bad-suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/harbour-bad-suid] File must not be executable (current permissions: 755)
-WARNING [/usr/bin/嗨-bin] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad-suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/嗨-bin] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/嗨-suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/嗨-suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/嗨-suid] File must not be executable (current permissions: 755)
 FAILED
 
 Scripts
