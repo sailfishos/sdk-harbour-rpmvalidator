@@ -4045,9 +4045,8 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-g
 ./usr/share/harbour-good/qml/pages/嗨.qml
 ./usr/share/icons/hicolor/108x108/apps/harbour-good.png
 ./usr/share/icons/hicolor/128x128/apps/harbour-good.png
-./usr/share/icons/hicolor/256x256/apps/harbour-good.png
 ./usr/share/icons/hicolor/86x86/apps/harbour-good.png
-9922 blocks
+9881 blocks
 
 
 Package name

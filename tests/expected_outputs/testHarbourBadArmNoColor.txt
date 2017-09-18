@@ -92,8 +92,7 @@ Paths
 =====
 WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-bad.png] File not found
 WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-bad.png] File not found
-WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-bad.png] File not found
-WARNING [/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-bad.png] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128 256x256. See: https://harbour.jolla.com/faq#Icons
+WARNING [/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-bad.png] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128. See: https://harbour.jolla.com/faq#Icons
 ERROR [/etc/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/usr/bin/bin with spaces] Installation not allowed in this location
@@ -153,7 +152,6 @@ INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Detected as 'PNG imag
 INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Please see our FAQ here: https://harbour.jolla.com/faq#Icons
 WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-bad.png] Icon not found!
 WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-bad.png] Icon not found!
-WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-bad.png] Icon not found!
 FAILED
 
 Symbols
