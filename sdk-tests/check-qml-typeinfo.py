@@ -16,6 +16,10 @@ from xml.etree import ElementTree as ET
 DEFAULT_ALLOWED_QMLIMPORTS_CONF = '/usr/share/sdk-harbour-rpmvalidator/allowed_qmlimports.conf'
 DEFAULT_DEPRECATED_QMLIMPORTS_CONF = '/opt/tests/sdk-harbour-rpmvalidator/deprecated_qmlimports.conf'
 SELF_INSTALL_PATH = '/opt/tests/sdk-harbour-rpmvalidator/check-qml-typeinfo.py'
+SELF_PACKAGE_NAME = 'sdk-harbour-rpmvalidator-sdk-tests'
+HWID_DETECT_COMMAND = 'ssu model -s'
+SDK_TARGET_HWID = 'SDK Target'
+UPDATE_TESTS_REQUIRES_SH = 'rpm/update-tests-requires.sh'
 DEFAULT_QML_TYPEINFO = 'plugins.qmltypes'
 QML_SEARCH_PATH = '/usr/lib/qt5/qml'
 ZYPPER_EXIT_INF_CAP_NOT_FOUND = 104
@@ -148,6 +152,63 @@ def list_installed_modules():
                 retv[id] = InstalledQmlModule(id, dir_path, qmldir)
     return retv
 
+def what_provides(qmlmodule):
+    capability = qmlmodules_to_capabilities([qmlmodule])[0]
+
+    proc = subprocess.Popen(['rpm', '--query', '--whatprovides', '--queryformat',
+                             '%{NAME}\n', capability],
+                            stdout=subprocess.PIPE, universal_newlines=True)
+    outs, errs = proc.communicate()
+
+    if proc.returncode != 0:
+        raise Error('Failed to determine package name for "{}"'.format(capability))
+
+    lines = outs.splitlines()
+    if len(lines) == 1:
+        return lines[0]
+    elif len(lines) == 0:
+        raise Error('Nothing provides "{}"'.format(capability))
+    else:
+        raise Error('More than one package provides "{}"'.format(capability))
+
+def is_preinstalled(qmlmodule):
+    rpmpackage = what_provides(qmlmodule)
+
+    proc = subprocess.Popen(['rpm', '--erase', '--test', rpmpackage],
+                            stderr=subprocess.PIPE, universal_newlines=True)
+    outs, errs = proc.communicate()
+
+    if proc.returncode == 0:
+        return (rpmpackage, False)
+
+    lines = errs.splitlines()
+
+    if len(lines) == 0:
+        raise Error('Unexpected empty output from "rpm --erase"')
+
+    if lines[0] == 'error: Failed dependencies:':
+        del lines[0]
+    else:
+        raise Error('Unexpected leading line of "rpm --erase" output')
+
+    required_by_this = False
+    required_by_others = False
+    for line in lines:
+        if ' is needed by ' not in line:
+            raise('Unexpected line format in "rpm --erase" output')
+
+        if re.search(' {}-[0-9]'.format(SELF_PACKAGE_NAME), line):
+            required_by_this = True
+        else:
+            required_by_others = True
+
+    if not required_by_this:
+        warning('QML module "%s" not pulled in by the sdk-tests package. '
+                'Need to run "%s" in sources?',
+                qmlmodule.id, UPDATE_TESTS_REQUIRES_SH)
+
+    return (rpmpackage, required_by_others)
+
 def main_list():
     qmlmodules = read_allowed_qmlimports_conf()
     deprecated = read_deprecated_qmlimports_conf()
@@ -206,13 +267,48 @@ def main_check():
 
     return retv
 
+def main_check_patterns():
+    global args
+
+    if not args.qmlmodule:
+        qmlmodules = read_allowed_qmlimports_conf()
+    else:
+        qmlmodules = [QmlModule(qmlmodule, []) for qmlmodule in args.qmlmodule]
+
+    deprecated = read_deprecated_qmlimports_conf()
+
+    retv = 0
+    for qmlmodule in qmlmodules:
+        if qmlmodule.id in deprecated:
+            info('Excluding deprecated module "%s"', qmlmodule.id)
+            continue
+
+        info('Checking "%s"', qmlmodule.id)
+
+        package, preinstalled = is_preinstalled(qmlmodule)
+        if not preinstalled:
+            print('{} ({}) was not required by patterns'.format(package, qmlmodule.id))
+            retv = 1
+
+    return retv
+
+
 def main_create_tests_xml():
     root = ET.Element('testdefinition', attrib={'version': '1.0'})
+
+    hwiddetect = ET.SubElement(root, 'hwiddetect')
+    hwiddetect.text = HWID_DETECT_COMMAND
+
     suite = ET.SubElement(root, 'suite', name='rpmvalidator-tests')
 
-    set = ET.SubElement(suite, 'set', name='rpmvalidator-tests-qml-autocompletion-support')
-    set_desc = ET.SubElement(set, 'description')
-    set_desc.text = 'Verify that all allowed QML imports provide "{}" file'.format(DEFAULT_QML_TYPEINFO)
+    set1 = ET.SubElement(suite, 'set', name='rpmvalidator-tests-qml-autocompletion-support')
+    set1_desc = ET.SubElement(set1, 'description')
+    set1_desc.text = 'Verify that all allowed QML imports provide "{}" file'.format(DEFAULT_QML_TYPEINFO)
+
+    set2 = ET.SubElement(suite, 'set', name='rpmvalidator-tests-qml-autocompletion-patterns',
+                         hwid=SDK_TARGET_HWID)
+    set2_desc = ET.SubElement(set2, 'description')
+    set2_desc.text = 'Verify that all allowed QML imports are available by default (preinstalled)'
 
     deprecated = read_deprecated_qmlimports_conf()
 
@@ -220,9 +316,13 @@ def main_create_tests_xml():
         if qmlmodule.id in deprecated:
             info('Excluding deprecated module "%s"', qmlmodule.id)
             continue
-        case = ET.SubElement(set, 'case', name='tst_{}'.format(qmlmodule.id))
-        step = ET.SubElement(case, 'step')
-        step.text = '{} check "{}"'.format(SELF_INSTALL_PATH, qmlmodule.id)
+        case1 = ET.SubElement(set1, 'case', name='tst_{}'.format(qmlmodule.id))
+        step1 = ET.SubElement(case1, 'step')
+        step1.text = '{} check "{}"'.format(SELF_INSTALL_PATH, qmlmodule.id)
+
+        case2 = ET.SubElement(set2, 'case', name='tst_patterns_{}'.format(qmlmodule.id))
+        step2 = ET.SubElement(case2, 'step')
+        step2.text = '{} check-patterns "{}"'.format(SELF_INSTALL_PATH, qmlmodule.id)
 
     ugly = ET.tostring(root, encoding='utf-8')
     pretty = minidom.parseString(ugly).toprettyxml(indent='  ', encoding='utf-8')
@@ -253,6 +353,11 @@ def argument_parser():
             help='Check the given QML modules (or all allowed) for valid QML typeinfo')
     sub_check.set_defaults(func=main_check)
     sub_check.add_argument('qmlmodule', nargs='*')
+
+    sub_check_patterns = subs.add_parser('check-patterns',
+            help='Check that given QML modules (or all allowed) are pulled in by patterns')
+    sub_check_patterns.set_defaults(func=main_check_patterns)
+    sub_check_patterns.add_argument('qmlmodule', nargs='*')
 
     sub_create_tests_xml = subs.add_parser('create-tests-xml',
             help='Build a test definition XML to check all allowed QML modules')
