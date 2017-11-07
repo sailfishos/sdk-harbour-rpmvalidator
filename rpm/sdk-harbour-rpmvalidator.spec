@@ -63,7 +63,6 @@ Requires: qml(org.freedesktop.contextkit)
 
 %build
 ./sdk-tests/check-qml-typeinfo.py -a allowed_qmlimports.conf \
-                                  -d sdk-tests/deprecated_qmlimports.conf \
                                   create-tests-xml > sdk-tests/tests.xml
 
 %install
@@ -73,6 +72,9 @@ install -D -m 0755 rpmvalidation.sh %{buildroot}%{_bindir}/rpmvalidation.sh
 install -D -m 0644 allowed_libraries.conf %{buildroot}%{_datadir}/%{name}/allowed_libraries.conf
 install -D -m 0644 allowed_qmlimports.conf %{buildroot}%{_datadir}/%{name}/allowed_qmlimports.conf
 install -D -m 0644 allowed_requires.conf %{buildroot}%{_datadir}/%{name}/allowed_requires.conf
+install -D -m 0644 deprecated_libraries.conf %{buildroot}%{_datadir}/%{name}/deprecated_libraries.conf
+install -D -m 0644 deprecated_qmlimports.conf %{buildroot}%{_datadir}/%{name}/deprecated_qmlimports.conf
+install -D -m 0644 deprecated_requires.conf %{buildroot}%{_datadir}/%{name}/deprecated_requires.conf
 install -D -m 0644 disallowed_qmlimport_patterns.conf %{buildroot}%{_datadir}/%{name}/disallowed_qmlimport_patterns.conf
 install -D -m 0644 rpmvalidation.conf %{buildroot}%{_datadir}/%{name}/rpmvalidation.conf
 
@@ -80,7 +82,6 @@ install -D -m 0644 rpmvalidation.conf %{buildroot}%{_datadir}/%{name}/rpmvalidat
 echo "%{version}-%{release}" > %{buildroot}%{_datadir}/%{name}/version
 
 install -D -m 0755 sdk-tests/check-qml-typeinfo.py %{buildroot}/opt/tests/%{name}/check-qml-typeinfo.py
-install -D -m 0644 sdk-tests/deprecated_qmlimports.conf %{buildroot}/opt/tests/%{name}/deprecated_qmlimports.conf
 install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 
 %files

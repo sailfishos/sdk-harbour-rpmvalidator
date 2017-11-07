@@ -57,7 +57,7 @@ Prepare for RPM validation of file sdk-harbour-rpmvalidator/tests/rpms/harbour-b
 ./usr/share/harbour-bad/qml/pages/嗨.qml
 ./usr/share/harbour-bad/some-backup-file.txt~
 ./usr/share/icons/hicolor/86x86/apps/harbour-bad.png
-4528 blocks
+5631 blocks
 
 
 Package name
@@ -72,6 +72,7 @@ QML files
 =========
 INFO [/usr/share/harbour-bad/qml/cover/CoverPage.qml] Uses Sailfish Silica Components (only reported once)
 ERROR [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.social 1.0' is not allowed
+WARNING [/usr/share/harbour-bad/qml/pages/FirstPage.qml] Import 'org.nemomobile.dbus 2.0' is deprecated
 ERROR [/usr/share/harbour-bad/qml/pages/Page 002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 ERROR [/usr/share/harbour-bad/qml/pages/Page_002.qml] Import 'org.nemomobile.social 1.0' is not allowed
 INFO [harbour-bad] Please see our FAQ here: https://harbour.jolla.com/faq#QML_API
@@ -92,8 +93,7 @@ Paths
 =====
 WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-bad.png] File not found
 WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-bad.png] File not found
-WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-bad.png] File not found
-WARNING [/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-bad.png] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128 256x256. See: https://harbour.jolla.com/faq#Icons
+WARNING [/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-bad.png] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128. See: https://harbour.jolla.com/faq#Icons
 ERROR [/etc/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Installation not allowed in this location
 ERROR [/usr/bin/bin with spaces] Installation not allowed in this location
@@ -153,7 +153,6 @@ INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Detected as 'PNG imag
 INFO [/usr/share/icons/hicolor/86x86/apps/harbour-bad.png] Please see our FAQ here: https://harbour.jolla.com/faq#Icons
 WARNING [/usr/share/icons/hicolor/108x108/apps/harbour-bad.png] Icon not found!
 WARNING [/usr/share/icons/hicolor/128x128/apps/harbour-bad.png] Icon not found!
-WARNING [/usr/share/icons/hicolor/256x256/apps/harbour-bad.png] Icon not found!
 FAILED
 
 Symbols
@@ -164,15 +163,15 @@ Permissions
 ===========
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Owner is 'nemo', should be 'root'
 ERROR [/home/nemo/.conf/harbour-bad/harbour-bad.conf] Group is 'nemo', should be 'root'
-WARNING [/usr/bin/bin with spaces] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/bin with spaces] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/harbour-bad suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/harbour-bad suid] File must not be executable (current permissions: 755)
-WARNING [/usr/bin/harbour-bad-bin] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad-bin] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/harbour-bad-suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/harbour-bad-suid] File must not be executable (current permissions: 755)
-WARNING [/usr/bin/嗨-bin] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/harbour-bad-suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/嗨-bin] File must not be executable (current permissions: 755)
 ERROR [/usr/bin/嗨-suid] setuid, setgid or sticky bit set
-WARNING [/usr/bin/嗨-suid] File must not be executable (current permissions: 755)
+ERROR [/usr/bin/嗨-suid] File must not be executable (current permissions: 755)
 FAILED
 
 Scripts
@@ -192,6 +191,7 @@ ERROR [hello] 'Provides: hello' not allowed in RPM
 ERROR [lib] 'Provides: lib' not allowed in RPM
 ERROR [libhelloSailorDbus.so] 'Provides: libhelloSailorDbus.so' not allowed in RPM
 ERROR [libquazip.so.1] 'Provides: libquazip.so.1' not allowed in RPM
+ERROR [qml(harbour.good.dbus)] 'Provides: qml(harbour.good.dbus)' not allowed in RPM
 ERROR [嗨.so] 'Provides: 嗨.so' not allowed in RPM
 FAILED
 

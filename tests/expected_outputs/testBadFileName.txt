@@ -56,8 +56,7 @@ Paths
 =====
 [33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-good.png[0m] File not found
 [33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-good.png[0m] File not found
-[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-good.png[0m] File not found
-[33mWARNING[0m [[34m/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-good.png[0m] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128 256x256. See: https://harbour.jolla.com/faq#Icons
+[33mWARNING[0m [[34m/usr/share/icons/hicolor/@@SIZE@@/apps/harbour-good.png[0m] Not all icons found! It is recommended that the rpm contains icons with the following sizes: 86x86 108x108 128x128. See: https://harbour.jolla.com/faq#Icons
 [32mPASSED[0m
 
 Libraries
@@ -69,7 +68,6 @@ Icon
 ====
 [33mWARNING[0m [[34m/usr/share/icons/hicolor/108x108/apps/harbour-good.png[0m] Icon not found!
 [33mWARNING[0m [[34m/usr/share/icons/hicolor/128x128/apps/harbour-good.png[0m] Icon not found!
-[33mWARNING[0m [[34m/usr/share/icons/hicolor/256x256/apps/harbour-good.png[0m] Icon not found!
 [32mPASSED[0m
 
 Symbols
@@ -78,23 +76,23 @@ Symbols
 
 Permissions
 ===========
-[33mWARNING[0m [[34m/usr/share/harbour-good/lib/harbour/good/dbus/qmldir[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/cover/CoverPage.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/harbour-good.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/FirstPage.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_001.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_002.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_003.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_004.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_005.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_006.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_007.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_008.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_009.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/Page_010.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml[0m] File must not be executable (current permissions: 755)
-[33mWARNING[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-good.png[0m] File must not be executable (current permissions: 755)
-[32mPASSED[0m
+[31mERROR[0m [[34m/usr/share/harbour-good/lib/harbour/good/dbus/qmldir[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/cover/CoverPage.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/harbour-good.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/FirstPage.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_001.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_002.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_003.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_004.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_005.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_006.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_007.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_008.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_009.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/Page_010.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/harbour-good/qml/pages/qmlmodules/RedRectangle.qml[0m] File must not be executable (current permissions: 755)
+[31mERROR[0m [[34m/usr/share/icons/hicolor/86x86/apps/harbour-good.png[0m] File must not be executable (current permissions: 755)
+[31mFAILED[0m
 
 Scripts
 =======

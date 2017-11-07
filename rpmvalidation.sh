@@ -536,7 +536,13 @@ validatedesktopfile() {
 }
 
 isLibraryAllowed() {
-    if ! check_contained_in "$1" $ALLOWED_LIBRARIES; then
+    if check_contained_in "$1" $ALLOWED_LIBRARIES; then
+        return
+    elif check_contained_in "$1" $DEPRECATED_LIBRARIES; then
+        validation_warning "$2" "Shared library is deprecated: $1"
+        INFO_MSG_PRINTED=1
+        return
+    else
         # $LIB could be in /usr/share/app-name ?
         FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1" 2> /dev/null $OPT_SORT)
         if [[ -n $FOUND_LIB ]] ; then
@@ -739,7 +745,13 @@ validateqmlfiles() {
                     fi
 
                     # easy things first, is it whitelisted ?
-                    if ! check_contained_in "$QML_IMPORT" $ALLOWED_QMLIMPORTS; then
+                    if check_contained_in "$QML_IMPORT" $ALLOWED_QMLIMPORTS; then
+                        continue
+                    elif check_contained_in "$QML_IMPORT" $DEPRECATED_QMLIMPORTS; then
+                        validation_warning "$QML_FILE" "Import '$QML_IMPORT' is deprecated"
+                        INFO_MSG_PRINTED=1
+                        continue
+                    else
                         # is it a file import "foo.js" or similar ?
                         if [[ $QML_IMPORT =~ ^[\"\'](.*)[\"\'] ]] ; then
                             QML_IMPORT_PATH=${BASH_REMATCH[1]}
@@ -773,9 +785,6 @@ validateqmlfiles() {
                         fi
                         # XXX: Where is the corresponding error message for this?
                         RC=1
-                    else
-                        # import is whitelisted
-                        continue
                     fi
 
                     if [[ $RC -gt 0 ]] ; then
@@ -998,6 +1007,12 @@ validaterpmrequires() {
                     FOUND_IMPORT_XMLLISTMODEL=1
                     ;;
             esac
+            continue
+        fi
+
+        if check_contained_in "$require" $DEPRECATED_REQUIRES; then
+            validation_warning "$require" "Dependency is deprecated"
+            INFO_MSG_PRINTED=1
             continue
         fi
 
