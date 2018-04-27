@@ -89,6 +89,7 @@ TMP_DIR=''
 PACKAGING_SCRIPT_DIR='/usr/share/sdk-harbour-rpmvalidator'
 SCRIPT_DIR=''
 SCRIPT_CONF='rpmvalidation.conf'
+LANG=en_US.utf8
 
 # Print/logging helper functions
 #
@@ -246,7 +247,7 @@ rpmprepare () {
                 ;;
             *)
                 # this is the file we are validating
-                RPM_NAME=$(readlink -f $1)
+                RPM_NAME=$(readlink -f "$1")
                 shift
                 ;;
         esac
@@ -272,9 +273,9 @@ rpmprepare () {
     fi
 
     # this is a required parameter
-    [[ -z $RPM_NAME ]] && usage quit
+    [[ -z "$RPM_NAME" ]] && usage quit
 
-    [[ ! -f $RPM_NAME ]] && { validation_error $RPM_NAME "File not found!"; exit 1; }
+    [[ ! -f "$RPM_NAME" ]] && { validation_error "$RPM_NAME" "File not found!"; exit 1; }
 
     # the version file is created during RPM build and should not be in
     # version control
@@ -295,7 +296,7 @@ rpmprepare () {
     log_debug "Reading config scripts from $SCRIPT_DIR"
 
     # before doing anything with the rpm, check that it is an rpm file
-    RPM_FILE_TYPE=$(file -b $RPM_NAME)
+    RPM_FILE_TYPE=$(file -b "$RPM_NAME")
     if [[ ! ${RPM_FILE_TYPE} =~ ^RPM.v.* ]] ; then
         RC=1
         validation_error "$RPM_NAME" "is not an rpm file!"
@@ -311,7 +312,7 @@ rpmprepare () {
     # that is ugly, but in 1st run we need so $RPM is available
     # 2nd so $NAME is available in config?!
     source $SCRIPT_DIR/$SCRIPT_CONF
-    NAME=$($RPM -q --queryformat='%{NAME}' -p $RPM_NAME)
+    NAME=$($RPM -q --queryformat='%{NAME}' -p "$RPM_NAME")
     source $SCRIPT_DIR/$SCRIPT_CONF
   
     log_debug "Prepare for RPM validation of file $RPM_NAME"
@@ -321,9 +322,9 @@ rpmprepare () {
     #
     pushd $TMP_DIR >/dev/null 2>&1
     if [[ $DEBUG -lt 2 ]] ; then
-        $RPM2CPIO $RPM_NAME | $CPIO --quiet -idm
+        $RPM2CPIO "$RPM_NAME" | $CPIO --quiet -idm
     else
-        $RPM2CPIO $RPM_NAME | $CPIO -idmv
+        $RPM2CPIO "$RPM_NAME" | $CPIO -idmv
     fi
     if [[ $? -gt 0 ]] ; then
         RC=1
@@ -824,9 +825,9 @@ validatenames() {
 # name-version-release.architecture.rpm
 #
 validaterpmfilename(){
-    RPM_ARCH=$($RPM -q --queryformat='%{ARCH}' -p $RPM_NAME)
-    RPM_VERSION=$($RPM -q --queryformat='%{VERSION}' -p $RPM_NAME)
-    RPM_RELEASE=$($RPM -q --queryformat='%{RELEASE}' -p $RPM_NAME)
+    RPM_ARCH=$($RPM -q --queryformat='%{ARCH}' -p "$RPM_NAME")
+    RPM_VERSION=$($RPM -q --queryformat='%{VERSION}' -p "$RPM_NAME")
+    RPM_RELEASE=$($RPM -q --queryformat='%{RELEASE}' -p "$RPM_NAME")
 
     EXPECTED_RPM_FILE_NAME="${NAME}-${RPM_VERSION}-${RPM_RELEASE}.${RPM_ARCH}.rpm"
     CURRENT_RPM_FILE_NAME=$(basename $RPM_NAME)
@@ -945,14 +946,14 @@ validatepermissions() {
             validation_error "$PATH_NAME" "Group is '$OWNER_GROUP', should be 'root'"
         fi
 
-    done < <($RPM -q --queryformat "[%{FILEMODES:octal}\a%{FILEUSERNAME}\a%{FILEGROUPNAME}\a%{FILENAMES}\n]" -p $RPM_NAME)
+    done < <($RPM -q --queryformat "[%{FILEMODES:octal}\a%{FILEUSERNAME}\a%{FILEGROUPNAME}\a%{FILENAMES}\n]" -p "$RPM_NAME")
 }
 
 #
 # Pre and post installation script validation
 #
 validatescripts() {
-    SCRIPTINFO=$($RPM -qp --scripts $RPM_NAME | $GREP -o '^.*scriptlet.*:$' | $CUT -f 1 -d ' ')
+    SCRIPTINFO=$($RPM -qp --scripts "$RPM_NAME" | $GREP -o '^.*scriptlet.*:$' | $CUT -f 1 -d ' ')
     for script in $SCRIPTINFO; do
         validation_error "$script" "RPM '$script' script not allowed"
     done
@@ -966,7 +967,7 @@ suggest_autoreqprov() {
 }
 
 validaterpmprovides() {
-    PROVIDES=$($RPM -q --queryformat '[%{PROVIDES}\n]\n' -p $RPM_NAME)
+    PROVIDES=$($RPM -q --queryformat '[%{PROVIDES}\n]\n' -p "$RPM_NAME")
 
     for provide in $PROVIDES; do
         case "$provide" in
@@ -985,7 +986,7 @@ validaterpmprovides() {
 }
 
 validaterpmobsoletes() {
-    OBSOLETES=$($RPM -q --queryformat '[ %{OBSOLETES} ]\n' -p $RPM_NAME)
+    OBSOLETES=$($RPM -q --queryformat '[ %{OBSOLETES} ]\n' -p "$RPM_NAME")
 
     for obsolete in $OBSOLETES; do
         validation_error "$obsolete" "'Obsoletes: $obsolete' not allowed in RPM"
@@ -993,7 +994,7 @@ validaterpmobsoletes() {
 }
 
 validaterpmrequires() {
-    REQUIRES=$($RPM -q --queryformat '[ %{REQUIRES} ]\n' -p $RPM_NAME)
+    REQUIRES=$($RPM -q --queryformat '[ %{REQUIRES} ]\n' -p "$RPM_NAME")
 
     FOUND_LIBSAILFISHAPP_LAUNCHER=0
     LIBSAILFISHAPP_LAUNCHER_PACKAGE=libsailfishapp-launcher
@@ -1132,8 +1133,8 @@ validatearch(){
 }
 
 validatevendor(){
-    RPM_VENDOR=$($RPM -q --queryformat='%{VENDOR}' -p $RPM_NAME)
-    RPM_VENDOR_SIZE=$($RPM -q --queryformat='%{VENDOR:arraysize}' -p $RPM_NAME)
+    RPM_VENDOR=$($RPM -q --queryformat='%{VENDOR}' -p "$RPM_NAME")
+    RPM_VENDOR_SIZE=$($RPM -q --queryformat='%{VENDOR:arraysize}' -p "$RPM_NAME")
 
     if [[ $RPM_VENDOR_SIZE == "(none)" && $RPM_VENDOR == "(none)" ]]; then
         validation_success "No vendor set!"
@@ -1195,9 +1196,9 @@ rpmvalidation () {
         echo -e "\n"
 
         if [[ $RC -ne 1 ]] ; then
-            echo -e "Validation succeeded: $(incolor 32 $RPM_NAME)"
+            echo -e "Validation succeeded: $(incolor 32 "$RPM_NAME")"
         else
-            echo -e "Validation failed: $(incolor 31 $RPM_NAME)"
+            echo -e "Validation failed: $(incolor 31 "$RPM_NAME")"
         fi
     else
         if [ $RC -eq 0 ]; then
@@ -1227,7 +1228,7 @@ rpmcleanup () {
 # Main
 ###########################
 
-rpmprepare $@
+rpmprepare "$@"
 
 if [[ $RC -eq 0 ]] ; then
     rpmvalidation
