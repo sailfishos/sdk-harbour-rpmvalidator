@@ -96,7 +96,7 @@ def qmlmodules_to_capabilities(qmlmodules):
     return ['qml({})'.format(i.id) for i in qmlmodules]
 
 def parse_qmldir(file, file_name):
-    """Parse module definition 'qmldir' file intro a dictionary with 'command' as a key and
+    """Parse module definition 'qmldir' file into a dictionary with 'command' as a key and
     a list of 'arguments' as a value
 
     >>> file_like = inspect.cleandoc(\"""
@@ -119,7 +119,7 @@ def parse_qmldir(file, file_name):
         parsed[tokens[0]] = tokens[1:]
 
     if not 'module' in parsed:
-        raise Error('QML module definition "{}" does not declare module identified'
+        raise Error('QML module definition "{}" does not declare module identifier'
                 .format(file_name))
 
     return parsed
@@ -134,7 +134,11 @@ def list_installed_modules():
         for file_name in file_names:
             if file_name == 'qmldir':
                 file_path = os.path.join(dir_path, file_name)
-                qmldir = read_qmldir(file_path)
+                try:
+                    qmldir = read_qmldir(file_path)
+                except Error as e:
+                    warning(e.message)
+                    continue
                 id = qmldir['module'][0]
                 retv[id] = InstalledQmlModule(id, dir_path, qmldir)
     return retv
@@ -233,6 +237,8 @@ def main_check():
         if 'typeinfo' in installed.qmldir:
             qml_typeinfo = installed.qmldir['typeinfo'][0]
         else:
+            print(qmlmodule.id, 'does not declare "typeinfo" in its "qmldir"',
+                    'Trying to look for the default "{}"'.format(DEFAULT_QML_TYPEINFO))
             qml_typeinfo = DEFAULT_QML_TYPEINFO
         qml_typeinfo = os.path.join(installed.path, qml_typeinfo)
 
