@@ -970,7 +970,7 @@ validaterpmprovides() {
 
     for provide in $PROVIDES; do
         case "$provide" in
-            ${NAME}*)
+            ${NAME}*|"application()"|"application(${NAME}.desktop)")
                 # Do nothing
                 ;;
             lib*.so.*|lib*.so)
