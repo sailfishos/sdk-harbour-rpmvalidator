@@ -9,6 +9,7 @@ License:    GPLv2
 BuildArch:  noarch
 URL:        https://github.com/sailfishos/sdk-harbour-rpmvalidator
 BuildRequires: python3-base
+Provides:   default-rpm-validation-suite
 Requires:   binutils
 Requires:   coreutils
 Requires:   findutils
@@ -68,7 +69,7 @@ Requires: qml(org.freedesktop.contextkit)
 %install
 rm -rf %{buildroot}
 
-install -D -m 0755 rpmvalidation.sh %{buildroot}%{_bindir}/rpmvalidation.sh
+install -D -m 0755 rpmvalidation.sh %{buildroot}%{_libexecdir}/%{name}/rpmvalidation.sh
 install -D -m 0644 allowed_libraries.conf %{buildroot}%{_datadir}/%{name}/allowed_libraries.conf
 install -D -m 0644 allowed_qmlimports.conf %{buildroot}%{_datadir}/%{name}/allowed_qmlimports.conf
 install -D -m 0644 allowed_requires.conf %{buildroot}%{_datadir}/%{name}/allowed_requires.conf
@@ -77,6 +78,7 @@ install -D -m 0644 deprecated_qmlimports.conf %{buildroot}%{_datadir}/%{name}/de
 install -D -m 0644 deprecated_requires.conf %{buildroot}%{_datadir}/%{name}/deprecated_requires.conf
 install -D -m 0644 disallowed_qmlimport_patterns.conf %{buildroot}%{_datadir}/%{name}/disallowed_qmlimport_patterns.conf
 install -D -m 0644 rpmvalidation.conf %{buildroot}%{_datadir}/%{name}/rpmvalidation.conf
+install -D -m 0644 harbour.ini %{buildroot}%{_datadir}/rpmvalidation/suites/harbour.ini
 
 # create version information file that is read by the validation script
 echo "%{version}-%{release}" > %{buildroot}%{_datadir}/%{name}/version
@@ -86,9 +88,10 @@ install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/rpmvalidation.sh
+%{_libexecdir}/%{name}/rpmvalidation.sh
 %{_datadir}/%{name}/version
 %{_datadir}/%{name}/*.conf
+%{_datadir}/rpmvalidation/suites/harbour.ini
 
 %files sdk-tests
 %defattr(-,root,root,-)
