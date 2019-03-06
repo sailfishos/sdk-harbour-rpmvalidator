@@ -449,7 +449,7 @@ validatepaths () {
         else
             validation_error "$rpm_file" "Installation not allowed in this location"
         fi
-    done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -empty \) \) $OPT_SORT" \
+    done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -size 0 \) \) $OPT_SORT" \
         | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX)$")
 
     # Accidentally added files
@@ -809,7 +809,7 @@ validatenames() {
     # Regular expression against which the name must be matched
     NAME_REGEX='^harbour-[-a-z0-9_\.]+$'
 
-    echo $NAME | $EGREP --silent $NAME_REGEX
+    echo $NAME | $EGREP -q $NAME_REGEX
     if [[ $? -ne 0 ]] ; then
         validation_error $NAME "Name is not valid. Must start with 'harbour-', matching '$NAME_REGEX'."
         validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Naming"
