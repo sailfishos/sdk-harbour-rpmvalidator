@@ -510,7 +510,7 @@ validatedesktopfile() {
         if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 1 ]; then
             validation_warning $DESKTOP_NAME "X-Nemo-Application-Type should be silica-qt5 for apps importing Sailfish.Silica in QML"
             validation_info $DESKTOP_NAME "Set X-Nemo-Application-Type to silica-qt5 unless mapplauncherd can't start the application."
-            validation_info $DESKTOP_NAME "See also: https://github.com/nemomobile/mapplauncherd/blob/master/README"
+            validation_info $DESKTOP_NAME "See also: https://git.sailfishos.org/mer-core/mapplauncherd/blob/master/README"
             INFO_MSG_PRINTED=1
         fi
         if [ $USES_SAILFISH_QML_LAUNCHER -eq 1 ]; then
@@ -1057,7 +1057,7 @@ validaterpmrequires() {
 
 suggest_xdg_basedir() {
     if [ $SUGGESTED_XDG_BASEDIR -eq 0 ]; then
-        validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo. As a rule of thumb follow the XDG Base Directory Specification and use \$HOME instead of /home/nemo."
+        validation_info "$1" "Please do not hard code the path to any subfolders in /home/nemo or other home directories. As a rule of thumb follow the XDG Base Directory Specification and use \$HOME instead of hardcoded paths."
         validation_info "$1" "Please see our FAQ here: https://harbour.jolla.com/faq#2.13.0"
         SUGGESTED_XDG_BASEDIR=1
     fi
@@ -1072,7 +1072,7 @@ validatesandboxing() {
         while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
-        done < <(strings "$filename" | $GREP "/home/nemo/")
+        done < <(strings "$filename" | $EGREP "/home/[^.][^/]*/")
     done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
