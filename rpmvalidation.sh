@@ -1072,7 +1072,7 @@ validatesandboxing() {
         while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
-        done < <(strings "$filename" | $EGREP "/home/[^.][^/]*/")
+        done < <(strings "$filename" | $EGREP "/home/(nemo|defaultuser)/")
     done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
