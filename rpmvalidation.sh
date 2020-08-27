@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2014 Jolla Ltd.
-# Contact: Reto Zingg <reto.zingg@jolla.com>
+# Copyright (C) 2013 - 2020 Jolla Ltd.
+# Copyright (C) 2018 - 2020 Open Mobile Platform LLC.
+# Contact: http://jolla.com/
 #
 # This file is part of the SailfishOS SDK
 #
