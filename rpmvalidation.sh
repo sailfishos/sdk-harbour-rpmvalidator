@@ -346,6 +346,7 @@ check_contained_in() (
     cd $SCRIPT_DIR
     while read pat; do
         [[ $QUERY == $pat ]] && return 0
+        [[ $QUERY == "$pat()(64bit)" ]] && return 0
     done < <(cat "$@")
     return 1
 )
