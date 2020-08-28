@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2014 Jolla Ltd.
-# Contact: Reto Zingg <reto.zingg@jolla.com>
+# Copyright (C) 2013 - 2020 Jolla Ltd.
+# Copyright (C) 2018 - 2020 Open Mobile Platform LLC.
+# Contact: http://jolla.com/
 #
 # This file is part of the SailfishOS SDK
 #
@@ -19,6 +20,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
+
+shopt -s extglob
 
 #
 # Definitions
@@ -345,6 +348,7 @@ check_contained_in() (
     cd $SCRIPT_DIR
     while read pat; do
         [[ $QUERY == $pat ]] && return 0
+        [[ $QUERY == "$pat()(64bit)" ]] && return 0
     done < <(cat "$@")
     return 1
 )
@@ -616,7 +620,7 @@ validatelibraries() {
         # Example output: "ELF 32-bit LSB  shared object, ARM, EABI5 version 1 (SYSV), ..."
 
         case "$filetype" in
-            ELF*32-bit*LSB*ARM* | ELF*32-bit*LSB*Intel*)
+            ELF*32-bit*LSB*ARM* | ELF*32-bit*LSB*Intel* | ELF*64-bit*LSB*ARM*)
                 if [[ $filetype == *not?stripped ]] ; then
                     validation_warning "$binary" "file is not stripped!"
                 fi
@@ -839,8 +843,9 @@ validaterpmfilename(){
         validation_error $RPM_RELEASE "rpm release must contain only digits (0-9), underscores (_) and periods (.)"
     fi
 
-    if [ "$RPM_ARCH" != "armv7hl" -a "$RPM_ARCH" != "noarch" -a "$RPM_ARCH" != "i486" ]; then
-        validation_error $CURRENT_RPM_FILE_NAME "Architecture must be armv7hl, i486 or noarch"
+    if [[ $RPM_ARCH != @(armv7hl|aarch64|i486|noarch) ]]; then
+        validation_error $CURRENT_RPM_FILE_NAME \
+            "Architecture must be armv7hl, aarch64, i486 or noarch"
     fi
 
     if [[ $NAME_CHECK_PASSED == 1 ]]; then
