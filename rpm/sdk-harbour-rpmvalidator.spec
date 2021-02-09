@@ -59,12 +59,20 @@ Requires: qml(org.freedesktop.contextkit)
 %description sdk-tests
 %{summary}.
 
+%package doc
+Summary: Documentation for Harbour RPM Validator
+BuildRequires: python3dist(mako)
+
+%description doc
+%{summary}.
+
 %prep
 %setup -q
 
 %build
 ./sdk-tests/check-qml-typeinfo.py -a allowed_qmlimports.conf \
                                   create-tests-xml > sdk-tests/tests.xml
+./doc/gen_doc.py > doc/harbour_allowed_apis.html
 
 %install
 rm -rf %{buildroot}
@@ -86,6 +94,8 @@ echo "%{version}-%{release}" > %{buildroot}%{_datadir}/%{name}/version
 install -D -m 0755 sdk-tests/check-qml-typeinfo.py %{buildroot}/opt/tests/%{name}/check-qml-typeinfo.py
 install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 
+install -D -m 0644 doc/harbour_allowed_apis.html %{buildroot}/%{_docdir}/%{name}/harbour_allowed_apis.html
+
 %files
 %defattr(-,root,root,-)
 %{_libexecdir}/%{name}/rpmvalidation.sh
@@ -96,3 +106,8 @@ install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 %files sdk-tests
 %defattr(-,root,root,-)
 /opt/tests/%{name}/*
+
+%files doc
+%defattr(-,root,root,-)
+%dir %{_docdir}/%{name}
+%{_docdir}/%{name}/*
