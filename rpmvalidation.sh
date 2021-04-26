@@ -541,18 +541,16 @@ validatedesktopfile() {
 
 isLibraryAllowed() {
     if check_contained_in "$1" $ALLOWED_LIBRARIES; then
-        return
+        :
     elif check_contained_in "$1" $DEPRECATED_LIBRARIES; then
         validation_warning "$2" "Shared library is deprecated: $1"
         INFO_MSG_PRINTED=1
-        return
     else
         # $LIB could be in /usr/share/app-name ?
         FOUND_LIB=$(eval $FIND $SHARE_NAME -name "$1" 2> /dev/null $OPT_SORT)
         if [[ -n $FOUND_LIB ]] ; then
             # OK it's an own lib, check that rpath is set correctly
             RPATH_CHECK_NEEDED=1
-            continue
         else
             validation_error "$2" "Cannot link to shared library: $1"
             INFO_MSG_PRINTED=1
