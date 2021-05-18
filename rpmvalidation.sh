@@ -647,6 +647,16 @@ validatelibraries() {
                 esac
 
                 ;;
+            ELF*"LSB shared object, no machine"*)
+                case "$binary" in
+                    $SHARE_NAME/*.go)
+                        validation_info "$binary" "Guile object file found"
+                        ;;
+                    *)
+                        validation_error "$binary" "ELF binary with wrong arch or location: $filetype"
+                        ;;
+                esac
+                ;;
             ELF*)
                 validation_error "$binary" "ELF file with wrong arch: $filetype"
                 ;;
