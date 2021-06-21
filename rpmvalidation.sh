@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2020 Jolla Ltd.
+# Copyright (C) 2013 - 2021 Jolla Ltd.
 # Copyright (C) 2018 - 2020 Open Mobile Platform LLC.
 # Contact: http://jolla.com/
 #
@@ -506,6 +506,12 @@ validatedesktopfile() {
     $GREP "^Type=Application[[:space:]]*$" $DESKTOP_NAME  >/dev/null 2>&1
     if [[ $? -ne 0 ]] ; then
         validation_error $DESKTOP_NAME "Missing valid Type declaration"
+        INFO_MSG_PRINTED=1
+    fi
+
+    $GREP "^\[Sailjail\]$" $DESKTOP_NAME  >/dev/null 2>&1
+    if [[ $? -eq 0 ]] ; then
+        validation_error $DESKTOP_NAME "Sailjail section not allowed (use X-Sailjail instead)"
         INFO_MSG_PRINTED=1
     fi
 
