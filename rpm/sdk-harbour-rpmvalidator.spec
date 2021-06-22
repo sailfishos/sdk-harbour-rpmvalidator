@@ -85,6 +85,9 @@ install -D -m 0644 deprecated_libraries.conf %{buildroot}%{_datadir}/%{name}/dep
 install -D -m 0644 deprecated_qmlimports.conf %{buildroot}%{_datadir}/%{name}/deprecated_qmlimports.conf
 install -D -m 0644 deprecated_requires.conf %{buildroot}%{_datadir}/%{name}/deprecated_requires.conf
 install -D -m 0644 disallowed_qmlimport_patterns.conf %{buildroot}%{_datadir}/%{name}/disallowed_qmlimport_patterns.conf
+install -D -m 0644 allowed_sailjailkeys.conf %{buildroot}%{_datadir}/%{name}/allowed_sailjailkeys.conf
+install -D -m 0644 allowed_permissions.conf %{buildroot}%{_datadir}/%{name}/allowed_permissions.conf
+install -D -m 0644 disallowed_orgnames.conf %{buildroot}%{_datadir}/%{name}/disallowed_orgnames.conf
 install -D -m 0644 rpmvalidation.conf %{buildroot}%{_datadir}/%{name}/rpmvalidation.conf
 install -D -m 0644 harbour.ini %{buildroot}%{_datadir}/rpmvalidation/suites/harbour.ini
 
