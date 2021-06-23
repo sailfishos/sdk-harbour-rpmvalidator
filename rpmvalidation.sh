@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2020 Jolla Ltd.
+# Copyright (C) 2013 - 2021 Jolla Ltd.
 # Copyright (C) 2018 - 2020 Open Mobile Platform LLC.
 # Contact: http://jolla.com/
 #
@@ -509,6 +509,17 @@ validatedesktopfile() {
         INFO_MSG_PRINTED=1
     fi
 
+    $GREP "^\[Sailjail\]$" $DESKTOP_NAME  >/dev/null 2>&1
+    if [[ $? -eq 0 ]] ; then
+        validation_error $DESKTOP_NAME "Sailjail section not allowed (use X-Sailjail instead)"
+        INFO_MSG_PRINTED=1
+    fi
+
+    $GREP "^\[X-Sailjail\]$" $DESKTOP_NAME  >/dev/null 2>&1
+    if [[ $? -eq 0 ]] ; then
+        validatexsailjail <<<$(sed '1,/^\[X-Sailjail\]/d;/\[/,$d' $DESKTOP_NAME)
+    fi
+
     $GREP "^X-Nemo-Application-Type=silica-qt5[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
     if [[ $? -ne 0 ]] ; then
         if [ $USES_SAILFISH_SILICA_QML_IMPORT -eq 1 ]; then
@@ -537,6 +548,64 @@ validatedesktopfile() {
         validation_info $DESKTOP_NAME "Please see our FAQ here: https://harbour.jolla.com/faq#.desktop-Files"
         INFO_MSG_PRINTED=0
     fi
+}
+
+validatexsailjail() {
+    local validatedlinesfound=0
+    while read line; do
+        if [[ ! -z "$line" ]]; then
+            validatesailjailkey "$line"
+            validatedlinesfound=1
+        fi
+    done
+    if [ $validatedlinesfound -eq 0 ]; then
+        validation_error $DESKTOP_NAME "Empty X-Sailjail section not allowed"
+        INFO_MSG_PRINTED=1
+    fi
+}
+
+validatesailjailkey() {
+    local key=$(echo $1 | sed "s/=.*//")
+    local value=$(echo $1 | sed "s/[^=]*=\(.*\)/\1/")
+    if ! check_contained_in "$key" $ALLOWED_SAILJAILKEYS; then
+        validation_error $DESKTOP_NAME "X-Sailjail key is not allowed: $key"
+        INFO_MSG_PRINTED=1
+    elif [[ $key == Permissions ]]; then
+        validatesailjailpermissions <<<$value
+    elif [[ $key == OrganizationName ]]; then
+        validateorganizationname "$value"
+    elif [[ $key == ApplicationName ]]; then
+        if [[ ! $value =~ ^[A-Za-z_-][A-Z0-9a-z_-]*$ ]]; then
+            echo ApplicationName=$value
+            validation_error "ApplicationName contains illegal characters"
+            INFO_MSG_PRINTED=1
+        fi
+    fi
+}
+
+validateorganizationname () {
+    if [[ ! $1 =~ ^[0-9a-z._-]+$ ]]; then
+        validation_error $DESKTOP_NAME "Organization name contains illegal characters"
+        INFO_MSG_PRINTED=1
+    fi
+    if [[ $1 =~ (^|[.])[0-9] ]]; then
+        validation_error $DESKTOP_NAME "Organization name component may not start with a number"
+        INFO_MSG_PRINTED=1
+    fi
+    if check_contained_in "$1" $DISALLOWED_ORGNAMES; then
+        validation_error $DESKTOP_NAME "OrganizationName not allowed: $1"
+        INFO_MSG_PRINTED=1
+    fi
+}
+
+validatesailjailpermissions() {
+    IFS=';' read -ra PERMISSIONS
+    for permission in "${PERMISSIONS[@]}"; do
+        if ! check_contained_in "$permission" $ALLOWED_PERMISSIONS; then
+            validation_error $DESKTOP_NAME "X-Sailjail permission not allowed: $permission"
+            INFO_MSG_PRINTED=1
+        fi
+    done
 }
 
 isLibraryAllowed() {
