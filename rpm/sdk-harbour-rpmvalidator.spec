@@ -72,7 +72,8 @@ BuildRequires: python3dist(mako)
 %build
 ./sdk-tests/check-qml-typeinfo.py -a allowed_qmlimports.conf \
                                   create-tests-xml > sdk-tests/tests.xml
-./doc/gen_doc.py > doc/harbour_allowed_apis.html
+./doc/gen_doc.py -t html > doc/harbour_allowed_apis.html
+./doc/gen_doc.py -t md > doc/harbour_allowed_apis.md
 
 %install
 rm -rf %{buildroot}
@@ -98,6 +99,7 @@ install -D -m 0755 sdk-tests/check-qml-typeinfo.py %{buildroot}/opt/tests/%{name
 install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 
 install -D -m 0644 doc/harbour_allowed_apis.html %{buildroot}/%{_docdir}/%{name}/harbour_allowed_apis.html
+install -D -m 0644 doc/harbour_allowed_apis.md %{buildroot}/%{_docdir}/%{name}/harbour_allowed_apis.md
 
 %files
 %defattr(-,root,root,-)

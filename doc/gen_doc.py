@@ -24,37 +24,63 @@ from mako.template import Template
 from array import *
 import os
 import re
+import sys, getopt
 
 def read_conf(filename):
     retval = [[]]
-    i = 0
     with open(filename) as conffile:
         lines = conffile.readlines()
         for line in lines:
             if line.startswith('#'):
-                retval.insert(0, [])
-                retval[0].insert(0, line[1:-1])
+                if len(retval[0]) < 2:
+                    # ignore extra comments in the beginning of file
+                    if not retval[0]:
+                        retval[0].append(line[1:-1].strip())
+                    else:
+                        retval[0][0] = line[1:-1].strip()
+                elif len(retval[len(retval)-1]) > 1:
+                    retval.append([])
+                    retval[len(retval)-1].insert(0, line[1:-1].strip())
             elif len(line) > 1:
-                retval[0].insert(1, re.split('[(]*[!?*][()]+', line)[0])
+                retval[len(retval)-1].append(re.split('[(]*[!?*][()]+', line)[0].rstrip('\n'))
     return retval
 
-source_dir = os.path.join(os.path.dirname(__file__), '..')
-allowed_libraries = read_conf(
-    os.path.join(source_dir, 'allowed_libraries.conf'))
-allowed_qmlimports = read_conf(
-    os.path.join(source_dir, 'allowed_qmlimports.conf'))
-allowed_requires = read_conf(
-    os.path.join(source_dir, 'allowed_requires.conf'))
-deprecated_libraries = read_conf(
-    os.path.join(source_dir, 'deprecated_libraries.conf'))
-deprecated_qmlimports = read_conf(
-    os.path.join(source_dir, 'deprecated_qmlimports.conf'))
-disallowed_qmlimports_patterns = read_conf(
-    os.path.join(source_dir, 'disallowed_qmlimport_patterns.conf'))
-doctemplate = Template(filename=os.path.join(os.path.dirname(__file__), 'base.html'))
-print(doctemplate.render(allowed_libraries=allowed_libraries,
+def usage():
+    print('gen_doc.py -t <type>')
+    print('   where type is either "html" or "md"')
+    sys.exit(1)
+
+def main(argv):
+    type = ''
+    try:
+        opts, args = getopt.getopt(argv, "t:", ["type="])
+    except getopt.GetoptError:
+        usage()
+    for opt, arg in opts:
+        if opt in ("-t", "--type"):
+            type = arg
+    if not type:
+        usage()
+    source_dir = os.path.join(os.path.dirname(__file__), '..')
+    allowed_libraries = read_conf(
+        os.path.join(source_dir, 'allowed_libraries.conf'))
+    allowed_qmlimports = read_conf(
+        os.path.join(source_dir, 'allowed_qmlimports.conf'))
+    allowed_requires = read_conf(
+        os.path.join(source_dir, 'allowed_requires.conf'))
+    deprecated_libraries = read_conf(
+        os.path.join(source_dir, 'deprecated_libraries.conf'))
+    deprecated_qmlimports = read_conf(
+        os.path.join(source_dir, 'deprecated_qmlimports.conf'))
+    disallowed_qmlimports_patterns = read_conf(
+        os.path.join(source_dir, 'disallowed_qmlimport_patterns.conf'))
+    template = Template(filename=os.path.join(os.path.dirname(__file__), 'base.' + type))
+    print(template.render(allowed_libraries=allowed_libraries,
                          allowed_qmlimports=allowed_qmlimports,
                          allowed_requires=allowed_requires,
                          deprecated_libraries=deprecated_libraries,
                          deprecated_qmlimports=deprecated_qmlimports,
                          disallowed_qmlimports_patterns=disallowed_qmlimports_patterns))
+
+if __name__ == "__main__":
+   main(sys.argv[1:])
