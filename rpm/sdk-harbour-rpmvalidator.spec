@@ -74,6 +74,7 @@ BuildRequires: python3dist(mako)
                                   create-tests-xml > sdk-tests/tests.xml
 ./doc/gen_doc.py -t html > doc/harbour_allowed_apis.html
 ./doc/gen_doc.py -t md > doc/harbour_allowed_apis.md
+./doc/gen_doc.py -t md -l permissions > doc/harbour_allowed_permissions.md
 
 %install
 rm -rf %{buildroot}
@@ -100,6 +101,7 @@ install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
 
 install -D -m 0644 doc/harbour_allowed_apis.html %{buildroot}/%{_docdir}/%{name}/harbour_allowed_apis.html
 install -D -m 0644 doc/harbour_allowed_apis.md %{buildroot}/%{_docdir}/%{name}/harbour_allowed_apis.md
+install -D -m 0644 doc/harbour_allowed_permissions.md %{buildroot}/%{_docdir}/%{name}/harbour_allowed_permissions.md
 
 %files
 %defattr(-,root,root,-)

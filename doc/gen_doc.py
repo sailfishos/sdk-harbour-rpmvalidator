@@ -46,19 +46,22 @@ def read_conf(filename):
     return retval
 
 def usage():
-    print('gen_doc.py -t <type>')
+    print('gen_doc.py -t <type> [-l permissions]')
     print('   where type is either "html" or "md"')
     sys.exit(1)
 
 def main(argv):
     type = ''
+    list_type = 'apis'
     try:
-        opts, args = getopt.getopt(argv, "t:", ["type="])
+        opts, args = getopt.getopt(argv, "t:l:", ["type=","list-type="])
     except getopt.GetoptError:
         usage()
     for opt, arg in opts:
         if opt in ("-t", "--type"):
             type = arg
+        if opt in ("-l", "--list-type"):
+            list_type = arg
     if not type:
         usage()
     source_dir = os.path.join(os.path.dirname(__file__), '..')
@@ -74,13 +77,17 @@ def main(argv):
         os.path.join(source_dir, 'deprecated_qmlimports.conf'))
     disallowed_qmlimports_patterns = read_conf(
         os.path.join(source_dir, 'disallowed_qmlimport_patterns.conf'))
-    template = Template(filename=os.path.join(os.path.dirname(__file__), 'base.' + type))
+    allowed_permissions = read_conf(
+        os.path.join(source_dir, 'allowed_permissions.conf'))
+    template = Template(filename=os.path.join(os.path.dirname(__file__),
+                                              list_type + '.' + type))
     print(template.render(allowed_libraries=allowed_libraries,
                          allowed_qmlimports=allowed_qmlimports,
                          allowed_requires=allowed_requires,
                          deprecated_libraries=deprecated_libraries,
                          deprecated_qmlimports=deprecated_qmlimports,
-                         disallowed_qmlimports_patterns=disallowed_qmlimports_patterns))
+                         disallowed_qmlimports_patterns=disallowed_qmlimports_patterns,
+                         allowed_permissions=allowed_permissions))
 
 if __name__ == "__main__":
    main(sys.argv[1:])
