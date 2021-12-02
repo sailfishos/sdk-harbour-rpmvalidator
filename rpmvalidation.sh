@@ -605,6 +605,10 @@ validatesailjailpermissions() {
             validation_error $DESKTOP_NAME "X-Sailjail permission not allowed: $permission"
             INFO_MSG_PRINTED=1
         fi
+        if [[ $permission == Compatibility ]] ; then
+            validation_warning $DESKTOP_NAME "Compatibility permission used"
+            INFO_MSG_PRINTED=1
+        fi
     done
 }
 
