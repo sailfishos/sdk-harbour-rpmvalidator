@@ -553,7 +553,7 @@ validatedesktopfile() {
 validatexsailjail() {
     local validatedlinesfound=0
     while read line; do
-        if [[ ! -z "$line" ]]; then
+        if [[ "$line" =~ ^[^#].* ]]; then
             validatesailjailkey "$line"
             validatedlinesfound=1
         fi
