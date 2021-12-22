@@ -4,7 +4,6 @@ Name:       sdk-harbour-rpmvalidator
 Summary:    Jolla Harbour RPM validation tools
 Version:    1.2
 Release:    1
-Group:      System/Base
 License:    GPLv2
 BuildArch:  noarch
 URL:        https://github.com/sailfishos/sdk-harbour-rpmvalidator
@@ -27,7 +26,6 @@ RPM validation tools for Jolla Harbour.
 
 %package sdk-tests
 Summary: Verifies that the SDK really provides what %{name} promises
-Group:   Development/Tools
 Requires: %{name} = %{version}-%{release}
 Requires: python3-base
 
