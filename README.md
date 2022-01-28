@@ -18,8 +18,10 @@ While this script can also be used as a convenient tool to test how to best circ
 
 There are good reasons why we have rules in Harbour. Please respect them and work with us if you do not understand certain rules or think they need to change. To suggest improvements:
 
-  * Use together.jolla.com with the "harbour-api-request" tag to request new libraries and APIs
-  * Use together.jolla.com to submit ideas for policy changes to the rules
+  * If you think new libraries or APIs should be allowed, there is a thread about that subject on Sailfish OS Forum:
+      * <https://forum.sailfishos.org/t/what-apis-are-missing-from-harbour/4017>
+  * Please read the API Checklist in <https://docs.sailfishos.org/Develop/Apps/Harbour/API_Checklist/>.
+  * If you have ideas about other policy changes, feel free to suggest them on the forum: <https://forum.sailfishos.org/c/app-development/5>
   * Send a pull request if you have non-policy improvements/additions to the script
   * Send a pull request for patches to check for/suggest coding/packaging best practices (as warnings, not failures)
 
