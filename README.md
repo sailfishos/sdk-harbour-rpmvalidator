@@ -28,14 +28,9 @@ There are good reasons why we have rules in Harbour. Please respect them and wor
 
 ## Usage
 
-```
-./rpmvalidation.sh .path/to/rpm-file
-```
-
-Tested under Fedora w/o changes, needed tools should be preinstalled by default.
-
-On Ubuntu and Debian, you might need to install the following additional packages:
+While it is possible to use the script as is, the preferred way to use it is via Sailfish SDK. You can use the sfdk tool to check packages:
 
 ```
-apt-get install rpm rpm2cpio cpio
+sfdk check -s harbour path/to/package.rpm
 ```
+
