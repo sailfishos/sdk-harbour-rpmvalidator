@@ -36,14 +36,17 @@ ${'##'} Deprecated QML Imports
 The following QML Imports have been renamed. The old imports should no longer be used in new code. They will be dropped from allowed imports in a future release:
 
 % for section in deprecated_qmlimports:
-${makerenamelist("Deprecated_QML_Imports", section)}\
+${makelist("Deprecated_QML_Imports", section)}\
 % endfor
 <%def name="makelist(section, subsection)">\
 % if len(subsection) > 1:
-${'###'} ${subsection[0]}
+${subsection[0]}
 
 % for lib in subsection[1:]:
-  - ${lib}
+  - ${lib[0]}
+% if len(lib[1]) > 0:
+    - ${lib[1]}
+% endif
 % endfor
 
 % endif

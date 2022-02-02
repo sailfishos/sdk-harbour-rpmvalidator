@@ -63,7 +63,10 @@ patterns:</p>
         '_')}">${subsection[0]}</span></h3>
       <ul>
       % for lib in subsection[1:]:
-        <li>${lib}</li>
+          <li>${lib[0]}</li>
+          % if len(lib[1]) > 0:
+	      <ul><li>${lib[1]}</li></ul>
+	  % endif
       % endfor
       </ul>
     % endif
