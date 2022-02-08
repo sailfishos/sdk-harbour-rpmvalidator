@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 - 2021 Jolla Ltd.
+# Copyright (C) 2013 - 2022 Jolla Ltd.
 # Copyright (C) 2018 - 2020 Open Mobile Platform LLC.
 # Contact: http://jolla.com/
 #
@@ -579,6 +579,20 @@ validatesailjailkey() {
             echo ApplicationName=$value
             validation_error "ApplicationName contains illegal characters"
             INFO_MSG_PRINTED=1
+        fi
+    elif [[ $key == ExecDBus ]]; then
+        if [[ $USES_SAILFISH_QML_LAUNCHER -eq 0 ]]; then
+            if [[ ! $value =~ ^$NAME(|[[:space:]]+[A-Za-z_-][A-Z0-9a-z_-]*)$ ]]; then
+                echo ExecDBus=$value
+                validation_error "ExecDBus has invalid argument(s)"
+                INFO_MSG_PRINTED=1
+            fi
+        else
+            if [[ ! $value =~ ^sailfish-qml[[:space:]]+$NAME(|[[:space:]]+[A-Za-z_-][A-Z0-9a-z_-]*)$ ]]; then
+                echo ExecDBus=$value
+                validation_error "ExecDBus has invalid argument(s)"
+                INFO_MSG_PRINTED=1
+            fi
         fi
     fi
 }
