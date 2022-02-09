@@ -30,19 +30,24 @@ def read_conf(filename):
     retval = [[]]
     with open(filename) as conffile:
         lines = conffile.readlines()
+        comment = ''
         for line in lines:
             if line.startswith('#'):
-                if len(retval[0]) < 2:
-                    # ignore extra comments in the beginning of file
-                    if not retval[0]:
-                        retval[0].append(line[1:-1].strip())
-                    else:
-                        retval[0][0] = line[1:-1].strip()
-                elif len(retval[len(retval)-1]) > 1:
+                if line.startswith('# ###'):
+                    # add new heading
                     retval.append([])
                     retval[len(retval)-1].insert(0, line[1:-1].strip())
+                else:
+                    # ignore extra comments in the beginning of file
+                    if len(retval) > 1:
+                        # comment line, save for future use
+                        comment = comment + line[1:-1].lstrip()
             elif len(line) > 1:
-                retval[len(retval)-1].append(re.split('[(]*[!?*][()]+', line)[0].rstrip('\n'))
+                lib = []
+                lib.append(re.split('[(]*[!?*][()]+', line)[0].rstrip('\n'))
+                lib.append(comment)
+                comment = ''
+                retval[len(retval)-1].append(lib)
     return retval
 
 def usage():

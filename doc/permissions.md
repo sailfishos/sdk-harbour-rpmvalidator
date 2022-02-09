@@ -7,6 +7,9 @@ ${make_permission_list(section)}\
 % endfor
 <%def name="make_permission_list(section)">\
 % for permission in section[1:]:
-  - ${permission}
+  - ${permission[0]}
+% if len(permission[1]) > 0:
+    - ${permission[1]}
+% endif
 % endfor
 </%def>
