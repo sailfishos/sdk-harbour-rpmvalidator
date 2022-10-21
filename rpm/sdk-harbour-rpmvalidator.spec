@@ -84,6 +84,9 @@ install -D -m 0644 allowed_requires.conf %{buildroot}%{_datadir}/%{name}/allowed
 install -D -m 0644 deprecated_libraries.conf %{buildroot}%{_datadir}/%{name}/deprecated_libraries.conf
 install -D -m 0644 deprecated_qmlimports.conf %{buildroot}%{_datadir}/%{name}/deprecated_qmlimports.conf
 install -D -m 0644 deprecated_requires.conf %{buildroot}%{_datadir}/%{name}/deprecated_requires.conf
+install -D -m 0644 dropped_libraries.conf %{buildroot}%{_datadir}/%{name}/dropped_libraries.conf
+install -D -m 0644 dropped_qmlimports.conf %{buildroot}%{_datadir}/%{name}/dropped_qmlimports.conf
+install -D -m 0644 dropped_requires.conf %{buildroot}%{_datadir}/%{name}/dropped_requires.conf
 install -D -m 0644 disallowed_qmlimport_patterns.conf %{buildroot}%{_datadir}/%{name}/disallowed_qmlimport_patterns.conf
 install -D -m 0644 allowed_sailjailkeys.conf %{buildroot}%{_datadir}/%{name}/allowed_sailjailkeys.conf
 install -D -m 0644 allowed_permissions.conf %{buildroot}%{_datadir}/%{name}/allowed_permissions.conf

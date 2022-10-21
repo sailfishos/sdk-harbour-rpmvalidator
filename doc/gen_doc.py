@@ -78,8 +78,12 @@ def main(argv):
         os.path.join(source_dir, 'allowed_requires.conf'))
     deprecated_libraries = read_conf(
         os.path.join(source_dir, 'deprecated_libraries.conf'))
+    dropped_libraries = read_conf(
+        os.path.join(source_dir, 'dropped_libraries.conf'))
     deprecated_qmlimports = read_conf(
         os.path.join(source_dir, 'deprecated_qmlimports.conf'))
+    dropped_qmlimports = read_conf(
+        os.path.join(source_dir, 'dropped_qmlimports.conf'))
     disallowed_qmlimports_patterns = read_conf(
         os.path.join(source_dir, 'disallowed_qmlimport_patterns.conf'))
     allowed_permissions = read_conf(
@@ -90,7 +94,9 @@ def main(argv):
                          allowed_qmlimports=allowed_qmlimports,
                          allowed_requires=allowed_requires,
                          deprecated_libraries=deprecated_libraries,
+                         dropped_libraries=dropped_libraries,
                          deprecated_qmlimports=deprecated_qmlimports,
+                         dropped_qmlimports=dropped_qmlimports,
                          disallowed_qmlimports_patterns=disallowed_qmlimports_patterns,
                          allowed_permissions=allowed_permissions))
 
