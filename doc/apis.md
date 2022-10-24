@@ -31,12 +31,26 @@ The following libraries have been deprecated, and they should no longer be used 
 % for section in deprecated_libraries:
 ${makelist("Deprecated_Libraries", section)}\
 % endfor
+${'##'} Dropped libraries
+
+The following libraries are no longer allowed:
+
+% for section in dropped_libraries:
+${makelist("Dropped_Libraries", section)}\
+% endfor
 ${'##'} Deprecated QML Imports
 
 The following QML Imports have been renamed. The old imports should no longer be used in new code. They will be dropped from allowed imports in a future release:
 
 % for section in deprecated_qmlimports:
 ${makelist("Deprecated_QML_Imports", section)}\
+% endfor
+${'##'} Dropped QML Imports
+
+The following QML Imports are no longer allowed:
+
+% for section in dropped_qmlimports:
+${makelist("Dropped_QML_Imports", section)}\
 % endfor
 <%def name="makelist(section, subsection)">\
 % if len(subsection) > 1:
