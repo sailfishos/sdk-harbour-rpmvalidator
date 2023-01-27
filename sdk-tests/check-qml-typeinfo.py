@@ -234,6 +234,10 @@ def main_check():
 
         installed = all_installed[qmlmodule.id]
 
+        if 'plugin' not in installed.qmldir:
+            info('Module provides no plugins - skipping')
+            continue
+
         if 'typeinfo' in installed.qmldir:
             qml_typeinfo = installed.qmldir['typeinfo'][0]
         else:
