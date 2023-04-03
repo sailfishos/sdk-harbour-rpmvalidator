@@ -518,6 +518,8 @@ validatedesktopfile() {
     $GREP "^\[X-Sailjail\]$" $DESKTOP_NAME  >/dev/null 2>&1
     if [[ $? -eq 0 ]] ; then
         validatexsailjail <<<$(sed '1,/^\[X-Sailjail\]/d;/\[/,$d' $DESKTOP_NAME)
+    else
+        validation_warning $DESKTOP_NAME "X-Sailjail section not found"
     fi
 
     $GREP "^X-Nemo-Application-Type=silica-qt5[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
