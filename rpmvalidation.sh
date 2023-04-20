@@ -1093,12 +1093,21 @@ validaterpmprovides() {
     done
 }
 
-validaterpmobsoletes() {
-    OBSOLETES=$($RPM -q --queryformat '[ %{OBSOLETES} ]\n' -p $RPM_NAME)
-
-    for obsolete in $OBSOLETES; do
-        validation_error "$obsolete" "'Obsoletes: $obsolete' not allowed in RPM"
+validaterpmdependencytype() {
+    local dependencytype=$1
+    local dependencies=$($RPM -q --queryformat "[ %{${dependencytype^^}} ]\n" -p $RPM_NAME)
+    for dependency in $dependencies; do
+        validation_error "$dependency" "'$dependencytype: $dependency' not allowed in RPM"
     done
+}
+
+validaterpmdependencies() {
+    validaterpmdependencytype Obsoletes
+    validaterpmdependencytype Conflicts
+    validaterpmdependencytype Recommends
+    validaterpmdependencytype Suggests
+    validaterpmdependencytype Supplements
+    validaterpmdependencytype Enhances
 }
 
 validaterpmrequires() {
@@ -1288,7 +1297,7 @@ rpmvalidation () {
     run_validator "Scripts" validatescripts
     run_validator "Triggers" validatetriggers
     run_validator "Provides" validaterpmprovides
-    run_validator "Obsoletes" validaterpmobsoletes
+    run_validator "Dependencies" validaterpmdependencies
     # has to run after validateqmlfiles
     run_validator "Requires" validaterpmrequires
     run_validator "Sandboxing" validatesandboxing
