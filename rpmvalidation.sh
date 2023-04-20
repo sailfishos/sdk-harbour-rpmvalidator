@@ -1060,6 +1060,13 @@ validatescripts() {
     done
 }
 
+validatetriggers() {
+    TRIGGERINFO=$($RPM -qp --triggers --filetriggers $RPM_NAME | $GREP -o '^.*scriptlet' | $CUT -f 1 -d ' ')
+    for trigger in $TRIGGERINFO; do
+        validation_error "$trigger" "RPM '$trigger' trigger not allowed"
+    done
+}
+
 suggest_autoreqprov() {
     if [ $INFO_MSG_PRINTED -eq 1 ]; then
         validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#2.6.0 how to use '__provides_exclude_from' and '__requires_exclude' .spec file to avoid that"
@@ -1279,6 +1286,7 @@ rpmvalidation () {
     run_validator "Symbols" validatesymbols
     run_validator "Permissions" validatepermissions
     run_validator "Scripts" validatescripts
+    run_validator "Triggers" validatetriggers
     run_validator "Provides" validaterpmprovides
     run_validator "Obsoletes" validaterpmobsoletes
     # has to run after validateqmlfiles
