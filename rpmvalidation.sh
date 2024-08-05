@@ -454,7 +454,7 @@ validatepaths () {
             validation_error "$rpm_file" "Installation not allowed in this location"
         fi
     done < <(eval "$FIND . -depth \( \( ! -type d \) -o \( -type d -a -size 0 \) \) $OPT_SORT" \
-        | $EGREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX)$")
+        | $GREP -v -E "^./($BIN_NAME|$SHARE_NAME/.*|$DESKTOP_NAME|$ICON_NAMES_REGEX)$")
 
     # Accidentally added files
     while read filename; do
@@ -536,7 +536,7 @@ validatedesktopfile() {
             validation_error $DESKTOP_NAME "X-Nemo-Application-Type must be silica-qt5 for sailfish-qml apps"
             INFO_MSG_PRINTED=1
         else
-            $EGREP "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
+            $GREP -E "^X-Nemo-Application-Type=(no-invoker|generic|qtquick2|qt5)[[:space:]]*$" $DESKTOP_NAME >/dev/null 2>&1
             if [[ $? -ne 0 ]] ; then
                 validation_error $DESKTOP_NAME "X-Nemo-Application-Type not declared (use silica-qt5 for QML apps)"
                 INFO_MSG_PRINTED=1
@@ -910,7 +910,7 @@ validatenames() {
     # Regular expression against which the name must be matched
     NAME_REGEX='^harbour-[-a-z0-9_\.]+$'
 
-    echo $NAME | $EGREP -q $NAME_REGEX
+    echo $NAME | $GREP -E -q $NAME_REGEX
     if [[ $? -ne 0 ]] ; then
         validation_error $NAME "Name is not valid. Must start with 'harbour-', matching '$NAME_REGEX'."
         validation_info $NAME "Please see our FAQ here: https://harbour.jolla.com/faq#Naming"
@@ -1190,7 +1190,7 @@ validatesandboxing() {
         while read match; do
             validation_error "/$filename" "Hardcoded path: $match"
             suggest_xdg_basedir "$filename"
-        done < <(strings "$filename" | $EGREP "/home/(nemo|defaultuser)/")
+        done < <(strings "$filename" | $GREP -E "/home/(nemo|defaultuser)/")
     done < <(eval $FIND . ! -type d $OPT_SORT)
 }
 
