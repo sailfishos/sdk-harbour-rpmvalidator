@@ -96,7 +96,6 @@ BuildRequires: python3dist(mako)
 ./doc/gen_doc.py -t md -l permissions > doc/harbour_allowed_permissions.md
 
 %install
-rm -rf %{buildroot}
 
 install -D -m 0755 rpmvalidation.sh %{buildroot}%{_libexecdir}/%{name}/rpmvalidation.sh
 install -D -m 0644 allowed_libraries.conf %{buildroot}%{_datadir}/%{name}/allowed_libraries.conf
@@ -116,7 +115,7 @@ install -D -m 0644 rpmvalidation.conf %{buildroot}%{_datadir}/%{name}/rpmvalidat
 install -D -m 0644 harbour.ini %{buildroot}%{_datadir}/rpmvalidation/suites/harbour.ini
 
 # create version information file that is read by the validation script
-echo "%{version}-%{release}" > %{buildroot}%{_datadir}/%{name}/version
+echo "%{version}" > %{buildroot}%{_datadir}/%{name}/version
 
 install -D -m 0755 sdk-tests/check-qml-typeinfo.py %{buildroot}/opt/tests/%{name}/check-qml-typeinfo.py
 install -D -m 0644 sdk-tests/tests.xml %{buildroot}/opt/tests/%{name}/tests.xml
@@ -126,17 +125,14 @@ install -D -m 0644 doc/harbour_allowed_apis.md %{buildroot}/%{_docdir}/%{name}/h
 install -D -m 0644 doc/harbour_allowed_permissions.md %{buildroot}/%{_docdir}/%{name}/harbour_allowed_permissions.md
 
 %files
-%defattr(-,root,root,-)
 %{_libexecdir}/%{name}/rpmvalidation.sh
 %{_datadir}/%{name}/version
 %{_datadir}/%{name}/*.conf
 %{_datadir}/rpmvalidation/suites/harbour.ini
 
 %files sdk-tests
-%defattr(-,root,root,-)
 /opt/tests/%{name}/*
 
 %files doc
-%defattr(-,root,root,-)
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/*
