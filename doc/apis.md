@@ -1,3 +1,7 @@
+# Harbour Allowed APIs
+
+[TOC]
+
 ${'##'} Allowed Libraries
 
 Your application can link against the following libraries:
