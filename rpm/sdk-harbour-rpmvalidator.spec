@@ -8,6 +8,7 @@ License:    GPLv2
 BuildArch:  noarch
 URL:        https://github.com/sailfishos/sdk-harbour-rpmvalidator
 BuildRequires: python3-base
+BuildRequires: python3-markdown
 Provides:   default-rpm-validation-suite
 Requires:   binutils
 Requires:   coreutils

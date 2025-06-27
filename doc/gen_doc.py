@@ -20,11 +20,19 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
-from mako.template import Template
-from array import *
+import getopt
 import os
 import re
-import sys, getopt
+import sys
+
+from mako.template import Template
+import markdown
+from markdown.extensions.toc import TocExtension
+
+HTML_TITLE = {
+    "apis": "Harbour Allowed APIs",
+    "permissions": "Harbour Allowed Permissions",
+}
 
 def read_conf(filename):
     retval = [[]]
@@ -56,7 +64,7 @@ def usage():
     sys.exit(1)
 
 def main(argv):
-    type = ''
+    output_type = ''
     list_type = 'apis'
     try:
         opts, args = getopt.getopt(argv, "t:l:", ["type=","list-type="])
@@ -64,12 +72,13 @@ def main(argv):
         usage()
     for opt, arg in opts:
         if opt in ("-t", "--type"):
-            type = arg
+            output_type = arg
         if opt in ("-l", "--list-type"):
             list_type = arg
-    if not type:
+    if not output_type:
         usage()
-    source_dir = os.path.join(os.path.dirname(__file__), '..')
+    base_dir = os.path.dirname(__file__)
+    source_dir = os.path.join(base_dir, '..')
     allowed_libraries = read_conf(
         os.path.join(source_dir, 'allowed_libraries.conf'))
     allowed_qmlimports = read_conf(
@@ -88,17 +97,35 @@ def main(argv):
         os.path.join(source_dir, 'disallowed_qmlimport_patterns.conf'))
     allowed_permissions = read_conf(
         os.path.join(source_dir, 'allowed_permissions.conf'))
-    template = Template(filename=os.path.join(os.path.dirname(__file__),
-                                              list_type + '.' + type))
-    print(template.render(allowed_libraries=allowed_libraries,
-                         allowed_qmlimports=allowed_qmlimports,
-                         allowed_requires=allowed_requires,
-                         deprecated_libraries=deprecated_libraries,
-                         dropped_libraries=dropped_libraries,
-                         deprecated_qmlimports=deprecated_qmlimports,
-                         dropped_qmlimports=dropped_qmlimports,
-                         disallowed_qmlimports_patterns=disallowed_qmlimports_patterns,
-                         allowed_permissions=allowed_permissions))
+    template = Template(
+        filename=os.path.join(base_dir, list_type + '.md'),
+    )
+    content = template.render(
+        allowed_libraries=allowed_libraries,
+        allowed_qmlimports=allowed_qmlimports,
+        allowed_requires=allowed_requires,
+        deprecated_libraries=deprecated_libraries,
+        dropped_libraries=dropped_libraries,
+        deprecated_qmlimports=deprecated_qmlimports,
+        dropped_qmlimports=dropped_qmlimports,
+        disallowed_qmlimports_patterns=disallowed_qmlimports_patterns,
+        allowed_permissions=allowed_permissions
+    )
+    if output_type == "html":
+        content = markdown.markdown(
+            content,
+            extensions=[TocExtension(toc_depth="2-3")]
+        )
+        print(
+            Template(
+                filename=os.path.join(base_dir, 'base.html'),
+            ).render(
+                title=HTML_TITLE[list_type],
+                content=content,
+            )
+        )
+    else:
+        print(content)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
