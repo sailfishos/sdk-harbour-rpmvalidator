@@ -793,7 +793,9 @@ validatesymbols() {
         # Check if the library has a proper main function defined
         MAIN_SYMBOL=""
         if [ "$RPM_ARCH" == "armv7hl" ]; then
-            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_ARM"
+            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_ARMV7HL"
+        elif [ "$RPM_ARCH" == "aarch64" ]; then
+            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_AARCH64"
         elif [ "$RPM_ARCH" == "i486" ]; then
             MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_I486"
         fi
