@@ -56,6 +56,13 @@ The following QML Imports are no longer allowed:
 % for section in dropped_qmlimports:
 ${makelist("Dropped_QML_Imports", section)}\
 % endfor
+${'##'} Deprecated package dependencies
+
+The following package dependencies should now longer be used in new code. They will be dropped from allowed dependencies in a future release:
+
+% for section in deprecated_requires:
+${makelist("Deprecated_Requires", section)}\
+% endfor
 <%def name="makelist(section, subsection)">\
 % if len(subsection) > 1:
 ${subsection[0]}
