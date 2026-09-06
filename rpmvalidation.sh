@@ -791,17 +791,22 @@ list_undefined_functions_in_elf() {
 validatesymbols() {
     if [ -x $BIN_NAME ]; then
         # Check if the library has a proper main function defined
-        MAIN_SYMBOL=""
+        MAIN_SYMBOL_BASE="__libc_start_main"
+        MAIN_SYMBOL_PREFIX="$MAIN_SYMBOL_BASE@GLIBC_"
         if [ "$RPM_ARCH" == "armv7hl" ]; then
-            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_ARMV7HL"
+            MAIN_SYMBOL="$MAIN_SYMBOL_PREFIX$GLIBC_MAIN_VERSION_ARMV7HL"
         elif [ "$RPM_ARCH" == "aarch64" ]; then
-            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_AARCH64"
+            MAIN_SYMBOL="$MAIN_SYMBOL_PREFIX$GLIBC_MAIN_VERSION_AARCH64"
         elif [ "$RPM_ARCH" == "i486" ]; then
-            MAIN_SYMBOL="__libc_start_main@GLIBC_$GLIBC_MAIN_VERSION_I486"
+            MAIN_SYMBOL="$MAIN_SYMBOL_PREFIX$GLIBC_MAIN_VERSION_I486"
         fi
 
         if ! list_undefined_functions_in_elf $BIN_NAME | $GREP -q "^${MAIN_SYMBOL}.*"; then
-            validation_error $BIN_NAME "Binary does not link to $MAIN_SYMBOL."
+            if ! list_undefined_functions_in_elf $BIN_NAME | $GREP -q "^${MAIN_SYMBOL_PREFIX}.*"; then
+                validation_error $BIN_NAME "Binary does not link to $MAIN_SYMBOL_BASE."
+            else
+                validation_warning $BIN_NAME "Binary does not link to $MAIN_SYMBOL."
+            fi
         fi
 
         if ! list_defined_functions_in_elf $BIN_NAME | $GREP -q "^main$"; then
