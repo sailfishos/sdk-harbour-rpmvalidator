@@ -320,6 +320,15 @@ rpmprepare () {
     log_debug "Prepare for RPM validation of file $RPM_NAME"
 
     #
+    # check compression format
+    #
+    RPM_COMPRESSION=$($RPM -q --qf "%{PAYLOADCOMPRESSOR}" -p $RPM_NAME)
+    if [[ x"$RPM_COMPRESSION" = x"zstd" ]] ; then
+        validation_info "RPM compression $RPM_COMPRESSION" "This will require Sailfish OS v4.5 or later!"
+        validation_info "RPM compression $RPM_COMPRESSION" "If you want to support earlier versions, consider '%define _binary_payload w2.xzdio'"
+    fi
+
+    #
     # Unpack RPM file
     #
     pushd $TMP_DIR >/dev/null 2>&1
