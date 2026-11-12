@@ -717,6 +717,16 @@ validatelibraries() {
                     $BIN_NAME)
                         # Application main binary is obviously okay
                         ;;
+                    $SHARE_NAME/libexec/*)
+                        case "$filetype" in
+                            *executable*)
+                                validation_info "$binary" "Private executable shipped"
+                                ;;
+                            *)
+                                validation_error "$binary" "Library in wrong location (only executables are allowed in /$SHARE_NAME/libexec/)"
+                                ;;
+                        esac
+                        ;;
                     $SHARE_NAME/lib/*.so.*|$SHARE_NAME/lib/*.so)
                         validation_info "$binary" "Private shared library shipped"
                         POSSIBLE_RPATH_CHECK_NEEDED=1
@@ -1034,7 +1044,7 @@ validatepermissions() {
 
             filename=${PATH_NAME#/}
             case $filename in
-                $BIN_NAME|$SHARE_NAME/*.so|$SHARE_NAME/*.so.*)
+                $BIN_NAME|$SHARE_NAME/libexec/*|$SHARE_NAME/*.so|$SHARE_NAME/*.so.*)
                     # Binary should (obviously) be executable
                     # Shipped private shared libraries can be, too
                     ;;
